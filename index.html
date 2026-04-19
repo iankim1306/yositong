@@ -3,44 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>요양보호사 정보 | 취업·시험·자격증 한눈에</title>
-<meta name="description" content="요양보호사 취업 정보, 월급, 구인구직 사이트, 자격증 시험 준비까지. 현직 요양보호사가 알려주는 실전 정보 모음.">
+<title>요양보호사 정보 | 취업·시험·자격증</title>
+<meta name="description" content="요양보호사 취업 정보, 월급, 구인구직 사이트, 자격증 시험 준비까지. 현장 정보를 기반으로 한 실전 가이드.">
 <link rel="canonical" href="https://www.yositong.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="요양보호사 정보 | 취업·시험·자격증 한눈에">
-<meta property="og:description" content="요양보호사 취업 정보, 월급, 구인구직 사이트, 자격증 시험 준비까지.">
+<meta property="og:title" content="요양보호사 정보 | 취업·시험·자격증">
+<meta property="og:description" content="요양보호사 취업·시험·자격증 실전 정보">
 <meta property="og:url" content="https://www.yositong.com/">
 <style>
-body { font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, sans-serif; background: #f5f5f5; margin: 0; padding: 0; color: #222; line-height: 1.6; }
-.nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 15px 20px; position: sticky; top: 0; z-index: 10; }
-.nav-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
-.nav a { text-decoration: none; color: #555; font-weight: 500; font-size: 15px; }
-.nav a.logo { font-weight: 700; color: #222; font-size: 18px; }
-.nav a:hover { color: #000; }
-.hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 80px 20px; text-align: center; }
-.hero h1 { font-size: 36px; margin: 0 0 20px 0; line-height: 1.3; }
-.hero p { font-size: 18px; margin: 0 0 30px 0; opacity: 0.95; }
-.hero-cta { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-.hero-cta a { background: white; color: #764ba2; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px; transition: transform 0.2s; }
-.hero-cta a:hover { transform: translateY(-2px); }
-.hero-cta a.secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.4); }
-.section { max-width: 900px; margin: 60px auto; padding: 0 20px; }
-.section h2 { font-size: 26px; margin-bottom: 8px; }
-.section .section-desc { color: #666; margin-bottom: 24px; }
-.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-.card { background: white; border-radius: 10px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-decoration: none; color: #222; transition: transform 0.2s, box-shadow 0.2s; display: block; }
-.card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-.card .icon { font-size: 32px; margin-bottom: 12px; }
-.card h3 { font-size: 18px; margin: 0 0 8px 0; }
-.card p { color: #666; font-size: 14px; margin: 0; }
-.featured-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-.featured-item { background: white; border-radius: 8px; padding: 20px; text-decoration: none; color: #222; border: 1px solid #eee; }
-.featured-item:hover { border-color: #764ba2; }
-.featured-item h4 { font-size: 16px; margin: 0 0 6px 0; }
-.featured-item p { color: #888; font-size: 13px; margin: 0; }
-.footer { background: #2a2a2a; color: #aaa; padding: 40px 20px; margin-top: 80px; text-align: center; font-size: 14px; }
-.footer a { color: #ddd; text-decoration: none; margin: 0 10px; }
-@media (max-width: 600px) { .hero h1 { font-size: 26px; } .hero p { font-size: 15px; } }
+:root {
+  --ink: #1a1a1a;
+  --ink-2: #4a4a4a;
+  --ink-3: #888;
+  --line: #e8e8e8;
+  --bg: #fafaf7;
+  --surface: #ffffff;
+  --accent: #2a5c3f;
+  --accent-soft: #edf4ef;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: 'Pretendard', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  background: var(--bg);
+  margin: 0; padding: 0;
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+.nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 24px;
+  position: sticky; top: 0; z-index: 10;
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; gap: 28px; align-items: center; flex-wrap: wrap;
+}
+.nav a { color: var(--ink-2); font-weight: 500; font-size: 15px; }
+.nav a.logo { font-weight: 700; color: var(--ink); font-size: 17px; letter-spacing: -0.3px; }
+.nav a:hover { color: var(--ink); }
+
+.hero {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 90px 24px 80px;
+}
+.hero-inner { max-width: 1100px; margin: 0 auto; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero .eyebrow {
+  font-size: 13px; color: var(--accent); font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: 44px; font-weight: 700;
+  line-height: 1.25; letter-spacing: -1px;
+  margin: 0 0 20px;
+  color: var(--ink);
+}
+.hero p {
+  font-size: 17px; color: var(--ink-2);
+  margin: 0 0 32px;
+  max-width: 520px;
+}
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: #204a32; }
+.btn-secondary { background: var(--surface); color: var(--ink); border-color: var(--line); }
+.btn-secondary:hover { border-color: var(--ink-2); }
+
+.hero-visual {
+  background: var(--accent-soft);
+  border-radius: 16px;
+  padding: 40px;
+  aspect-ratio: 4 / 3;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative;
+}
+.stat-card {
+  background: white;
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 12px;
+  border: 1px solid var(--line);
+  display: flex; align-items: center; gap: 16px;
+}
+.stat-card:last-child { margin-bottom: 0; }
+.stat-card .n { font-size: 26px; font-weight: 700; color: var(--accent); letter-spacing: -0.5px; min-width: 80px; }
+.stat-card .desc { font-size: 14px; color: var(--ink-2); }
+.stat-card .desc strong { color: var(--ink); display: block; margin-bottom: 2px; }
+
+.section { max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
+.section-head { margin-bottom: 40px; max-width: 640px; }
+.section-eyebrow { font-size: 13px; color: var(--accent); font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+.section h2 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin: 0 0 12px; }
+.section-head p { color: var(--ink-2); font-size: 16px; margin: 0; }
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.cat-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px 24px;
+  transition: all 0.15s;
+  display: block;
+}
+.cat-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.cat-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.cat-card h3 { font-size: 17px; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.2px; }
+.cat-card p { font-size: 14px; color: var(--ink-2); margin: 0; line-height: 1.55; }
+.cat-card .arrow { font-size: 14px; color: var(--accent); margin-top: 14px; font-weight: 500; }
+
+.featured {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.post-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: all 0.15s;
+  background: var(--surface);
+}
+.post-card:hover { border-color: var(--ink-3); }
+.post-card .tag { font-size: 12px; color: var(--accent); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+.post-card h4 { font-size: 17px; font-weight: 700; margin: 10px 0 10px; line-height: 1.45; letter-spacing: -0.2px; }
+.post-card p { font-size: 14px; color: var(--ink-2); margin: 0; line-height: 1.55; }
+
+.cta-row {
+  background: var(--ink);
+  color: white;
+  padding: 60px 24px;
+  text-align: center;
+}
+.cta-row h2 { font-size: 28px; margin: 0 0 14px; letter-spacing: -0.5px; }
+.cta-row p { color: #aaa; margin: 0 0 28px; font-size: 16px; }
+.cta-row .btn-primary { background: white; color: var(--ink); }
+.cta-row .btn-primary:hover { background: #f0f0ec; }
+
+.footer { background: #1a1a1a; color: #999; padding: 48px 24px; text-align: center; font-size: 14px; }
+.footer a { color: #ccc; margin: 0 10px; }
+.footer .brand { color: #fff; font-weight: 700; margin-bottom: 8px; }
+
+@media (max-width: 900px) {
+  .hero { padding: 60px 24px 50px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero h1 { font-size: 32px; }
+  .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .featured-grid { grid-template-columns: 1fr; }
+  .section { padding: 50px 24px; }
+  .section h2 { font-size: 24px; }
+}
+@media (max-width: 500px) {
+  .hero h1 { font-size: 26px; }
+  .hero p { font-size: 15px; }
+  .category-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -54,76 +206,142 @@ body { font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, sans-
 </div></nav>
 
 <section class="hero">
-<h1>요양보호사 취업, 한 곳에서 끝내세요</h1>
-<p>구인구직 사이트, 월급 정보, 근무처별 가이드부터 시험 준비까지</p>
+<div class="hero-inner">
+<div class="hero-grid">
+<div>
+<div class="eyebrow">요양보호사 실전 정보</div>
+<h1>취업부터 시험까지,<br>필요한 정보만 모았습니다</h1>
+<p>구인구직 사이트, 근무처별 급여, 학원 국비지원, 기출문제 풀이. 현장에서 필요한 정보만 골라 정리했습니다.</p>
 <div class="hero-cta">
-<a href="/jobs/">취업정보 보기</a>
-<a href="/quiz/" class="secondary">무료 기출문제</a>
+<a href="/jobs/" class="btn btn-primary">취업정보 보러가기</a>
+<a href="/quiz/" class="btn btn-secondary">무료 기출문제</a>
+</div>
+</div>
+<div class="hero-visual">
+<div class="stat-card">
+<div class="n">588</div>
+<div class="desc"><strong>무료 기출문제</strong>Chapter 1~7 전범위 수록</div>
+</div>
+<div class="stat-card">
+<div class="n">21</div>
+<div class="desc"><strong>심화 정보글</strong>시험·취업·학원 가이드</div>
+</div>
+<div class="stat-card">
+<div class="n">5</div>
+<div class="desc"><strong>근무처 유형</strong>요양원·주간보호·방문요양 등</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 
 <section class="section">
-<h2>어떤 정보가 필요하세요?</h2>
-<p class="section-desc">목적에 맞는 섹션으로 바로 이동</p>
-<div class="card-grid">
-<a href="/jobs/" class="card">
-<div class="icon">💼</div>
+<div class="section-head">
+<div class="section-eyebrow">서비스 안내</div>
+<h2>무엇을 찾고 계신가요</h2>
+<p>목적에 맞는 섹션으로 바로 이동하세요.</p>
+</div>
+<div class="category-grid">
+
+<a href="/jobs/" class="cat-card">
+<div class="cat-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+</div>
 <h3>취업정보</h3>
-<p>구인구직 사이트, 근무처별 급여, 지역별 수요까지</p>
+<p>구인구직 사이트, 근무처별 급여, 지역별 수요</p>
+<div class="arrow">바로가기 →</div>
 </a>
-<a href="/academy/" class="card">
-<div class="icon">🎓</div>
+
+<a href="/academy/" class="cat-card">
+<div class="cat-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+</div>
 <h3>학원가이드</h3>
 <p>국비지원 조건, 학원 선택 기준, 교육비 비교</p>
+<div class="arrow">바로가기 →</div>
 </a>
-<a href="/quiz/" class="card">
-<div class="icon">📝</div>
+
+<a href="/quiz/" class="cat-card">
+<div class="cat-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15h6M9 11h6"/></svg>
+</div>
 <h3>기출문제 풀이</h3>
-<p>Chapter 1~7 전범위 750문제 무료 랜덤 풀이</p>
+<p>Chapter 1~7 전범위 588문제 무료 랜덤 풀이</p>
+<div class="arrow">바로가기 →</div>
 </a>
-<a href="/blog/" class="card">
-<div class="icon">📚</div>
+
+<a href="/blog/" class="cat-card">
+<div class="cat-icon">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+</div>
 <h3>정보글 모음</h3>
 <p>시험 준비부터 현장 이야기까지 21개 심화 글</p>
+<div class="arrow">바로가기 →</div>
 </a>
+
 </div>
 </section>
 
-<section class="section">
-<h2>인기 글</h2>
-<p class="section-desc">가장 많이 읽힌 요양보호사 실전 정보</p>
-<div class="featured-list">
-<a href="/요양보호사-월급-실수령액-근무처별-정리/" class="featured-item">
-<h4>요양보호사 월급 실수령액 근무처별 정리</h4>
-<p>요양원, 방문요양, 주간보호별 실수령액 비교</p>
-</a>
-<a href="/요양보호사-구인구직-어디서-찾을까-구직사이트-정/" class="featured-item">
-<h4>요양보호사 구인구직 어디서 찾을까?</h4>
-<p>워크넷, 복지넷 등 구직사이트 총정리</p>
-</a>
-<a href="/요양보호사-업무강도-실제로-어떨까-현장-목소리로/" class="featured-item">
-<h4>요양보호사 업무강도 실제로 어떨까?</h4>
-<p>현장 목소리로 알아본 진짜 이야기</p>
-</a>
-<a href="/요양보호사-교육비-국비지원-받는-방법과-혜택-총정/" class="featured-item">
-<h4>요양보호사 교육비 국비지원 받는 방법</h4>
-<p>국비지원 조건과 혜택 총정리</p>
-</a>
-<a href="/요양보호사-전망-분석-20년-뒤엔-99만명이-부족하다고/" class="featured-item">
-<h4>요양보호사 전망 분석</h4>
-<p>20년 뒤엔 99만명이 부족하다?</p>
-</a>
-<a href="/2025년-요양보호사-시험-기출문제-완벽-분석/" class="featured-item">
-<h4>2025년 요양보호사 시험 기출문제 완벽 분석</h4>
-<p>출제 경향과 합격 전략 총정리</p>
-</a>
+<section class="featured">
+<div class="section">
+<div class="section-head">
+<div class="section-eyebrow">인기 콘텐츠</div>
+<h2>가장 많이 읽힌 글</h2>
+<p>현직과 준비생이 가장 궁금해하는 주제들.</p>
 </div>
+<div class="featured-grid">
+
+<a href="/요양보호사-월급-실수령액-근무처별-정리/" class="post-card">
+<div class="tag">급여 정보</div>
+<h4>요양보호사 월급 실수령액 근무처별 정리</h4>
+<p>요양원, 주간보호, 방문요양별 실수령액 비교. 세전·세후 차이까지 구체적으로.</p>
+</a>
+
+<a href="/요양보호사-구인구직-어디서-찾을까-구직사이트-정/" class="post-card">
+<div class="tag">취업</div>
+<h4>요양보호사 구인구직 어디서 찾을까</h4>
+<p>워크넷, 복지넷, 장기요양포털 등 공공·민간 구직사이트 총정리.</p>
+</a>
+
+<a href="/요양보호사-업무강도-실제로-어떨까-현장-목소리로/" class="post-card">
+<div class="tag">현장</div>
+<h4>요양보호사 업무강도 실제로 어떨까</h4>
+<p>자격증 취득 전 반드시 알아야 할 현장 분위기와 실제 업무 강도.</p>
+</a>
+
+<a href="/요양보호사-교육비-국비지원-받는-방법과-혜택-총정/" class="post-card">
+<div class="tag">국비지원</div>
+<h4>요양보호사 교육비 국비지원 받는 방법</h4>
+<p>내일배움카드로 교육비 대부분 무료. 지원 조건과 신청 절차까지.</p>
+</a>
+
+<a href="/요양보호사-전망-분석-20년-뒤엔-99만명이-부족하다고/" class="post-card">
+<div class="tag">전망</div>
+<h4>요양보호사 전망 분석</h4>
+<p>20년 뒤엔 99만명이 부족하다. 고령화 사회 속 요양보호사의 미래.</p>
+</a>
+
+<a href="/2025년-요양보호사-시험-기출문제-완벽-분석/" class="post-card">
+<div class="tag">시험</div>
+<h4>2025년 요양보호사 시험 기출문제 완벽 분석</h4>
+<p>최근 5년 출제 경향과 과목별 합격 전략을 한눈에 정리.</p>
+</a>
+
+</div>
+</div>
+</section>
+
+<section class="cta-row">
+<h2>시험 준비는 무료 기출문제부터</h2>
+<p>Chapter 1~7 전범위 588문제, 정답과 해설까지 한 번에.</p>
+<a href="/quiz/" class="btn btn-primary">문제풀이 시작하기</a>
 </section>
 
 <footer class="footer">
-<div>© 2026 요양보호사 정보 · yositong.com</div>
-<div style="margin-top: 10px;">
-<a href="/blog/">정보글</a> · <a href="/jobs/">취업정보</a> · <a href="/quiz/">문제풀이</a>
+<div class="brand">요양보호사 정보</div>
+<div>© 2026 yositong.com</div>
+<div style="margin-top: 12px;">
+<a href="/jobs/">취업정보</a>·<a href="/academy/">학원가이드</a>·<a href="/quiz/">문제풀이</a>·<a href="/blog/">정보글</a>
 </div>
 </footer>
 
