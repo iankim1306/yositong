@@ -264,9 +264,9 @@ body {
 </div>
 </footer>
 
-<script src="data.js" defer></script>
-<script defer>
-document.addEventListener('DOMContentLoaded', function() {
+<script src="data.js"></script>
+<script>
+(function() {
   let current = null;
   let solved = 0, correct = 0;
   let qNum = 0;
@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
     render();
   };
   $next.onclick = render;
-});
+})();
 </script>
 
 </body>
