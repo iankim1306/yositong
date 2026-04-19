@@ -1,0 +1,5 @@
+WordPress.*.xml
+*_posts_full.json
+_check.txt
+posts_list.txt
+posts_meta.json

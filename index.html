@@ -12,9 +12,20 @@
       margin: 0;
       padding: 0;
     }
+    .nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 15px 20px; }
+    .nav-inner { max-width: 800px; margin: 0 auto; display: flex; gap: 24px; align-items: center; }
+    .nav a { text-decoration: none; color: #555; font-weight: 500; font-size: 15px; }
+    .nav a.logo { font-weight: 700; color: #222; font-size: 18px; }
+    .nav a:hover { color: #000; }
   </style>
 </head>
 <body>
+
+<nav class="nav"><div class="nav-inner">
+<a href="/" class="logo">요양보호사 정보</a>
+<a href="/">문제풀이</a>
+<a href="/blog/">정보글</a>
+</div></nav>
 
 <div id="quiz-container" style="max-width:700px;margin:30px auto;padding:20px;background:#fff;box-shadow:0 0 10px rgba(0,0,0,0.1);border-radius:10px;">
   <h2 style="text-align:center;">요양보호사 랜덤 문제 풀기</h2>
