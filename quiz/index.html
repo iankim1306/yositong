@@ -10,6 +10,7 @@
 <meta property="og:title" content="요양보호사 기출문제 | 무료 랜덤 풀이">
 <meta property="og:description" content="Chapter 1~7 전범위 588문제 무료 풀이">
 <meta property="og:url" content="https://www.yositong.com/quiz/">
+<script id="json-ld-placeholder" type="application/ld+json"></script>
 <style>
 :root {
   --ink: #1a1a1a;
@@ -52,31 +53,55 @@ body {
 .quiz-header h1 { font-size: 28px; font-weight: 700; margin: 6px 0 8px; letter-spacing: -0.5px; }
 .quiz-header p { color: var(--ink-3); margin: 0; font-size: 15px; }
 
-.quiz-card {
+/* Reusing post-card pattern */
+.post-card {
   background: var(--surface);
   border-radius: 12px;
   border: 1px solid var(--line);
   padding: 32px;
   min-height: 340px;
+  position: relative;
 }
 
-.start-screen { text-align: center; padding: 40px 20px; }
+.start-screen { text-align: center; padding: 20px 0; }
 .start-screen .counter { font-size: 48px; font-weight: 700; color: var(--accent); letter-spacing: -1px; }
 .start-screen .counter-label { font-size: 14px; color: var(--ink-3); margin-top: -4px; }
-.start-screen p { margin: 20px 0 32px; color: var(--ink-2); font-size: 15px; }
-.btn-primary {
-  background: var(--accent);
-  color: white;
+
+.chapter-filters {
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 24px 0;
+}
+.chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 13px; font-weight: 500;
+  color: var(--ink-2);
+  cursor: pointer; transition: all 0.2s;
+}
+.chip:hover, .chip.active {
+  border-color: var(--accent); color: var(--accent); background: var(--accent-soft);
+}
+
+.mode-actions { display: flex; gap: 12px; justify-content: center; margin-top: 24px; }
+.btn-primary, .btn-secondary {
   border: none;
-  padding: 14px 36px;
+  padding: 14px 30px;
   font-size: 16px;
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.15s;
   font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
+.btn-primary { background: var(--accent); color: white; }
 .btn-primary:hover { background: #204a32; }
+.btn-secondary { background: #f0f0ec; color: var(--ink); }
+.btn-secondary:hover { background: #e0e0db; }
+.btn-secondary:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .question-screen { display: none; }
 .progress-row {
@@ -93,6 +118,14 @@ body {
 }
 .counter-inline { color: var(--ink-3); }
 .counter-inline strong { color: var(--ink); font-weight: 600; }
+
+.bookmark-btn {
+  background: none; border: none; cursor: pointer; padding: 4px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--line); transition: color 0.2s;
+}
+.bookmark-btn.saved { color: #f5a623; }
+.bookmark-btn svg { width: 22px; height: 22px; fill: currentColor; }
 
 .q-text {
   font-size: 18px;
@@ -119,74 +152,51 @@ body {
   gap: 12px;
   align-items: flex-start;
   line-height: 1.45;
+  position: relative;
 }
 .option-btn:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-soft); }
 .option-btn:disabled { cursor: default; }
 .option-btn .num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  background: #f0f0ec;
-  color: var(--ink-2);
-  font-size: 13px;
-  font-weight: 600;
-  flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #f0f0ec; color: var(--ink-2);
+  font-size: 13px; font-weight: 600; flex-shrink: 0;
 }
 .option-btn.correct { border-color: var(--correct); background: #eaf6ef; color: var(--correct); }
 .option-btn.correct .num { background: var(--correct); color: white; }
 .option-btn.wrong { border-color: var(--wrong); background: #fcedec; color: var(--wrong); }
 .option-btn.wrong .num { background: var(--wrong); color: white; }
 
+.keyboard-hint {
+  font-size: 12px; color: var(--ink-3); text-align: center; margin-top: 16px;
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+}
+.key {
+  background: #eee; border-radius: 4px; padding: 2px 6px; font-weight: bold; border-bottom: 2px solid #ccc;
+}
+
 .result-box {
-  margin-top: 24px;
-  padding: 20px;
-  border-radius: 8px;
-  background: #f7f7f4;
-  border-left: 3px solid var(--ink-3);
-  display: none;
+  margin-top: 24px; padding: 20px; border-radius: 8px; background: #f7f7f4; border-left: 3px solid var(--ink-3); display: none;
 }
 .result-box.show { display: block; }
 .result-box.correct { background: var(--accent-soft); border-left-color: var(--correct); }
 .result-box.wrong { background: #fcedec; border-left-color: var(--wrong); }
-.result-box .label {
-  font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-  color: var(--ink-3);
-  margin-bottom: 8px;
-}
+.result-box .label { font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 8px; }
 .result-box.correct .label { color: var(--correct); }
 .result-box.wrong .label { color: var(--wrong); }
-.result-box .explanation {
-  font-size: 15px; line-height: 1.65; color: var(--ink);
-}
+.result-box .explanation { font-size: 15px; line-height: 1.65; color: var(--ink); }
 
-.action-row {
-  display: flex; justify-content: flex-end;
-  margin-top: 24px;
-  gap: 10px;
-}
+.action-row { display: flex; justify-content: flex-end; margin-top: 24px; gap: 10px; }
 .btn-next {
-  background: var(--ink);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: inherit;
-  display: none;
+  background: var(--ink); color: white; border: none; padding: 12px 24px;
+  font-size: 15px; font-weight: 600; border-radius: 8px; cursor: pointer; display: none;
 }
 .btn-next.show { display: inline-block; }
 .btn-next:hover { background: #000; }
 
 .score-summary {
-  display: flex; gap: 24px; justify-content: center;
-  padding: 16px 0;
-  margin-top: 24px;
-  border-top: 1px solid var(--line);
-  font-size: 14px;
+  display: flex; gap: 24px; justify-content: center; padding: 16px 0;
+  margin-top: 24px; border-top: 1px solid var(--line); font-size: 14px;
 }
 .score-summary .stat { text-align: center; }
 .score-summary .stat .n { font-size: 22px; font-weight: 700; display: block; }
@@ -197,7 +207,7 @@ body {
 
 @media (max-width: 600px) {
   .quiz-wrap { padding: 0 16px; margin: 24px auto; }
-  .quiz-card { padding: 22px; }
+  .post-card { padding: 22px; }
   .quiz-header h1 { font-size: 22px; }
   .q-text { font-size: 16px; }
 }
@@ -218,25 +228,47 @@ body {
 <header class="quiz-header">
 <div class="label">기출문제 랜덤풀이</div>
 <h1>요양보호사 시험 문제풀이</h1>
-<p>Chapter 1부터 7까지 전범위에서 무작위로 출제됩니다.</p>
+<p>전범위 588문제를 원하는 카테고리별로 풀어보세요.</p>
 </header>
 
-<section class="quiz-card">
+<section class="post-card">
 
 <div id="start-screen" class="start-screen">
 <div class="counter">588</div>
 <div class="counter-label">문제 수록</div>
-<p>정답과 해설이 바로 제공됩니다.<br>원하는 만큼 반복해서 풀어보세요.</p>
-<button id="start-quiz" class="btn-primary">문제 시작하기</button>
+
+<div class="chapter-filters" id="chapter-filters">
+  <!-- Dynamic chips -->
+</div>
+
+<div class="mode-actions">
+  <button id="start-quiz" class="btn-primary">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+    랜덤 시작
+  </button>
+  <button id="start-bookmarks" class="btn-secondary" disabled>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    오답노트 (<span id="bm-count">0</span>)
+  </button>
+</div>
 </div>
 
 <div id="question-screen" class="question-screen">
 <div class="progress-row">
-<span id="chapter-tag" class="chapter-tag">Chapter 1</span>
-<span class="counter-inline"><strong id="question-number">1</strong>번째 문제</span>
+  <div style="display:flex; gap:8px; align-items:center;">
+    <span id="chapter-tag" class="chapter-tag">Chapter</span>
+    <button id="bookmark-btn" class="bookmark-btn" aria-label="북마크 저장">
+      <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+    </button>
+  </div>
+  <span class="counter-inline"><strong id="question-number">1</strong>번째 문제</span>
 </div>
 <div id="question-text" class="q-text"></div>
 <div id="options" class="options"></div>
+
+<div class="keyboard-hint desktop-only">
+  <span class="key">1</span>~<span class="key">4</span> 키로 선택, <span class="key">Enter</span> 로 다음 문제
+</div>
 
 <div id="result-box" class="result-box">
 <div class="label" id="result-label">해설</div>
@@ -259,97 +291,312 @@ body {
 </main>
 
 <footer class="footer">
-<div>© 2026 요양보호사 정보 · yositong.com</div>
-<div style="margin-top: 10px;">
-<a href="/blog/">정보글</a> · <a href="/jobs/">취업정보</a> · <a href="/quiz/">문제풀이</a> · <a href="/about/">소개</a> · <a href="/contact/">문의</a> · <a href="/privacy/">개인정보처리방침</a>
+<div class="brand">요양보호사 정보</div>
+<div>© 2026 yositong.com</div>
+<div style="margin-top: 12px;">
+<a href="/jobs/">취업정보</a>·<a href="/academy/">학원가이드</a>·<a href="/quiz/">문제풀이</a>·<a href="/blog/">정보글</a>·<a href="/about/">소개</a>·<a href="/contact/">문의</a>·<a href="/privacy/">개인정보처리방침</a>
 </div>
 </footer>
 
-<script src="data.js"></script>
+<script src="/quiz/data.js"></script>
 <script>
 (function() {
-  let current = null;
-  let solved = 0, correct = 0;
-  let qNum = 0;
+  // Elements
+  const els = {
+    startScreen: document.getElementById('start-screen'),
+    questionScreen: document.getElementById('question-screen'),
+    chapterFilters: document.getElementById('chapter-filters'),
+    btnStart: document.getElementById('start-quiz'),
+    btnBookmarks: document.getElementById('start-bookmarks'),
+    bmCount: document.getElementById('bm-count'),
+    qText: document.getElementById('question-text'),
+    options: document.getElementById('options'),
+    resultBox: document.getElementById('result-box'),
+    resultLabel: document.getElementById('result-label'),
+    explanation: document.getElementById('explanation-text'),
+    nextBtn: document.getElementById('next-question'),
+    chapterTag: document.getElementById('chapter-tag'),
+    bookmarkBtn: document.getElementById('bookmark-btn'),
+    qNum: document.getElementById('question-number'),
+    solved: document.getElementById('stat-solved'),
+    correct: document.getElementById('stat-correct'),
+    rate: document.getElementById('stat-rate'),
+    summary: document.getElementById('score-summary')
+  };
 
-  const $start = document.getElementById('start-screen');
-  const $question = document.getElementById('question-screen');
-  const $summary = document.getElementById('score-summary');
-  const $qText = document.getElementById('question-text');
-  const $options = document.getElementById('options');
-  const $result = document.getElementById('result-box');
-  const $explanation = document.getElementById('explanation-text');
-  const $resultLabel = document.getElementById('result-label');
-  const $next = document.getElementById('next-question');
-  const $chapter = document.getElementById('chapter-tag');
-  const $qNum = document.getElementById('question-number');
-  const $solved = document.getElementById('stat-solved');
-  const $correct = document.getElementById('stat-correct');
-  const $rate = document.getElementById('stat-rate');
+  // State
+  let pool = [];
+  let bookmarks = new Set(JSON.parse(localStorage.getItem('quiz_bookmarks') || '[]'));
+  let selectedChapters = new Set();
+  let currentMode = 'all'; // 'all' or 'bookmarks'
+  
+  let currentQuestion = null;
+  let currentQuestionOriginalIndex = null;
+  let solvedCount = 0;
+  let correctCount = 0;
+  let questionNumber = 0;
+  let isAnswered = false;
 
-  function shuffle(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
+  // Init UI
+  function init() {
+    try {
+      if (typeof quizData === 'undefined' || !Array.isArray(quizData) || quizData.length === 0) {
+        els.chapterFilters.innerHTML = '<div style="color:var(--wrong); font-size:14px; font-weight:600;">퀴즈 데이터를 불러오지 못했습니다. 새로고침을 해주세요.</div>';
+        return;
+      }
+
+      const chapters = [...new Set(quizData.map(q => q.category).filter(Boolean))].sort();
+      
+      // Render Chips
+      let chipsHtml = `<button class="chip active" data-ch="all">전체</button>`;
+      chipsHtml += chapters.map(ch => `<button class="chip" data-ch="${ch}">${ch}</button>`).join('');
+      els.chapterFilters.innerHTML = chipsHtml;
+
+      els.chapterFilters.addEventListener('click', (e) => {
+        if (e.target.classList.contains('chip')) {
+          const ch = e.target.dataset.ch;
+          const btnAll = els.chapterFilters.querySelector('[data-ch="all"]');
+          
+          if (ch === 'all') {
+            selectedChapters.clear();
+            els.chapterFilters.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+            e.target.classList.add('active');
+          } else {
+            if (btnAll) btnAll.classList.remove('active');
+            
+            if (selectedChapters.has(ch)) {
+              selectedChapters.delete(ch);
+              e.target.classList.remove('active');
+              if (selectedChapters.size === 0 && btnAll) btnAll.classList.add('active');
+            } else {
+              selectedChapters.add(ch);
+              e.target.classList.add('active');
+            }
+          }
+        }
+      });
+
+      updateBookmarkUI();
+
+      els.btnStart.addEventListener('click', () => startQuiz('all'));
+      els.btnBookmarks.addEventListener('click', () => startQuiz('bookmarks'));
+      els.nextBtn.addEventListener('click', showNextQuestion);
+      els.bookmarkBtn.addEventListener('click', toggleBookmark);
+
+      // Keyboard support
+      document.addEventListener('keydown', handleKeydown);
+    } catch (e) {
+      console.error('Quiz init error:', e);
+      els.chapterFilters.innerHTML = '<div style="color:var(--wrong); font-size:14px; font-weight:600;">초기화 중 오류가 발생했습니다.</div>';
     }
-    return arr;
   }
 
-  function render() {
-    $result.classList.remove('show', 'correct', 'wrong');
-    $next.classList.remove('show');
-    qNum++;
-    $qNum.textContent = qNum;
+  function updateBookmarkUI() {
+    els.bmCount.textContent = bookmarks.size;
+    els.btnBookmarks.disabled = bookmarks.size === 0;
+  }
 
-    const idx = Math.floor(Math.random() * quizData.length);
-    current = quizData[idx];
-    current._displayOrder = shuffle([0, 1, 2, 3]);
+  function startQuiz(mode) {
+    try {
+      if (typeof quizData === 'undefined') {
+        alert('퀴즈 데이터가 로드되지 않았습니다.');
+        return;
+      }
+      currentMode = mode;
+      els.startScreen.style.display = 'none';
+      els.questionScreen.style.display = 'block';
+      els.summary.style.display = 'flex';
+      
+      buildPool();
+      showNextQuestion();
+    } catch (e) {
+      console.error('startQuiz error:', e);
+      alert('퀴즈 시작 중 오류가 발생했습니다.');
+    }
+  }
 
-    $chapter.textContent = current.category || 'Chapter';
-    $qText.textContent = current.question;
+  function buildPool() {
+    pool = [];
+    quizData.forEach((q, idx) => {
+      if (currentMode === 'bookmarks') {
+        if (bookmarks.has(idx)) pool.push(idx);
+      } else {
+        if (selectedChapters.size === 0 || selectedChapters.has(q.category)) {
+          pool.push(idx);
+        }
+      }
+    });
+    
+    // Shuffle pool
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+  }
 
-    $options.innerHTML = '';
-    current._displayOrder.forEach((optIdx, displayIdx) => {
+  function showNextQuestion() {
+    if (pool.length === 0) {
+      alert(currentMode === 'bookmarks' ? '모든 오답노트 문제를 풀었습니다!' : '선택한 챕터의 문제를 모두 풀었습니다!');
+      location.reload();
+      return;
+    }
+
+    isAnswered = false;
+    currentQuestionOriginalIndex = pool.pop();
+    currentQuestion = quizData[currentQuestionOriginalIndex];
+    questionNumber++;
+
+    els.resultBox.classList.remove('show', 'correct', 'wrong');
+    els.nextBtn.classList.remove('show');
+    els.qNum.textContent = questionNumber;
+    els.chapterTag.textContent = currentQuestion.category || '기출문제';
+    els.qText.textContent = currentQuestion.question;
+
+    // Set bookmark btn state
+    if (bookmarks.has(currentQuestionOriginalIndex)) {
+      els.bookmarkBtn.classList.add('saved');
+    } else {
+      els.bookmarkBtn.classList.remove('saved');
+    }
+
+    // Shuffle options
+    const displayOrder = [0, 1, 2, 3];
+    for (let i = 3; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [displayOrder[i], displayOrder[j]] = [displayOrder[j], displayOrder[i]];
+    }
+    currentQuestion._displayOrder = displayOrder;
+
+    els.options.innerHTML = '';
+    displayOrder.forEach((optIdx, displayIdx) => {
       const btn = document.createElement('button');
       btn.className = 'option-btn';
-      btn.innerHTML = `<span class="num">${displayIdx + 1}</span><span>${current.options[optIdx]}</span>`;
-      btn.onclick = () => answer(optIdx, btn);
-      $options.appendChild(btn);
+      btn.innerHTML = `<span class="num">${displayIdx + 1}</span><span>${currentQuestion.options[optIdx]}</span>`;
+      btn.onclick = () => submitAnswer(optIdx, btn);
+      els.options.appendChild(btn);
     });
+
+    injectJSONLD();
   }
 
-  function answer(selectedIdx, btnClicked) {
-    const buttons = $options.querySelectorAll('.option-btn');
+  function submitAnswer(selectedIdx, btnClicked) {
+    if (isAnswered) return;
+    isAnswered = true;
+
+    const buttons = els.options.querySelectorAll('.option-btn');
     buttons.forEach(b => b.disabled = true);
 
-    const isCorrect = selectedIdx === current.correct;
-    solved++;
-    if (isCorrect) correct++;
+    const isCorrect = selectedIdx === currentQuestion.correct;
+    solvedCount++;
+    if (isCorrect) correctCount++;
 
     buttons.forEach((b, displayIdx) => {
-      const optIdx = current._displayOrder[displayIdx];
-      if (optIdx === current.correct) b.classList.add('correct');
+      const optIdx = currentQuestion._displayOrder[displayIdx];
+      if (optIdx === currentQuestion.correct) b.classList.add('correct');
       else if (b === btnClicked) b.classList.add('wrong');
     });
 
-    $result.classList.add('show');
-    $result.classList.add(isCorrect ? 'correct' : 'wrong');
-    $resultLabel.textContent = isCorrect ? '정답입니다' : '오답입니다';
-    $explanation.textContent = current.explanation;
-    $next.classList.add('show');
+    els.resultBox.classList.add('show');
+    els.resultBox.classList.add(isCorrect ? 'correct' : 'wrong');
+    els.resultLabel.textContent = isCorrect ? '정답입니다!' : '오답입니다';
+    els.explanation.textContent = currentQuestion.explanation;
+    els.nextBtn.classList.add('show');
 
-    $solved.textContent = solved;
-    $correct.textContent = correct;
-    $rate.textContent = Math.round(correct / solved * 100) + '%';
-    $summary.style.display = 'flex';
+    // Stats update
+    els.solved.textContent = solvedCount;
+    els.correct.textContent = correctCount;
+    els.rate.textContent = Math.round((correctCount / solvedCount) * 100) + '%';
+    
+    // Auto-save to bookmark if wrong
+    if (!isCorrect && !bookmarks.has(currentQuestionOriginalIndex)) {
+      toggleBookmark();
+    }
   }
 
-  document.getElementById('start-quiz').onclick = () => {
-    $start.style.display = 'none';
-    $question.style.display = 'block';
-    render();
-  };
-  $next.onclick = render;
+  function toggleBookmark() {
+    if (currentQuestionOriginalIndex === null) return;
+    
+    if (bookmarks.has(currentQuestionOriginalIndex)) {
+      bookmarks.delete(currentQuestionOriginalIndex);
+      els.bookmarkBtn.classList.remove('saved');
+    } else {
+      bookmarks.add(currentQuestionOriginalIndex);
+      els.bookmarkBtn.classList.add('saved');
+    }
+    
+    localStorage.setItem('quiz_bookmarks', JSON.stringify(Array.from(bookmarks)));
+    updateBookmarkUI();
+  }
+
+  function handleKeydown(e) {
+    try {
+      // If not actively showing a question, do nothing
+      if (els.startScreen.style.display !== 'none' || els.questionScreen.style.display === 'none') return;
+
+      if (e.key >= '1' && e.key <= '4') {
+        if (isAnswered) return;
+        const displayIdx = parseInt(e.key) - 1;
+        if (!currentQuestion || !currentQuestion._displayOrder) return;
+        const optIdx = currentQuestion._displayOrder[displayIdx];
+        const buttons = els.options.querySelectorAll('.option-btn');
+        if (buttons[displayIdx]) submitAnswer(optIdx, buttons[displayIdx]);
+      } else if (e.key === 'Enter') {
+        if (isAnswered && els.nextBtn.classList.contains('show')) {
+          showNextQuestion();
+        }
+      }
+    } catch (err) {
+      console.error('Keyboard handle error:', err);
+    }
+  }
+
+  function injectJSONLD() {
+    if (!currentQuestion) return;
+    
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "요양보호사 기출문제 " + questionNumber,
+      "about": {
+        "@type": "Thing",
+        "name": "요양보호사 자격시험"
+      },
+      "educationalAlignment": [
+        {
+          "@type": "AlignmentObject",
+          "alignmentType": "educationalSubject",
+          "targetName": currentQuestion.category || "기출문제"
+        }
+      ],
+      "hasPart": [
+        {
+          "@type": "Question",
+          "name": currentQuestion.question,
+          "text": currentQuestion.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": currentQuestion.options[currentQuestion.correct],
+            "answerExplanation": {
+              "@type": "Comment",
+              "text": currentQuestion.explanation
+            }
+          },
+          "suggestedAnswer": currentQuestion.options.map((opt, i) => {
+             if(i === currentQuestion.correct) return null;
+             return {
+               "@type": "Answer",
+               "text": opt
+             }
+          }).filter(Boolean)
+        }
+      ]
+    };
+
+    const script = document.getElementById('json-ld-placeholder');
+    if (script) script.textContent = JSON.stringify(schema);
+  }
+
+  init();
 })();
 </script>
 
