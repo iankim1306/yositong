@@ -1,4 +1,7 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/facility/:code", "destination": "/jobs/facility/detail.html" }
+  ]
 }

@@ -1,0 +1,22 @@
+{
+  "A01": { "name": "노인요양시설", "category": "시설", "slug": "care" },
+  "A02": { "name": "노인전문요양시설", "category": "시설", "slug": "care" },
+  "A03": { "name": "노인요양시설", "category": "시설", "slug": "care" },
+  "A04": { "name": "노인요양공동생활가정", "category": "시설", "slug": "care" },
+  "A05": { "name": "노인요양시설(단기보호 전환)", "category": "시설", "slug": "care" },
+  "AAA": { "name": "입소시설", "category": "시설", "slug": "care" },
+  "B01": { "name": "방문요양", "category": "재가(복지시설)", "slug": "home" },
+  "B02": { "name": "방문목욕", "category": "재가(복지시설)", "slug": "home" },
+  "B03": { "name": "주야간보호", "category": "재가(복지시설)", "slug": "day" },
+  "B04": { "name": "단기보호", "category": "재가(복지시설)", "slug": "other" },
+  "B05": { "name": "방문간호", "category": "재가(복지시설)", "slug": "home" },
+  "B06": { "name": "복지용구", "category": "재가(복지시설)", "slug": "other" },
+  "C01": { "name": "방문요양", "category": "재가(장기요양)", "slug": "home" },
+  "C02": { "name": "방문목욕", "category": "재가(장기요양)", "slug": "home" },
+  "C03": { "name": "주야간보호", "category": "재가(장기요양)", "slug": "day" },
+  "C04": { "name": "단기보호", "category": "재가(장기요양)", "slug": "other" },
+  "C05": { "name": "방문간호", "category": "재가(장기요양)", "slug": "home" },
+  "C06": { "name": "복지용구", "category": "재가(장기요양)", "slug": "other" },
+  "Z01": { "name": "기타", "category": "기타", "slug": "other" },
+  "S41": { "name": "치매전담형 노인요양공동생활가정", "category": "치매전담", "slug": "care" }
+}

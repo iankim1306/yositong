@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>강원 양양군 요양보호사 일자리 · 요양시설 디렉토리 - yositong</title>
+<meta name="description" content="강원 양양군 지역 장기요양기관 20곳. 요양원 7곳, 방문요양 4곳, 주야간보호 6곳.">
+<link rel="canonical" href="https://www.yositong.com/regions/gangwon-yangyang-gun/">
+<meta property="og:type" content="website"><meta property="og:title" content="강원 양양군 요양보호사 일자리 · 요양시설 디렉토리">
+<meta property="og:description" content="강원 양양군 지역 장기요양기관 20곳. 요양원 7곳, 방문요양 4곳, 주야간보호 6곳."><meta property="og:url" content="https://www.yositong.com/regions/gangwon-yangyang-gun/">
+<link rel="stylesheet" href="/jobs/jobs.css"><style>
+.region-hero{background:linear-gradient(180deg,var(--bg) 0%,var(--accent-soft) 100%);padding:48px 24px 32px;border-bottom:1px solid var(--line)}
+.region-hero-inner{max-width:1100px;margin:0 auto}
+.region-hero h1{font-size:32px;font-weight:700;margin:0 0 8px;letter-spacing:-1px;line-height:1.3}
+.region-hero p{font-size:17px;color:var(--ink-2);margin:0 0 24px}
+.region-stats{display:flex;gap:12px;flex-wrap:wrap}
+.region-stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 20px;min-width:120px;text-align:center}
+.region-stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+.region-stat .label{font-size:13px;color:var(--ink-2);margin-top:2px}
+.tab-bar{display:flex;gap:0;border-bottom:2px solid var(--line);margin-bottom:24px}
+.tab-btn{padding:12px 24px;font-size:16px;font-weight:600;color:var(--ink-3);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s}
+.tab-btn:hover{color:var(--ink)}.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-content{display:none}.tab-content.active{display:block}
+.fclt-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fclt-card{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface);transition:all .2s}
+.fclt-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.fclt-card h3{font-size:17px;font-weight:700;margin:0 0 8px;letter-spacing:-.3px;line-height:1.4}
+.fclt-card .fclt-meta{font-size:14px;color:var(--ink-2);display:flex;align-items:flex-start;gap:6px;margin-bottom:4px}
+.fclt-card .fclt-meta img{width:14px;height:14px;opacity:.5;margin-top:3px;flex-shrink:0}
+.fclt-types{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.fclt-type-tag{font-size:12px;padding:3px 8px;border-radius:4px;font-weight:600}
+.fclt-type-tag.care{background:#e6f4ea;color:#1e8e3e}
+.fclt-type-tag.home{background:#e8f0fe;color:#1a73e8}
+.fclt-type-tag.day{background:#fef7e0;color:#f29900}
+.fclt-type-tag.other{background:#f1f3f4;color:#5f6368}
+.neighbors{margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
+.neighbors h2{font-size:20px;font-weight:700;margin:0 0 16px}
+.neighbor-links{display:flex;gap:10px;flex-wrap:wrap}
+.neighbor-link{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:15px;font-weight:500;color:var(--ink);transition:all .15s;text-decoration:none}
+.neighbor-link:hover{border-color:var(--accent);color:var(--accent)}
+.neighbor-link .nb-count{font-size:13px;color:var(--ink-3)}
+.jobs-section{background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:32px}
+.jobs-section h2{font-size:18px;font-weight:700;margin:0 0 16px}
+.jobs-section .job-list{display:flex;flex-direction:column;gap:12px}
+.jobs-section .job-item{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--surface);border-radius:8px;border:1px solid var(--line);text-decoration:none;color:inherit}
+.jobs-section .job-item:hover{border-color:var(--accent)}
+.jobs-section .job-title{font-weight:600;font-size:15px}
+.jobs-section .job-company{font-size:13px;color:var(--ink-2)}
+.jobs-section .job-wage{font-size:14px;font-weight:600;color:var(--accent);white-space:nowrap}
+.jobs-section .jobs-loading{text-align:center;padding:20px;color:var(--ink-3);font-size:15px}
+.seo-block{margin-top:40px;padding:32px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.seo-block h2{font-size:20px;margin:0 0 12px}.seo-block p{color:var(--ink-2);font-size:15px;line-height:1.8;margin:0 0 12px}
+.show-more-btn{display:block;width:100%;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:15px;font-weight:600;color:var(--ink-2);cursor:pointer;text-align:center;margin-top:16px;transition:all .15s}
+.show-more-btn:hover{border-color:var(--accent);color:var(--accent)}
+.sido-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.sido-card{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface);transition:all .2s;text-decoration:none;color:inherit;display:block}
+.sido-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.sido-card h3{font-size:18px;font-weight:700;margin:0 0 6px}.sido-card .sg-count{font-size:14px;color:var(--ink-2)}
+@media(max-width:900px){.fclt-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.fclt-list{grid-template-columns:1fr}.region-hero h1{font-size:24px}.region-stats{flex-direction:row}.region-stat{flex:1;min-width:0;padding:12px}.region-stat .num{font-size:20px}.tab-btn{padding:10px 14px;font-size:14px}}
+</style>
+</head><body>
+<nav class="nav"><div class="nav-inner">
+<a href="/" class="logo">요양보호사 정보</a>
+<a href="/jobs/">취업정보</a>
+<a href="/academy/">학원가이드</a>
+<a href="/quiz/">문제풀이</a>
+<a href="/blog/">정보글</a>
+</div></nav>
+<section class="region-hero"><div class="region-hero-inner">
+<h1>강원 양양군 요양시설 디렉토리</h1>
+<p>강원 양양군 지역 장기요양기관 총 20곳의 시설 정보를 확인하세요.</p>
+<div class="region-stats">
+<div class="region-stat"><div class="num">20</div><div class="label">전체 시설</div></div>
+<div class="region-stat"><div class="num">7</div><div class="label">요양원</div></div>
+<div class="region-stat"><div class="num">4</div><div class="label">방문요양</div></div>
+<div class="region-stat"><div class="num">6</div><div class="label">주야간보호</div></div>
+</div></div></section>
+<main class="main-content">
+<section class="jobs-section" id="jobs-section">
+<h2><img src="/jobs/assets/icons/briefcase.svg" alt="" style="width:20px;height:20px;vertical-align:middle;margin-right:6px">강원 양양군 최신 채용공고</h2>
+<div id="job-list" class="job-list"><div class="jobs-loading" id="jobs-loading">채용공고를 불러오는 중...</div></div>
+</section>
+<div class="tab-bar" id="tab-bar">
+<button class="tab-btn active" data-tab="care">요양원 (7)</button>
+<button class="tab-btn" data-tab="home">방문요양 (4)</button>
+<button class="tab-btn" data-tab="day">주야간보호 (6)</button>
+<button class="tab-btn" data-tab="other">기타 (3)</button>
+</div>
+<div class="tab-content active" id="tab-care"><div class="fclt-list"><div class="fclt-card"><h3>낙산요양원</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 강현면 고래골길  109 (강현면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2008.06.26</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양시설</span></div></div>
+<div class="fclt-card"><h3>현산소규모요양원</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 양양읍 서문4길  9 (양양읍)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2008.06.26</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양시설</span></div></div>
+<div class="fclt-card"><h3>모정의집</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 현북면 노루골길  64 (현북면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2009.11.16</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양시설</span></div></div>
+<div class="fclt-card"><h3>성산사랑마을</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 현남면 화상천로  608-11 (현남면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2010.06.07</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양시설</span></div></div>
+<div class="fclt-card"><h3>희망실버하우스</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 강현면 화채봉길  215-48 (강현면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2017.05.15</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양공동생활가정</span></div></div>
+<div class="fclt-card"><h3>설악보건의료소비자생활협동조합 더조은요양원</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 강현면 진미로  320 (강현면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2022.02.23</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양시설</span></div></div>
+<div class="fclt-card"><h3>행복한집</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 손양면 동해대로  2217-21 (손양면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2024.12.30</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양공동생활가정</span></div></div></div></div>
+<div class="tab-content" id="tab-home"><div class="fclt-list"><div class="fclt-card"><h3>효드림재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 강현면 정암1길  36-3 (강현면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2021.03.18</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span></div></div>
+<div class="fclt-card"><h3>양양재활재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 손양면 하양혈길  25 (손양면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2021.10.21</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span></div></div>
+<div class="fclt-card"><h3>우리동네재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 양양읍 남문4길  9 (양양읍)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2024.10.01</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>인향재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 양양읍 양양로  85 2층 (양양읍)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2025.01.07</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div></div></div>
+<div class="tab-content" id="tab-day"><div class="fclt-list"><div class="fclt-card"><h3>현산소규모요양원</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 양양읍 서문4길  7-2 (양양읍)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2008.06.26</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>행복노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 양양읍 북문길  35-11 (양양읍)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2008.06.26</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>낙산노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 강현면 고래골길  109 (강현면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2008.06.26</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>가족재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 양양읍 한고개길  155 (양양읍)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2022.12.01</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>참조은재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 양양읍 거마천로  59-80 (양양읍)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2024.01.01</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>양양재활재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 손양면 하양혈길  25 (손양면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2019.11.13</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span></div></div></div></div>
+<div class="tab-content" id="tab-other"><div class="fclt-list"><div class="fclt-card"><h3>독일의료기</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 양양읍 양양로  72 (양양읍)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2020.11.17</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>현산메디칼</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 양양읍 양양로  80 (양양읍)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2021.01.05</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>효담노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">강원특별자치도 양양군 현남면 인구중앙길  46 (현남면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2009.04.07</div><div class="fclt-types"></div></div></div></div>
+<div class="neighbors"><h2>강원 인근 지역 시설</h2><div class="neighbor-links"><a href="/regions/gangwon-chuncheon-si/" class="neighbor-link">춘천시 <span class="nb-count">221곳</span></a><a href="/regions/gangwon-gangneung-si/" class="neighbor-link">강릉시 <span class="nb-count">214곳</span></a><a href="/regions/gangwon-wonju-si/" class="neighbor-link">원주시 <span class="nb-count">203곳</span></a><a href="/regions/gangwon-samcheok-si/" class="neighbor-link">삼척시 <span class="nb-count">56곳</span></a><a href="/regions/gangwon-hongcheon-gun/" class="neighbor-link">홍천군 <span class="nb-count">55곳</span></a><a href="/regions/gangwon-donghae-si/" class="neighbor-link">동해시 <span class="nb-count">53곳</span></a></div></div>
+<div class="seo-block">
+<h2>강원 양양군 요양보호사 취업 및 시설 안내</h2>
+<p>강원 양양군 지역에는 총 20곳의 장기요양기관이 운영되고 있습니다. 요양원 7곳, 방문요양 4곳, 주야간보호 6곳이 있으며, 각 시설의 상세 정보와 채용 현황을 확인할 수 있습니다.</p>
+<p>요양보호사 자격증을 취득하셨다면, 강원 양양군 지역의 다양한 시설에서 근무할 수 있습니다. 시설 유형별 특성과 근무 환경을 비교하여 나에게 맞는 일자리를 찾아보세요.</p>
+</div></main>
+<footer class="footer">
+<div class="brand">요양보호사 정보</div>
+<div>© 2026 yositong.com</div>
+<div style="margin-top:12px;">
+<a href="/jobs/">취업정보</a>·<a href="/academy/">학원가이드</a>·<a href="/quiz/">문제풀이</a>·<a href="/blog/">정보글</a>·<a href="/about/">소개</a>·<a href="/contact/">문의</a>·<a href="/privacy/">개인정보처리방침</a>
+</div></footer>
+<script>
+(function(){
+var tabBar=document.getElementById('tab-bar');
+tabBar.addEventListener('click',function(e){var b=e.target.closest('.tab-btn');if(!b)return;tabBar.querySelectorAll('.tab-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.querySelectorAll('.tab-content').forEach(function(c){c.classList.remove('active')});document.getElementById('tab-'+b.dataset.tab).classList.add('active')});
+var allF={"care":[{"code":"14283000001","name":"낙산요양원","address":"강원특별자치도 양양군 강현면 고래골길  109 (강현면)","designatedDate":"20080626","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"14283000004","name":"현산소규모요양원","address":"강원특별자치도 양양군 양양읍 서문4길  9 (양양읍)","designatedDate":"20080626","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"14283000022","name":"모정의집","address":"강원특별자치도 양양군 현북면 노루골길  64 (현북면)","designatedDate":"20091116","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"14283000026","name":"성산사랑마을","address":"강원특별자치도 양양군 현남면 화상천로  608-11 (현남면)","designatedDate":"20100607","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"14283000034","name":"희망실버하우스","address":"강원특별자치도 양양군 강현면 화채봉길  215-48 (강현면)","designatedDate":"20170515","typeNames":["노인요양공동생활가정"],"primarySlug":"care"},{"code":"14283000049","name":"설악보건의료소비자생활협동조합 더조은요양원","address":"강원특별자치도 양양군 강현면 진미로  320 (강현면)","designatedDate":"20220223","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"15183000054","name":"행복한집","address":"강원특별자치도 양양군 손양면 동해대로  2217-21 (손양면)","designatedDate":"20241230","typeNames":["노인요양공동생활가정"],"primarySlug":"care"}],"home":[{"code":"24283000046","name":"효드림재가노인복지센터","address":"강원특별자치도 양양군 강현면 정암1길  36-3 (강현면)","designatedDate":"20210318","typeNames":["방문요양"],"primarySlug":"home"},{"code":"24283000048","name":"양양재활재가노인복지센터","address":"강원특별자치도 양양군 손양면 하양혈길  25 (손양면)","designatedDate":"20211021","typeNames":["방문요양"],"primarySlug":"home"},{"code":"25183000053","name":"우리동네재가노인복지센터","address":"강원특별자치도 양양군 양양읍 남문4길  9 (양양읍)","designatedDate":"20241001","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"25183000055","name":"인향재가노인복지센터","address":"강원특별자치도 양양군 양양읍 양양로  85 2층 (양양읍)","designatedDate":"20250107","typeNames":["방문요양","방문목욕"],"primarySlug":"home"}],"day":[{"code":"24283000009","name":"현산소규모요양원","address":"강원특별자치도 양양군 양양읍 서문4길  7-2 (양양읍)","designatedDate":"20080626","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"24283000011","name":"행복노인복지센터","address":"강원특별자치도 양양군 양양읍 북문길  35-11 (양양읍)","designatedDate":"20080626","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"24283000012","name":"낙산노인복지센터","address":"강원특별자치도 양양군 강현면 고래골길  109 (강현면)","designatedDate":"20080626","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"24283000051","name":"가족재가노인복지센터","address":"강원특별자치도 양양군 양양읍 한고개길  155 (양양읍)","designatedDate":"20221201","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"25183000052","name":"참조은재가노인복지센터","address":"강원특별자치도 양양군 양양읍 거마천로  59-80 (양양읍)","designatedDate":"20240101","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"34283000042","name":"양양재활재가노인복지센터","address":"강원특별자치도 양양군 손양면 하양혈길  25 (손양면)","designatedDate":"20191113","typeNames":["주야간보호"],"primarySlug":"day"}],"other":[{"code":"24283000044","name":"독일의료기","address":"강원특별자치도 양양군 양양읍 양양로  72 (양양읍)","designatedDate":"20201117","typeNames":[],"primarySlug":"other"},{"code":"24283000045","name":"현산메디칼","address":"강원특별자치도 양양군 양양읍 양양로  80 (양양읍)","designatedDate":"20210105","typeNames":[],"primarySlug":"other"},{"code":"34283000019","name":"효담노인복지센터","address":"강원특별자치도 양양군 현남면 인구중앙길  46 (현남면)","designatedDate":"20090407","typeNames":[],"primarySlug":"other"}]};
+document.querySelectorAll('.show-more-btn').forEach(function(btn){btn.addEventListener('click',function(){var t=this.dataset.tab,l=allF[t]||[],c=document.querySelector('#tab-'+t+' .fclt-list');c.innerHTML=l.map(function(f){var sc=f.primarySlug||'other',th=(f.typeNames||[]).slice(0,3).map(function(t){return'<span class="fclt-type-tag '+sc+'">'+he(t)+'</span>'}).join(''),ds=f.designatedDate?f.designatedDate.slice(0,4)+'.'+f.designatedDate.slice(4,6)+'.'+f.designatedDate.slice(6,8):'';return'<div class="fclt-card"><h3>'+he(f.name)+'</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">'+he(f.address||'')+'</div>'+(ds?'<div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 '+ds+'</div>':'')+'<div class="fclt-types">'+th+'</div></div>'}).join('');this.remove()})});
+function he(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+(async function(){var el=document.getElementById('job-list'),ld=document.getElementById('jobs-loading');try{var r=await fetch('/api/welfare?page=1&pageSize=1000');if(!r.ok)throw 0;var d=await r.json();var items=(d.items||[]).filter(function(j){return j.sido==='강원'}).slice(0,5);if(!items.length){ld.textContent='현재 등록된 채용공고가 없습니다.';return}ld.remove();el.innerHTML=items.map(function(j){return'<a href="/jobs/?region='+encodeURIComponent(j.sido)+'&sigungu='+encodeURIComponent(j.sigungu||'')+'" class="job-item"><div><div class="job-title">'+he(j.title)+'</div><div class="job-company">'+he(j.companyName)+'</div></div><div class="job-wage">'+he(j.salary||j.wageCond||'회사내규')+'</div></a>'}).join('')}catch(e){ld.textContent='채용공고를 불러올 수 없습니다.'}})();
+})();
+</script></body></html>

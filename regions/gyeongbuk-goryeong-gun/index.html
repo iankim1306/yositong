@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>경북 고령군 요양보호사 일자리 · 요양시설 디렉토리 - yositong</title>
+<meta name="description" content="경북 고령군 지역 장기요양기관 15곳. 요양원 5곳, 방문요양 2곳, 주야간보호 4곳.">
+<link rel="canonical" href="https://www.yositong.com/regions/gyeongbuk-goryeong-gun/">
+<meta property="og:type" content="website"><meta property="og:title" content="경북 고령군 요양보호사 일자리 · 요양시설 디렉토리">
+<meta property="og:description" content="경북 고령군 지역 장기요양기관 15곳. 요양원 5곳, 방문요양 2곳, 주야간보호 4곳."><meta property="og:url" content="https://www.yositong.com/regions/gyeongbuk-goryeong-gun/">
+<link rel="stylesheet" href="/jobs/jobs.css"><style>
+.region-hero{background:linear-gradient(180deg,var(--bg) 0%,var(--accent-soft) 100%);padding:48px 24px 32px;border-bottom:1px solid var(--line)}
+.region-hero-inner{max-width:1100px;margin:0 auto}
+.region-hero h1{font-size:32px;font-weight:700;margin:0 0 8px;letter-spacing:-1px;line-height:1.3}
+.region-hero p{font-size:17px;color:var(--ink-2);margin:0 0 24px}
+.region-stats{display:flex;gap:12px;flex-wrap:wrap}
+.region-stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 20px;min-width:120px;text-align:center}
+.region-stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+.region-stat .label{font-size:13px;color:var(--ink-2);margin-top:2px}
+.tab-bar{display:flex;gap:0;border-bottom:2px solid var(--line);margin-bottom:24px}
+.tab-btn{padding:12px 24px;font-size:16px;font-weight:600;color:var(--ink-3);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s}
+.tab-btn:hover{color:var(--ink)}.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-content{display:none}.tab-content.active{display:block}
+.fclt-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fclt-card{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface);transition:all .2s}
+.fclt-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.fclt-card h3{font-size:17px;font-weight:700;margin:0 0 8px;letter-spacing:-.3px;line-height:1.4}
+.fclt-card .fclt-meta{font-size:14px;color:var(--ink-2);display:flex;align-items:flex-start;gap:6px;margin-bottom:4px}
+.fclt-card .fclt-meta img{width:14px;height:14px;opacity:.5;margin-top:3px;flex-shrink:0}
+.fclt-types{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.fclt-type-tag{font-size:12px;padding:3px 8px;border-radius:4px;font-weight:600}
+.fclt-type-tag.care{background:#e6f4ea;color:#1e8e3e}
+.fclt-type-tag.home{background:#e8f0fe;color:#1a73e8}
+.fclt-type-tag.day{background:#fef7e0;color:#f29900}
+.fclt-type-tag.other{background:#f1f3f4;color:#5f6368}
+.neighbors{margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
+.neighbors h2{font-size:20px;font-weight:700;margin:0 0 16px}
+.neighbor-links{display:flex;gap:10px;flex-wrap:wrap}
+.neighbor-link{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:15px;font-weight:500;color:var(--ink);transition:all .15s;text-decoration:none}
+.neighbor-link:hover{border-color:var(--accent);color:var(--accent)}
+.neighbor-link .nb-count{font-size:13px;color:var(--ink-3)}
+.jobs-section{background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:32px}
+.jobs-section h2{font-size:18px;font-weight:700;margin:0 0 16px}
+.jobs-section .job-list{display:flex;flex-direction:column;gap:12px}
+.jobs-section .job-item{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--surface);border-radius:8px;border:1px solid var(--line);text-decoration:none;color:inherit}
+.jobs-section .job-item:hover{border-color:var(--accent)}
+.jobs-section .job-title{font-weight:600;font-size:15px}
+.jobs-section .job-company{font-size:13px;color:var(--ink-2)}
+.jobs-section .job-wage{font-size:14px;font-weight:600;color:var(--accent);white-space:nowrap}
+.jobs-section .jobs-loading{text-align:center;padding:20px;color:var(--ink-3);font-size:15px}
+.seo-block{margin-top:40px;padding:32px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.seo-block h2{font-size:20px;margin:0 0 12px}.seo-block p{color:var(--ink-2);font-size:15px;line-height:1.8;margin:0 0 12px}
+.show-more-btn{display:block;width:100%;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:15px;font-weight:600;color:var(--ink-2);cursor:pointer;text-align:center;margin-top:16px;transition:all .15s}
+.show-more-btn:hover{border-color:var(--accent);color:var(--accent)}
+.sido-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.sido-card{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface);transition:all .2s;text-decoration:none;color:inherit;display:block}
+.sido-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.sido-card h3{font-size:18px;font-weight:700;margin:0 0 6px}.sido-card .sg-count{font-size:14px;color:var(--ink-2)}
+@media(max-width:900px){.fclt-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.fclt-list{grid-template-columns:1fr}.region-hero h1{font-size:24px}.region-stats{flex-direction:row}.region-stat{flex:1;min-width:0;padding:12px}.region-stat .num{font-size:20px}.tab-btn{padding:10px 14px;font-size:14px}}
+</style>
+</head><body>
+<nav class="nav"><div class="nav-inner">
+<a href="/" class="logo">요양보호사 정보</a>
+<a href="/jobs/">취업정보</a>
+<a href="/academy/">학원가이드</a>
+<a href="/quiz/">문제풀이</a>
+<a href="/blog/">정보글</a>
+</div></nav>
+<section class="region-hero"><div class="region-hero-inner">
+<h1>경북 고령군 요양시설 디렉토리</h1>
+<p>경북 고령군 지역 장기요양기관 총 15곳의 시설 정보를 확인하세요.</p>
+<div class="region-stats">
+<div class="region-stat"><div class="num">15</div><div class="label">전체 시설</div></div>
+<div class="region-stat"><div class="num">5</div><div class="label">요양원</div></div>
+<div class="region-stat"><div class="num">2</div><div class="label">방문요양</div></div>
+<div class="region-stat"><div class="num">4</div><div class="label">주야간보호</div></div>
+</div></div></section>
+<main class="main-content">
+<section class="jobs-section" id="jobs-section">
+<h2><img src="/jobs/assets/icons/briefcase.svg" alt="" style="width:20px;height:20px;vertical-align:middle;margin-right:6px">경북 고령군 최신 채용공고</h2>
+<div id="job-list" class="job-list"><div class="jobs-loading" id="jobs-loading">채용공고를 불러오는 중...</div></div>
+</section>
+<div class="tab-bar" id="tab-bar">
+<button class="tab-btn active" data-tab="care">요양원 (5)</button>
+<button class="tab-btn" data-tab="home">방문요양 (2)</button>
+<button class="tab-btn" data-tab="day">주야간보호 (4)</button>
+<button class="tab-btn" data-tab="other">기타 (4)</button>
+</div>
+<div class="tab-content active" id="tab-care"><div class="fclt-list"><div class="fclt-card"><h3>대창요양원</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 쌍림면 매촌1길  174 (쌍림면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2009.12.23</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양시설</span></div></div>
+<div class="fclt-card"><h3>대가야요양원</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 운수면 운용로  627 (운수면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2011.03.14</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양시설</span></div></div>
+<div class="fclt-card"><h3>다빛노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 다산면 평리1길  29-8 (다산면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2012.07.25</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양공동생활가정</span></div></div>
+<div class="fclt-card"><h3>대진덕곡요양원</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 덕곡면 덕운로  1038-8 (덕곡면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2014.08.01</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양시설</span></div></div>
+<div class="fclt-card"><h3>동산실버요양원</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 다산면 다산중앙길  128-6 (다산면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2020.07.15</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양시설</span></div></div></div></div>
+<div class="tab-content" id="tab-home"><div class="fclt-list"><div class="fclt-card"><h3>다솜재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 성산면 성산로  1015-1 A동 (성산면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2020.11.06</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span></div></div>
+<div class="fclt-card"><h3>다사랑노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 다산면 호촌길  52 (다산면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2014.12.22</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div></div></div>
+<div class="tab-content" id="tab-day"><div class="fclt-list"><div class="fclt-card"><h3>다원행복주간보호센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 다산면 다산로  685-8 (다산면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2021.11.01</div><div class="fclt-types"><span class="fclt-type-tag day">방문요양</span><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>다산수경재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 다산면 호촌길  23-10 (다산면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2022.05.20</div><div class="fclt-types"><span class="fclt-type-tag day">방문요양</span><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>대창재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 쌍림면 매촌1길  157 (쌍림면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2008.07.14</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>천사주간보호센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 성산면 성산로  1007 2층 (성산면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2013.08.01</div><div class="fclt-types"><span class="fclt-type-tag day">방문요양</span><span class="fclt-type-tag day">방문목욕</span><span class="fclt-type-tag day">주야간보호</span></div></div></div></div>
+<div class="tab-content" id="tab-other"><div class="fclt-list"><div class="fclt-card"><h3>운수재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 운수면 운용로  88 (운수면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2023.11.01</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>성모어르신방문센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 다산면 평리1길  7 (다산면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2009.06.22</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>고령효노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 덕곡면 덕운로  583 (덕곡면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2011.12.01</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>심청이 어르신 돌봄센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">경상북도 고령군 다산면 상곡5길  7-34 (다산면)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2014.01.01</div><div class="fclt-types"></div></div></div></div>
+<div class="neighbors"><h2>경북 인근 지역 시설</h2><div class="neighbor-links"><a href="/regions/gyeongbuk-pohang-si/" class="neighbor-link">포항시 <span class="nb-count">325곳</span></a><a href="/regions/gyeongbuk-gyeongsan-si/" class="neighbor-link">경산시 <span class="nb-count">267곳</span></a><a href="/regions/gyeongbuk-gyeongju-si/" class="neighbor-link">경주시 <span class="nb-count">264곳</span></a><a href="/regions/gyeongbuk-gumi-si/" class="neighbor-link">구미시 <span class="nb-count">191곳</span></a><a href="/regions/gyeongbuk-yeongcheon-si/" class="neighbor-link">영천시 <span class="nb-count">136곳</span></a><a href="/regions/gyeongbuk-gimcheon-si/" class="neighbor-link">김천시 <span class="nb-count">131곳</span></a></div></div>
+<div class="seo-block">
+<h2>경북 고령군 요양보호사 취업 및 시설 안내</h2>
+<p>경북 고령군 지역에는 총 15곳의 장기요양기관이 운영되고 있습니다. 요양원 5곳, 방문요양 2곳, 주야간보호 4곳이 있으며, 각 시설의 상세 정보와 채용 현황을 확인할 수 있습니다.</p>
+<p>요양보호사 자격증을 취득하셨다면, 경북 고령군 지역의 다양한 시설에서 근무할 수 있습니다. 시설 유형별 특성과 근무 환경을 비교하여 나에게 맞는 일자리를 찾아보세요.</p>
+</div></main>
+<footer class="footer">
+<div class="brand">요양보호사 정보</div>
+<div>© 2026 yositong.com</div>
+<div style="margin-top:12px;">
+<a href="/jobs/">취업정보</a>·<a href="/academy/">학원가이드</a>·<a href="/quiz/">문제풀이</a>·<a href="/blog/">정보글</a>·<a href="/about/">소개</a>·<a href="/contact/">문의</a>·<a href="/privacy/">개인정보처리방침</a>
+</div></footer>
+<script>
+(function(){
+var tabBar=document.getElementById('tab-bar');
+tabBar.addEventListener('click',function(e){var b=e.target.closest('.tab-btn');if(!b)return;tabBar.querySelectorAll('.tab-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.querySelectorAll('.tab-content').forEach(function(c){c.classList.remove('active')});document.getElementById('tab-'+b.dataset.tab).classList.add('active')});
+var allF={"care":[{"code":"14783000021","name":"대창요양원","address":"경상북도 고령군 쌍림면 매촌1길  174 (쌍림면)","designatedDate":"20091223","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"14783000031","name":"대가야요양원","address":"경상북도 고령군 운수면 운용로  627 (운수면)","designatedDate":"20110314","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"14783000035","name":"다빛노인복지센터","address":"경상북도 고령군 다산면 평리1길  29-8 (다산면)","designatedDate":"20120725","typeNames":["노인요양공동생활가정"],"primarySlug":"care"},{"code":"14783000043","name":"대진덕곡요양원","address":"경상북도 고령군 덕곡면 덕운로  1038-8 (덕곡면)","designatedDate":"20140801","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"14783000057","name":"동산실버요양원","address":"경상북도 고령군 다산면 다산중앙길  128-6 (다산면)","designatedDate":"20200715","typeNames":["노인요양시설"],"primarySlug":"care"}],"home":[{"code":"24783000058","name":"다솜재가노인복지센터","address":"경상북도 고령군 성산면 성산로  1015-1 A동 (성산면)","designatedDate":"20201106","typeNames":["방문요양"],"primarySlug":"home"},{"code":"34783000044","name":"다사랑노인복지센터","address":"경상북도 고령군 다산면 호촌길  52 (다산면)","designatedDate":"20141222","typeNames":["방문요양","방문목욕"],"primarySlug":"home"}],"day":[{"code":"24783000059","name":"다원행복주간보호센터","address":"경상북도 고령군 다산면 다산로  685-8 (다산면)","designatedDate":"20211101","typeNames":["방문요양","주야간보호"],"primarySlug":"day"},{"code":"24783000061","name":"다산수경재가노인복지센터","address":"경상북도 고령군 다산면 호촌길  23-10 (다산면)","designatedDate":"20220520","typeNames":["방문요양","주야간보호"],"primarySlug":"day"},{"code":"34783000001","name":"대창재가노인복지센터","address":"경상북도 고령군 쌍림면 매촌1길  157 (쌍림면)","designatedDate":"20080714","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"34783000038","name":"천사주간보호센터","address":"경상북도 고령군 성산면 성산로  1007 2층 (성산면)","designatedDate":"20130801","typeNames":["방문요양","방문목욕","주야간보호"],"primarySlug":"day"}],"other":[{"code":"24783000068","name":"운수재가노인복지센터","address":"경상북도 고령군 운수면 운용로  88 (운수면)","designatedDate":"20231101","typeNames":[],"primarySlug":"other"},{"code":"34783000017","name":"성모어르신방문센터","address":"경상북도 고령군 다산면 평리1길  7 (다산면)","designatedDate":"20090622","typeNames":[],"primarySlug":"other"},{"code":"34783000034","name":"고령효노인복지센터","address":"경상북도 고령군 덕곡면 덕운로  583 (덕곡면)","designatedDate":"20111201","typeNames":[],"primarySlug":"other"},{"code":"34783000039","name":"심청이 어르신 돌봄센터","address":"경상북도 고령군 다산면 상곡5길  7-34 (다산면)","designatedDate":"20140101","typeNames":[],"primarySlug":"other"}]};
+document.querySelectorAll('.show-more-btn').forEach(function(btn){btn.addEventListener('click',function(){var t=this.dataset.tab,l=allF[t]||[],c=document.querySelector('#tab-'+t+' .fclt-list');c.innerHTML=l.map(function(f){var sc=f.primarySlug||'other',th=(f.typeNames||[]).slice(0,3).map(function(t){return'<span class="fclt-type-tag '+sc+'">'+he(t)+'</span>'}).join(''),ds=f.designatedDate?f.designatedDate.slice(0,4)+'.'+f.designatedDate.slice(4,6)+'.'+f.designatedDate.slice(6,8):'';return'<div class="fclt-card"><h3>'+he(f.name)+'</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">'+he(f.address||'')+'</div>'+(ds?'<div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 '+ds+'</div>':'')+'<div class="fclt-types">'+th+'</div></div>'}).join('');this.remove()})});
+function he(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+(async function(){var el=document.getElementById('job-list'),ld=document.getElementById('jobs-loading');try{var r=await fetch('/api/welfare?page=1&pageSize=1000');if(!r.ok)throw 0;var d=await r.json();var items=(d.items||[]).filter(function(j){return j.sido==='경북'}).slice(0,5);if(!items.length){ld.textContent='현재 등록된 채용공고가 없습니다.';return}ld.remove();el.innerHTML=items.map(function(j){return'<a href="/jobs/?region='+encodeURIComponent(j.sido)+'&sigungu='+encodeURIComponent(j.sigungu||'')+'" class="job-item"><div><div class="job-title">'+he(j.title)+'</div><div class="job-company">'+he(j.companyName)+'</div></div><div class="job-wage">'+he(j.salary||j.wageCond||'회사내규')+'</div></a>'}).join('')}catch(e){ld.textContent='채용공고를 불러올 수 없습니다.'}})();
+})();
+</script></body></html>

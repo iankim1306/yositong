@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>서울 중구 요양보호사 일자리 · 요양시설 디렉토리 - yositong</title>
+<meta name="description" content="서울 중구 지역 장기요양기관 38곳. 요양원 3곳, 방문요양 16곳, 주야간보호 6곳.">
+<link rel="canonical" href="https://www.yositong.com/regions/seoul-jung-gu/">
+<meta property="og:type" content="website"><meta property="og:title" content="서울 중구 요양보호사 일자리 · 요양시설 디렉토리">
+<meta property="og:description" content="서울 중구 지역 장기요양기관 38곳. 요양원 3곳, 방문요양 16곳, 주야간보호 6곳."><meta property="og:url" content="https://www.yositong.com/regions/seoul-jung-gu/">
+<link rel="stylesheet" href="/jobs/jobs.css"><style>
+.region-hero{background:linear-gradient(180deg,var(--bg) 0%,var(--accent-soft) 100%);padding:48px 24px 32px;border-bottom:1px solid var(--line)}
+.region-hero-inner{max-width:1100px;margin:0 auto}
+.region-hero h1{font-size:32px;font-weight:700;margin:0 0 8px;letter-spacing:-1px;line-height:1.3}
+.region-hero p{font-size:17px;color:var(--ink-2);margin:0 0 24px}
+.region-stats{display:flex;gap:12px;flex-wrap:wrap}
+.region-stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 20px;min-width:120px;text-align:center}
+.region-stat .num{font-size:24px;font-weight:700;color:var(--accent)}
+.region-stat .label{font-size:13px;color:var(--ink-2);margin-top:2px}
+.tab-bar{display:flex;gap:0;border-bottom:2px solid var(--line);margin-bottom:24px}
+.tab-btn{padding:12px 24px;font-size:16px;font-weight:600;color:var(--ink-3);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .15s}
+.tab-btn:hover{color:var(--ink)}.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-content{display:none}.tab-content.active{display:block}
+.fclt-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fclt-card{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface);transition:all .2s}
+.fclt-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.fclt-card h3{font-size:17px;font-weight:700;margin:0 0 8px;letter-spacing:-.3px;line-height:1.4}
+.fclt-card .fclt-meta{font-size:14px;color:var(--ink-2);display:flex;align-items:flex-start;gap:6px;margin-bottom:4px}
+.fclt-card .fclt-meta img{width:14px;height:14px;opacity:.5;margin-top:3px;flex-shrink:0}
+.fclt-types{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.fclt-type-tag{font-size:12px;padding:3px 8px;border-radius:4px;font-weight:600}
+.fclt-type-tag.care{background:#e6f4ea;color:#1e8e3e}
+.fclt-type-tag.home{background:#e8f0fe;color:#1a73e8}
+.fclt-type-tag.day{background:#fef7e0;color:#f29900}
+.fclt-type-tag.other{background:#f1f3f4;color:#5f6368}
+.neighbors{margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
+.neighbors h2{font-size:20px;font-weight:700;margin:0 0 16px}
+.neighbor-links{display:flex;gap:10px;flex-wrap:wrap}
+.neighbor-link{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:15px;font-weight:500;color:var(--ink);transition:all .15s;text-decoration:none}
+.neighbor-link:hover{border-color:var(--accent);color:var(--accent)}
+.neighbor-link .nb-count{font-size:13px;color:var(--ink-3)}
+.jobs-section{background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:32px}
+.jobs-section h2{font-size:18px;font-weight:700;margin:0 0 16px}
+.jobs-section .job-list{display:flex;flex-direction:column;gap:12px}
+.jobs-section .job-item{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:var(--surface);border-radius:8px;border:1px solid var(--line);text-decoration:none;color:inherit}
+.jobs-section .job-item:hover{border-color:var(--accent)}
+.jobs-section .job-title{font-weight:600;font-size:15px}
+.jobs-section .job-company{font-size:13px;color:var(--ink-2)}
+.jobs-section .job-wage{font-size:14px;font-weight:600;color:var(--accent);white-space:nowrap}
+.jobs-section .jobs-loading{text-align:center;padding:20px;color:var(--ink-3);font-size:15px}
+.seo-block{margin-top:40px;padding:32px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.seo-block h2{font-size:20px;margin:0 0 12px}.seo-block p{color:var(--ink-2);font-size:15px;line-height:1.8;margin:0 0 12px}
+.show-more-btn{display:block;width:100%;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:15px;font-weight:600;color:var(--ink-2);cursor:pointer;text-align:center;margin-top:16px;transition:all .15s}
+.show-more-btn:hover{border-color:var(--accent);color:var(--accent)}
+.sido-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.sido-card{padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--surface);transition:all .2s;text-decoration:none;color:inherit;display:block}
+.sido-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.sido-card h3{font-size:18px;font-weight:700;margin:0 0 6px}.sido-card .sg-count{font-size:14px;color:var(--ink-2)}
+@media(max-width:900px){.fclt-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.fclt-list{grid-template-columns:1fr}.region-hero h1{font-size:24px}.region-stats{flex-direction:row}.region-stat{flex:1;min-width:0;padding:12px}.region-stat .num{font-size:20px}.tab-btn{padding:10px 14px;font-size:14px}}
+</style>
+</head><body>
+<nav class="nav"><div class="nav-inner">
+<a href="/" class="logo">요양보호사 정보</a>
+<a href="/jobs/">취업정보</a>
+<a href="/academy/">학원가이드</a>
+<a href="/quiz/">문제풀이</a>
+<a href="/blog/">정보글</a>
+</div></nav>
+<section class="region-hero"><div class="region-hero-inner">
+<h1>서울 중구 요양시설 디렉토리</h1>
+<p>서울 중구 지역 장기요양기관 총 38곳의 시설 정보를 확인하세요.</p>
+<div class="region-stats">
+<div class="region-stat"><div class="num">38</div><div class="label">전체 시설</div></div>
+<div class="region-stat"><div class="num">3</div><div class="label">요양원</div></div>
+<div class="region-stat"><div class="num">16</div><div class="label">방문요양</div></div>
+<div class="region-stat"><div class="num">6</div><div class="label">주야간보호</div></div>
+</div></div></section>
+<main class="main-content">
+<section class="jobs-section" id="jobs-section">
+<h2><img src="/jobs/assets/icons/briefcase.svg" alt="" style="width:20px;height:20px;vertical-align:middle;margin-right:6px">서울 중구 최신 채용공고</h2>
+<div id="job-list" class="job-list"><div class="jobs-loading" id="jobs-loading">채용공고를 불러오는 중...</div></div>
+</section>
+<div class="tab-bar" id="tab-bar">
+<button class="tab-btn active" data-tab="care">요양원 (3)</button>
+<button class="tab-btn" data-tab="home">방문요양 (16)</button>
+<button class="tab-btn" data-tab="day">주야간보호 (6)</button>
+<button class="tab-btn" data-tab="other">기타 (13)</button>
+</div>
+<div class="tab-content active" id="tab-care"><div class="fclt-list"><div class="fclt-card"><h3>남산실버복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 동호로5길  189 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2010.02.02</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양시설</span></div></div>
+<div class="fclt-card"><h3>구립중구노인요양센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 필동로  96 (장충동2가)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2012.09.28</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양시설</span></div></div>
+<div class="fclt-card"><h3>효심원</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 청구로17길  98 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2013.11.07</div><div class="fclt-types"><span class="fclt-type-tag care">노인요양공동생활가정</span></div></div></div></div>
+<div class="tab-content" id="tab-home"><div class="fclt-list"><div class="fclt-card"><h3>서울재가복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 중림로  51-2 2층 (중림동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2019.07.11</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>복지플러스 재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 중림로4길  20 B101호 (중림동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2019.12.26</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span></div></div>
+<div class="fclt-card"><h3>푸른숲 재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 퇴계로41길  28 301호 (인현동2가, 오스카빌딩)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2020.07.01</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>중구행복돌봄센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로42길  18 4층 (신당동, 창호빌딩)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2020.07.01</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span></div></div>
+<div class="fclt-card"><h3>가온재가복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로33다길  8 2층 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2021.06.01</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>스마일재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로  104 305호 (신당동, 현대빌딩)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2023.03.08</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>헤븐리재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 수표로  28 302호 (저동2가)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2023.08.01</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>포시즌재가복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 퇴계로  459 306호 (황학동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2023.08.01</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>토브재가복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 동호로  201 3층 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2023.10.31</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>맘으로재가복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로  227 3층302호 (무학동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2024.07.01</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span></div></div>
+<div class="fclt-card"><h3>포도나무복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 퇴계로88길  17 2층 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2013.11.13</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>미소천사 재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 퇴계로  441 2층 (황학동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2016.11.01</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>한양재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 청구로  93-4 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2016.12.29</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>ANTO 재가복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로  93 101호 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2019.06.01</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>루안재가복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로36길  109 206호 (신당동, 현대아파트상가)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2019.07.10</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div>
+<div class="fclt-card"><h3>남산효재가방문요양센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로  32 406호 (신당동, 남산타운 제상가2동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2019.12.02</div><div class="fclt-types"><span class="fclt-type-tag home">방문요양</span><span class="fclt-type-tag home">방문목욕</span></div></div></div></div>
+<div class="tab-content" id="tab-day"><div class="fclt-list"><div class="fclt-card"><h3>남산실버복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 동호로5길  189 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2008.06.26</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>신당데이케어센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로25길  6 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2010.08.20</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span><span class="fclt-type-tag day">주야간보호 내 치매전담</span></div></div>
+<div class="fclt-card"><h3>신당동성당데이케어센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 동호로20다길  9 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2015.05.01</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>구립중림어르신데이케어센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 서소문로6길  16 4층 (중림동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2018.01.01</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>정담재활주야간보호센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로36길  101 2층 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2020.03.27</div><div class="fclt-types"><span class="fclt-type-tag day">주야간보호</span></div></div>
+<div class="fclt-card"><h3>해피움데이케어센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 충무로  56 3층 4층 (을지로3가)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2022.01.10</div><div class="fclt-types"><span class="fclt-type-tag day">방문요양</span><span class="fclt-type-tag day">방문목욕</span><span class="fclt-type-tag day">주야간보호</span></div></div></div></div>
+<div class="tab-content" id="tab-other"><div class="fclt-list"><div class="fclt-card"><h3>형제커뮤니티재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 수표로10길  30 1층 (초동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2020.12.07</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>(A)비지팅엔젤스 서울중구방문요양지점</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 청구로1길  23 (신당동, 신당동삼성아파트 상가1동 402호)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2022.03.18</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>남산재가방문요양</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로  32 3층309호 (신당동, 남산타운아파트,제5상가)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2022.07.15</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>봄날재가복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 장충단로10길  17 (광희동2가, 101호)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2022.09.14</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>나무방문간호센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 을지로18길  14 202호 (을지로3가)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2024.07.03</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>다온재가복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로33라길  20-8 B2호 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2024.10.30</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>중구도솔재가복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로11길  13 206호 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2025.01.23</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>숭덕노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로21길  15 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2008.06.16</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>우영요양센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 퇴계로51길  20 302호 (오장동, 넥서스타워)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2008.12.09</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>새생명재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로24길  22 203호 (신당동, 동산빌딩)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2009.12.11</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>유정복지사랑보살핌</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 청구로17길  65 1층 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2010.08.10</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>소망재가노인복지센터</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 필동로  58 4층 (필동2가)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2018.08.03</div><div class="fclt-types"></div></div>
+<div class="fclt-card"><h3>명신</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">서울특별시 중구 다산로42가길  9 1층106호 (신당동)</div><div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 2019.01.28</div><div class="fclt-types"></div></div></div></div>
+<div class="neighbors"><h2>서울 인근 지역 시설</h2><div class="neighbor-links"><a href="/regions/seoul-gangseo-gu/" class="neighbor-link">강서구 <span class="nb-count">288곳</span></a><a href="/regions/seoul-jungnang-gu/" class="neighbor-link">중랑구 <span class="nb-count">264곳</span></a><a href="/regions/seoul-nowon-gu/" class="neighbor-link">노원구 <span class="nb-count">250곳</span></a><a href="/regions/seoul-dobong-gu/" class="neighbor-link">도봉구 <span class="nb-count">242곳</span></a><a href="/regions/seoul-yangcheon-gu/" class="neighbor-link">양천구 <span class="nb-count">241곳</span></a><a href="/regions/seoul-eunpyeong-gu/" class="neighbor-link">은평구 <span class="nb-count">218곳</span></a></div></div>
+<div class="seo-block">
+<h2>서울 중구 요양보호사 취업 및 시설 안내</h2>
+<p>서울 중구 지역에는 총 38곳의 장기요양기관이 운영되고 있습니다. 요양원 3곳, 방문요양 16곳, 주야간보호 6곳이 있으며, 각 시설의 상세 정보와 채용 현황을 확인할 수 있습니다.</p>
+<p>요양보호사 자격증을 취득하셨다면, 서울 중구 지역의 다양한 시설에서 근무할 수 있습니다. 시설 유형별 특성과 근무 환경을 비교하여 나에게 맞는 일자리를 찾아보세요.</p>
+</div></main>
+<footer class="footer">
+<div class="brand">요양보호사 정보</div>
+<div>© 2026 yositong.com</div>
+<div style="margin-top:12px;">
+<a href="/jobs/">취업정보</a>·<a href="/academy/">학원가이드</a>·<a href="/quiz/">문제풀이</a>·<a href="/blog/">정보글</a>·<a href="/about/">소개</a>·<a href="/contact/">문의</a>·<a href="/privacy/">개인정보처리방침</a>
+</div></footer>
+<script>
+(function(){
+var tabBar=document.getElementById('tab-bar');
+tabBar.addEventListener('click',function(e){var b=e.target.closest('.tab-btn');if(!b)return;tabBar.querySelectorAll('.tab-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.querySelectorAll('.tab-content').forEach(function(c){c.classList.remove('active')});document.getElementById('tab-'+b.dataset.tab).classList.add('active')});
+var allF={"care":[{"code":"11114000030","name":"남산실버복지센터","address":"서울특별시 중구 동호로5길  189 (신당동)","designatedDate":"20100202","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"11114000040","name":"구립중구노인요양센터","address":"서울특별시 중구 필동로  96 (장충동2가)","designatedDate":"20120928","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"11114000043","name":"효심원","address":"서울특별시 중구 청구로17길  98 (신당동)","designatedDate":"20131107","typeNames":["노인요양공동생활가정"],"primarySlug":"care"}],"home":[{"code":"21114000069","name":"서울재가복지센터","address":"서울특별시 중구 중림로  51-2 2층 (중림동)","designatedDate":"20190711","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"21114000074","name":"복지플러스 재가노인복지센터","address":"서울특별시 중구 중림로4길  20 B101호 (중림동)","designatedDate":"20191226","typeNames":["방문요양"],"primarySlug":"home"},{"code":"21114000076","name":"푸른숲 재가노인복지센터","address":"서울특별시 중구 퇴계로41길  28 301호 (인현동2가, 오스카빌딩)","designatedDate":"20200701","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"21114000077","name":"중구행복돌봄센터","address":"서울특별시 중구 다산로42길  18 4층 (신당동, 창호빌딩)","designatedDate":"20200701","typeNames":["방문요양"],"primarySlug":"home"},{"code":"21114000081","name":"가온재가복지센터","address":"서울특별시 중구 다산로33다길  8 2층 (신당동)","designatedDate":"20210601","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"21114000088","name":"스마일재가노인복지센터","address":"서울특별시 중구 다산로  104 305호 (신당동, 현대빌딩)","designatedDate":"20230308","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"21114000090","name":"헤븐리재가노인복지센터","address":"서울특별시 중구 수표로  28 302호 (저동2가)","designatedDate":"20230801","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"21114000091","name":"포시즌재가복지센터","address":"서울특별시 중구 퇴계로  459 306호 (황학동)","designatedDate":"20230801","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"21114000092","name":"토브재가복지센터","address":"서울특별시 중구 동호로  201 3층 (신당동)","designatedDate":"20231031","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"21114000094","name":"맘으로재가복지센터","address":"서울특별시 중구 다산로  227 3층302호 (무학동)","designatedDate":"20240701","typeNames":["방문요양"],"primarySlug":"home"},{"code":"31114000044","name":"포도나무복지센터","address":"서울특별시 중구 퇴계로88길  17 2층 (신당동)","designatedDate":"20131113","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"31114000059","name":"미소천사 재가노인복지센터","address":"서울특별시 중구 퇴계로  441 2층 (황학동)","designatedDate":"20161101","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"31114000060","name":"한양재가노인복지센터","address":"서울특별시 중구 청구로  93-4 (신당동)","designatedDate":"20161229","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"31114000065","name":"ANTO 재가복지센터","address":"서울특별시 중구 다산로  93 101호 (신당동)","designatedDate":"20190601","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"31114000068","name":"루안재가복지센터","address":"서울특별시 중구 다산로36길  109 206호 (신당동, 현대아파트상가)","designatedDate":"20190710","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"31114000071","name":"남산효재가방문요양센터","address":"서울특별시 중구 다산로  32 406호 (신당동, 남산타운 제상가2동)","designatedDate":"20191202","typeNames":["방문요양","방문목욕"],"primarySlug":"home"}],"day":[{"code":"21114000003","name":"남산실버복지센터","address":"서울특별시 중구 동호로5길  189 (신당동)","designatedDate":"20080626","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"21114000036","name":"신당데이케어센터","address":"서울특별시 중구 다산로25길  6 (신당동)","designatedDate":"20100820","typeNames":["주야간보호","주야간보호 내 치매전담"],"primarySlug":"day"},{"code":"21114000050","name":"신당동성당데이케어센터","address":"서울특별시 중구 동호로20다길  9 (신당동)","designatedDate":"20150501","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"21114000061","name":"구립중림어르신데이케어센터","address":"서울특별시 중구 서소문로6길  16 4층 (중림동)","designatedDate":"20180101","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"21114000075","name":"정담재활주야간보호센터","address":"서울특별시 중구 다산로36길  101 2층 (신당동)","designatedDate":"20200327","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"21114000082","name":"해피움데이케어센터","address":"서울특별시 중구 충무로  56 3층 4층 (을지로3가)","designatedDate":"20220110","typeNames":["방문요양","방문목욕","주야간보호"],"primarySlug":"day"}],"other":[{"code":"21114000080","name":"형제커뮤니티재가노인복지센터","address":"서울특별시 중구 수표로10길  30 1층 (초동)","designatedDate":"20201207","typeNames":[],"primarySlug":"other"},{"code":"21114000084","name":"(A)비지팅엔젤스 서울중구방문요양지점","address":"서울특별시 중구 청구로1길  23 (신당동, 신당동삼성아파트 상가1동 402호)","designatedDate":"20220318","typeNames":[],"primarySlug":"other"},{"code":"21114000086","name":"남산재가방문요양","address":"서울특별시 중구 다산로  32 3층309호 (신당동, 남산타운아파트,제5상가)","designatedDate":"20220715","typeNames":[],"primarySlug":"other"},{"code":"21114000087","name":"봄날재가복지센터","address":"서울특별시 중구 장충단로10길  17 (광희동2가, 101호)","designatedDate":"20220914","typeNames":[],"primarySlug":"other"},{"code":"21114000095","name":"나무방문간호센터","address":"서울특별시 중구 을지로18길  14 202호 (을지로3가)","designatedDate":"20240703","typeNames":[],"primarySlug":"other"},{"code":"21114000096","name":"다온재가복지센터","address":"서울특별시 중구 다산로33라길  20-8 B2호 (신당동)","designatedDate":"20241030","typeNames":[],"primarySlug":"other"},{"code":"21114000097","name":"중구도솔재가복지센터","address":"서울특별시 중구 다산로11길  13 206호 (신당동)","designatedDate":"20250123","typeNames":[],"primarySlug":"other"},{"code":"31114000002","name":"숭덕노인복지센터","address":"서울특별시 중구 다산로21길  15 (신당동)","designatedDate":"20080616","typeNames":[],"primarySlug":"other"},{"code":"31114000018","name":"우영요양센터","address":"서울특별시 중구 퇴계로51길  20 302호 (오장동, 넥서스타워)","designatedDate":"20081209","typeNames":[],"primarySlug":"other"},{"code":"31114000027","name":"새생명재가노인복지센터","address":"서울특별시 중구 다산로24길  22 203호 (신당동, 동산빌딩)","designatedDate":"20091211","typeNames":[],"primarySlug":"other"},{"code":"31114000035","name":"유정복지사랑보살핌","address":"서울특별시 중구 청구로17길  65 1층 (신당동)","designatedDate":"20100810","typeNames":[],"primarySlug":"other"},{"code":"31114000062","name":"소망재가노인복지센터","address":"서울특별시 중구 필동로  58 4층 (필동2가)","designatedDate":"20180803","typeNames":[],"primarySlug":"other"},{"code":"31114000063","name":"명신","address":"서울특별시 중구 다산로42가길  9 1층106호 (신당동)","designatedDate":"20190128","typeNames":[],"primarySlug":"other"}]};
+document.querySelectorAll('.show-more-btn').forEach(function(btn){btn.addEventListener('click',function(){var t=this.dataset.tab,l=allF[t]||[],c=document.querySelector('#tab-'+t+' .fclt-list');c.innerHTML=l.map(function(f){var sc=f.primarySlug||'other',th=(f.typeNames||[]).slice(0,3).map(function(t){return'<span class="fclt-type-tag '+sc+'">'+he(t)+'</span>'}).join(''),ds=f.designatedDate?f.designatedDate.slice(0,4)+'.'+f.designatedDate.slice(4,6)+'.'+f.designatedDate.slice(6,8):'';return'<div class="fclt-card"><h3>'+he(f.name)+'</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="">'+he(f.address||'')+'</div>'+(ds?'<div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="">지정일 '+ds+'</div>':'')+'<div class="fclt-types">'+th+'</div></div>'}).join('');this.remove()})});
+function he(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+(async function(){var el=document.getElementById('job-list'),ld=document.getElementById('jobs-loading');try{var r=await fetch('/api/welfare?page=1&pageSize=1000');if(!r.ok)throw 0;var d=await r.json();var items=(d.items||[]).filter(function(j){return j.sido==='서울'}).slice(0,5);if(!items.length){ld.textContent='현재 등록된 채용공고가 없습니다.';return}ld.remove();el.innerHTML=items.map(function(j){return'<a href="/jobs/?region='+encodeURIComponent(j.sido)+'&sigungu='+encodeURIComponent(j.sigungu||'')+'" class="job-item"><div><div class="job-title">'+he(j.title)+'</div><div class="job-company">'+he(j.companyName)+'</div></div><div class="job-wage">'+he(j.salary||j.wageCond||'회사내규')+'</div></a>'}).join('')}catch(e){ld.textContent='채용공고를 불러올 수 없습니다.'}})();
+})();
+</script></body></html>
