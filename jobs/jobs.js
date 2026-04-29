@@ -465,7 +465,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('modal-title').textContent = item.title;
     document.getElementById('modal-wage').textContent = item.salary || '회사내규';
     document.getElementById('modal-dday').textContent = calculateDDayStr(item.deadline);
-    document.getElementById('modal-apply-btn').href = item.sourceUrl;
+    // 지원하기 버튼: 담당자 전화 > 시설 전화 > 외부 링크 순
+    const applyBtn = document.getElementById('modal-apply-btn');
+    const applyLabel = document.getElementById('modal-apply-label');
+    const phoneRaw = (item.crgrTelNo || item.tel || '').replace(/[^0-9]/g, '');
+    if (phoneRaw && phoneRaw.length >= 8) {
+      const phoneDisplay = item.crgrTelNo || item.tel;
+      applyBtn.href = 'tel:' + phoneRaw;
+      applyBtn.removeAttribute('target');
+      applyLabel.textContent = '전화로 지원하기 ' + phoneDisplay;
+    } else {
+      applyBtn.href = item.sourceUrl || 'http://ceu.ssis.go.kr';
+      applyBtn.setAttribute('target', '_blank');
+      applyBtn.setAttribute('rel', 'noopener');
+      applyLabel.textContent = '공고 출처 사이트로 이동';
+    }
 
     const insArr = [];
     if (item.insurance?.health === 'Y') insArr.push('건강보험');
