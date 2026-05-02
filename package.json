@@ -7,12 +7,16 @@
     "build:data": "node _scripts/build-welfare-data.js",
     "build:facilities": "node _scripts/convert-facilities.js",
     "build:directories": "node _scripts/build-region-directories.js",
-    "build:sitemaps": "node _scripts/build-sitemaps.js"
+    "build:sitemaps": "node _scripts/build-sitemaps.js",
+    "build:og": "node _scripts/build-og-png.cjs"
   },
   "dependencies": {
     "@vercel/kv": "^3.0.0",
     "dotenv": "^16.4.5",
     "fast-xml-parser": "^4.3.6",
     "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
