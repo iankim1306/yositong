@@ -51,6 +51,14 @@ gtag('config', 'G-5VX7EX4PCW');
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://www.yositong.com/assets/og-image.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#16a34a">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://vitals.vercel-insights.com">
 </head>
 <body>
 
@@ -111,7 +119,7 @@ gtag('config', 'G-5VX7EX4PCW');
       <section class="detail-hero">
         <div class="detail-inner">
           <a href="/jobs/?region=${encodeURIComponent(f.sido)}&sigungu=${encodeURIComponent(f.sigungu)}" class="back-link">
-            <img src="/jobs/assets/icons/pin.svg" alt="" style="width:16px;height:16px;opacity:0.5;">
+            <img src="/jobs/assets/icons/pin.svg" alt="" style="width:16px;height:16px;opacity:0.5;" loading="lazy" decoding="async">
             ${esc(f.sido)} ${esc(f.sigungu)} 시설 목록으로
           </a>
           <h1>${esc(f.name)}</h1>
@@ -142,7 +150,7 @@ gtag('config', 'G-5VX7EX4PCW');
           <div class="type-tags" style="margin-top:8px;">${typeHtml}</div>
         </div>
         <a href="/jobs/?region=${encodeURIComponent(f.sido)}&sigungu=${encodeURIComponent(f.sigungu)}" class="btn btn-primary" style="width:100%;">
-          <img src="/jobs/assets/icons/briefcase.svg" alt="" class="btn-icon"> ${esc(f.sido)} ${esc(f.sigungu)} 채용공고 보기
+          <img src="/jobs/assets/icons/briefcase.svg" alt="" class="btn-icon" loading="lazy" decoding="async"> ${esc(f.sido)} ${esc(f.sigungu)} 채용공고 보기
         </a>
       </main>
     `;

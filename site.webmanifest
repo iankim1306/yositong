@@ -1,0 +1,13 @@
+{
+  "name": "요양보호사 정보 - yositong",
+  "short_name": "yositong",
+  "description": "전국 요양보호사 일자리·기출문제·학원 정보 플랫폼",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16a34a",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
