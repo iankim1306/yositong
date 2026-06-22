@@ -39,7 +39,9 @@ export default async function handler(req, res) {
 
   // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=7200');
+  // 시설 데이터는 정적(배포 시에만 갱신) → 캐시를 길게 둬 ISR Write 폭증 방지.
+  // 데이터 변경 시 재배포하면 Vercel이 캐시를 자동 무효화함.
+  res.setHeader('Cache-Control', 'public, s-maxage=2592000, stale-while-revalidate=86400');
 
   return res.status(200).json({
     facility,
