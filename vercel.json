@@ -1,9 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/facility/:code", "destination": "/jobs/facility/detail.html" }
-  ],
   "headers": [
     {
       "source": "/assets/:path*",
