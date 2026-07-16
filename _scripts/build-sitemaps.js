@@ -65,6 +65,18 @@ const blogSlugs = [
   '방문요양센터-창업-개설',
   '입주-요양보호사-24시간',
   '주야간보호센터-요양보호사',
+  // ── 요양용품 제휴 리뷰 ──
+  'reviews',
+  'reviews/성인용-기저귀-추천',
+  'reviews/간병-방수매트-추천',
+  'reviews/욕창예방-방석-추천',
+  'reviews/목욕의자-추천',
+  'reviews/노인-보행기-추천',
+  'reviews/노인-지팡이-추천',
+  'reviews/욕실-안전손잡이-추천',
+  'reviews/욕실-미끄럼방지매트-추천',
+  'reviews/환자용-식기-추천',
+  'reviews/환자용-빨대컵-추천',
 ];
 const pageUrls = [
   ...staticPages.map(p => ({ loc: p.loc, priority: p.p })),

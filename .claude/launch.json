@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "yositong", "runtimeExecutable": "npx", "runtimeArgs": ["-y", "serve", "-l", "4331", "."], "port": 4331 }
+  ]
+}
