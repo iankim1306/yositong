@@ -19,15 +19,16 @@ const TAGCOLOR = { '가성비': '#16a34a', '베스트': '#d97706', '프리미엄
 
 function won(n) { return Number(n).toLocaleString('ko-KR') + '원'; }
 
-function productCard(p, idx) {
+function productCard(p, idx, slug) {
   const color = TAGCOLOR[p.tag] || '#16a34a';
   const feats = (p.features || []).map(f => `<span class="rv-feat">${esc(f)}</span>`).join('');
   const pros = (p.pros || []).map(x => `<li>${esc(x)}</li>`).join('');
+  const imgSrc = `/reviews/${slug}/${p.image}`;
   return `
 <div class="rv-card" id="pick-${idx}">
   <div class="rv-badge" style="background:${color}">${esc(p.tag)}</div>
   <div class="rv-card-in">
-    <div class="rv-imgwrap"><img src="${esc(p.image)}" alt="${esc(p.imageAlt || p.name)}" loading="lazy" width="150" height="150"></div>
+    <div class="rv-imgwrap"><img src="${esc(imgSrc)}" alt="${esc(p.imageAlt || p.name)}" loading="lazy" width="150" height="150"></div>
     <div class="rv-body">
       <div class="rv-award">${esc(p.award || '')}</div>
       <h3 class="rv-name">${esc(p.name)}</h3>
@@ -124,10 +125,13 @@ details.q .a { padding: 0 20px 18px; color: #555; font-size: 15px; line-height: 
 .rv-cta { display: inline-block; background: #16a34a; color: #fff !important; font-weight: 800; font-size: 15px; padding: 12px 22px; border-radius: 10px; text-decoration: none; }
 .rv-cta:hover { background: #15803d; }
 .rv-hub { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 16px; margin: 24px 0; }
-.rv-hub a { display: block; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px; text-decoration: none; color: #111; background: #fff; }
+.rv-hub a { display: flex; gap: 14px; align-items: center; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px; text-decoration: none; color: #111; background: #fff; }
 .rv-hub a:hover { border-color: #16a34a; box-shadow: 0 2px 10px rgba(22,163,74,.08); }
-.rv-hub .t { font-weight: 700; font-size: 16px; line-height: 1.4; }
-.rv-hub .d { font-size: 13px; color: #64748b; margin-top: 6px; }
+.rv-hub-thumb { flex: none; width: 72px; height: 72px; border-radius: 10px; overflow: hidden; background: #f8fafc; border: 1px solid #eef1f4; }
+.rv-hub-thumb img { width: 100%; height: 100%; object-fit: contain; }
+.rv-hub-txt { min-width: 0; }
+.rv-hub .t { font-weight: 700; font-size: 15px; line-height: 1.35; }
+.rv-hub .d { font-size: 12.5px; color: #64748b; margin-top: 4px; }
 @media (max-width: 600px) { .container { padding: 20px; margin: 10px; } .container h1 { font-size: 22px; } .rv-card-in { flex-direction: column; } .rv-imgwrap { width: 100%; height: 200px; } }
 `;
 
@@ -206,7 +210,7 @@ function buildReview(a) {
     ]
   })}</script>`;
 
-  const cards = a.products.map((p, i) => productCard(p, i + 1)).join('\n');
+  const cards = a.products.map((p, i) => productCard(p, i + 1, a.slug)).join('\n');
 
   return `${head(a.title, a.desc, url, articleSchema + breadcrumb + faqSchema)}
 <article class="container">
@@ -224,7 +228,10 @@ ${FOOTER}`;
 
 function buildHub() {
   const url = `${BASE}/reviews/`;
-  const cards = reviews.map(a => `<a href="/reviews/${a.slug}/"><div class="t">${esc(a.hubTitle || a.h1)}</div><div class="d">${esc(a.hubDesc || '')}</div></a>`).join('\n');
+  const cards = reviews.map(a => {
+    const thumb = a.products && a.products[0] ? `/reviews/${a.slug}/${a.products[0].image}` : '';
+    return `<a href="/reviews/${a.slug}/"><div class="rv-hub-thumb"><img src="${esc(thumb)}" alt="${esc(a.hubTitle || a.h1)}" loading="lazy"></div><div class="rv-hub-txt"><div class="t">${esc(a.hubTitle || a.h1)}</div><div class="d">${esc(a.hubDesc || '')}</div></div></a>`;
+  }).join('\n');
   const itemList = `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org", "@type": "ItemList",
     itemListElement: reviews.map((a, i) => ({ "@type": "ListItem", position: i + 1, url: `${BASE}/reviews/${a.slug}/`, name: a.h1 }))
