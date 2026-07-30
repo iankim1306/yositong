@@ -77,6 +77,17 @@ const blogSlugs = [
   'reviews/욕실-미끄럼방지매트-추천',
   'reviews/환자용-식기-추천',
   'reviews/환자용-빨대컵-추천',
+  // ── 요양용품 리뷰 라운드2 ──
+  'reviews/침대-안전난간-추천',
+  'reviews/식사-앞치마-추천',
+  'reviews/이동식-좌변기-추천',
+  'reviews/이동보조벨트-추천',
+  'reviews/환자-호출벨-추천',
+  'reviews/간병-위생장갑-추천',
+  'reviews/환자-영양식-추천',
+  'reviews/틀니-세정제-추천',
+  'reviews/노인-실내화-추천',
+  'reviews/문턱-경사로-추천',
 ];
 const pageUrls = [
   ...staticPages.map(p => ({ loc: p.loc, priority: p.p })),
