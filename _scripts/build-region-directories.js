@@ -53,10 +53,19 @@ for (const key of regionKeys) {
   const dirPath = resolve(REGION_DIR, slug);
   mkdirSync(dirPath, { recursive: true });
 
-  const neighbors = (sidoGroups[sido] || [])
-    .filter(n => n.sigungu !== sigungu)
-    .sort((a, b) => b.total - a.total)
-    .slice(0, 6);
+  // 인근 지역 링크.
+  // 예전엔 시설 수 상위 6곳을 고정으로 잘라 썼는데, 그러면 큰 지역 6곳이 링크를 독식하고
+  // 나머지 시군구는 내부 링크를 시도 페이지 1개밖에 못 받아 색인에서 밀렸다(265곳 중 140곳).
+  // 가나다순으로 세운 뒤 자기 위치 기준으로 회전시켜, 전 시군구가 같은 수를 주고받게 한다.
+  const sidoAll = (sidoGroups[sido] || [])
+    .slice()
+    .sort((a, b) => a.sigungu.localeCompare(b.sigungu, 'ko'));
+  const myIdx = sidoAll.findIndex(n => n.sigungu === sigungu);
+  const linkCount = Math.min(8, Math.max(0, sidoAll.length - 1));
+  const neighbors = [];
+  for (let i = 1; i <= linkCount; i++) {
+    neighbors.push(sidoAll[(myIdx + i) % sidoAll.length]);
+  }
 
   const careList = facilities.filter(f => f.primarySlug === 'care');
   const homeList = facilities.filter(f => f.primarySlug === 'home');
@@ -85,6 +94,12 @@ for (const sido of SIDO_ORDER) {
   sidoCreated++;
 }
 console.log(`✓ ${sidoCreated}개 시도 페이지 생성`);
+
+// ─── /regions 허브 (전국 시군구 전체 목록) ───
+// 이 페이지가 없어서 265개 시군구로 들어가는 문이 시도 페이지뿐이었다.
+writeFileSync(resolve(REGION_DIR, 'index.html'), buildRegionsHub({ sidoGroups }), 'utf8');
+console.log('✓ /regions 허브 생성');
+
 console.log('━━━ 완료 ━━━');
 
 // ═══════════════════════════════════
@@ -97,6 +112,7 @@ function nav() {
 <a href="/jobs/">취업정보</a>
 <a href="/academy/">학원가이드</a>
 <a href="/quiz/">문제풀이</a>
+<a href="/regions/">지역별</a>
 <a href="/blog/">정보글</a>
 </div></nav>`;
 }
@@ -425,6 +441,94 @@ ${nav()}
 <h2>${sido} 요양보호사 취업 및 시설 안내</h2>
 <p>${sido} 지역에는 ${sigungus.length}개 시군구에 총 ${totalAll.toLocaleString()}곳의 장기요양기관이 운영되고 있습니다. 지역별 시설 유형과 채용 현황을 비교하여 나에게 맞는 일자리를 찾아보세요.</p>
 </div></main>
+${footer()}
+</body></html>`;
+}
+
+
+// ═══════════════════════════════════
+// /regions 허브 — 전국 시군구 전체 목록
+// ═══════════════════════════════════
+function buildRegionsHub({ sidoGroups }) {
+  const title = '지역별 요양보호사 일자리 · 요양시설 디렉토리';
+  const desc = '전국 17개 시도 시군구별 요양보호사 일자리와 장기요양기관(요양원·방문요양·주야간보호) 현황을 한눈에. 내 지역을 골라 바로 확인하세요.';
+  const url = 'https://yositong.com/regions/';
+
+  const sidoList = SIDO_ORDER.filter(s => (sidoGroups[s] || []).length > 0);
+  const grandTotal = sidoList.reduce(
+    (sum, s) => sum + (sidoGroups[s] || []).reduce((a, r) => a + r.total, 0), 0);
+  const sigunguCount = sidoList.reduce((sum, s) => sum + (sidoGroups[s] || []).length, 0);
+
+  const blocks = sidoList.map(sido => {
+    const list = (sidoGroups[sido] || [])
+      .slice()
+      .sort((a, b) => a.sigungu.localeCompare(b.sigungu, 'ko'));
+    const sidoTotal = list.reduce((a, r) => a + r.total, 0);
+    const links = list.map(r =>
+      `<a href="/regions/${r.slug}/" class="neighbor-link">${esc(r.sigungu)} <span class="nb-count">${r.total}곳</span></a>`
+    ).join('');
+    return `<div class="neighbors" style="margin-top:32px">
+<h2><a href="/regions/${getSidoSlug(sido)}/" style="color:inherit;text-decoration:none">${esc(sido)}</a> <span style="font-size:14px;font-weight:400;color:#666">${list.length}개 시군구 · ${sidoTotal.toLocaleString()}곳</span></h2>
+<div class="neighbor-links">${links}</div></div>`;
+  }).join('\n');
+
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": title,
+    "itemListElement": sidoList.map((sido, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": sido,
+      "item": `https://yositong.com/regions/${getSidoSlug(sido)}/`
+    }))
+  };
+  const crumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://yositong.com/" },
+      { "@type": "ListItem", "position": 2, "name": "지역별", "item": url }
+    ]
+  };
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="naver-site-verification" content="9ebf50acfe0237b4f8f418e1224d4f59264fdd31" />
+<meta name="naver-site-verification" content="b0bb10d2d3505f81ed288420c1c9f1dc435ddb0c" />
+<title>${title} - yositong</title>
+<meta name="description" content="${desc}">
+<link rel="canonical" href="${url}">
+<meta property="og:type" content="website"><meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}"><meta property="og:url" content="${url}">
+<meta property="og:image" content="https://yositong.com/assets/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yositong.com/assets/og-image.png">
+<script type="application/ld+json">${JSON.stringify(crumb)}</script>
+<script type="application/ld+json">${JSON.stringify(itemList)}</script>
+<link rel="stylesheet" href="/jobs/jobs.css">${regionCSS()}
+</head><body>
+${nav()}
+<section class="region-hero"><div class="region-hero-inner">
+<h1>지역별 요양보호사 일자리</h1>
+<p>전국 ${sidoList.length}개 시도 · ${sigunguCount}개 시군구 · 장기요양기관 ${grandTotal.toLocaleString()}곳</p>
+<div class="region-stats">
+<div class="region-stat"><div class="num">${sidoList.length}</div><div class="label">시도</div></div>
+<div class="region-stat"><div class="num">${sigunguCount}</div><div class="label">시군구</div></div>
+<div class="region-stat"><div class="num">${grandTotal.toLocaleString()}</div><div class="label">전체 시설</div></div>
+</div></div></section>
+<main class="main-content">
+<div class="seo-block">
+<h2>내 지역부터 확인하세요</h2>
+<p>요양보호사 일자리는 전국 공고를 훑는 것보다 <strong>집에서 가까운 기관</strong>을 먼저 보는 쪽이 빠릅니다. 출퇴근 거리가 근무 지속에 큰 영향을 주기 때문입니다. 아래에서 내 시군구를 고르면 해당 지역의 요양원·방문요양센터·주야간보호센터 현황과 채용 정보를 함께 볼 수 있습니다.</p>
+</div>
+${blocks}
+<div class="seo-block" style="margin-top:48px">
+<h2>지역을 고를 때 보면 좋은 것</h2>
+<p>같은 시군구 안에서도 시설 유형에 따라 근무 형태가 많이 다릅니다. <strong>요양원(입소)</strong>은 교대 근무가 기본이고 야간 근무가 들어갑니다. <strong>방문요양</strong>은 이동이 많은 대신 시간 조절이 비교적 자유롭습니다. <strong>주야간보호</strong>는 낮 시간대 고정 근무가 많습니다. 지역 페이지에서 유형별 시설 수를 먼저 보고, 내 생활 패턴에 맞는 쪽이 많은 지역을 고르는 것이 좋습니다.</p>
+</div>
+</main>
 ${footer()}
 </body></html>`;
 }

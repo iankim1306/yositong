@@ -73,6 +73,7 @@ function buildArticle(a) {
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA4}');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="naver-site-verification" content="9ebf50acfe0237b4f8f418e1224d4f59264fdd31" />
 <meta name="naver-site-verification" content="b0bb10d2d3505f81ed288420c1c9f1dc435ddb0c" />
 <title>${esc(a.title)} | yositong</title>
 <meta name="description" content="${esc(a.desc)}">

@@ -16,6 +16,21 @@ console.log('━━━ Sitemap 분할 생성 ━━━');
 // 1. 정적 페이지
 const staticPages = [
   { loc: '/', p: '1.0' }, { loc: '/blog/', p: '0.9' }, { loc: '/quiz/', p: '0.9' },
+  // 주제별 기출문제 페이지 — 문항을 HTML로 꺼내 검색에 노출시킨다
+  { loc: '/quiz/move/', p: '0.8' },
+  { loc: '/quiz/disease/', p: '0.8' },
+  { loc: '/quiz/basic/', p: '0.8' },
+  { loc: '/quiz/ethics/', p: '0.8' },
+  { loc: '/quiz/meal/', p: '0.8' },
+  { loc: '/quiz/hygiene/', p: '0.8' },
+  { loc: '/quiz/excretion/', p: '0.8' },
+  { loc: '/quiz/dementia/', p: '0.8' },
+  { loc: '/quiz/emergency/', p: '0.8' },
+  { loc: '/quiz/infection/', p: '0.8' },
+  { loc: '/quiz/comm/', p: '0.8' },
+  { loc: '/quiz/dying/', p: '0.8' },
+  { loc: '/quiz/system/', p: '0.8' },
+  { loc: '/quiz/selfcare/', p: '0.8' },
   { loc: '/jobs/', p: '0.9' }, { loc: '/academy/', p: '0.9' },
   { loc: '/faq/', p: '0.8' },
   { loc: '/about/', p: '0.5' }, { loc: '/contact/', p: '0.5' }, { loc: '/privacy/', p: '0.3' },
@@ -100,6 +115,8 @@ console.log(`✓ sitemap-pages.xml: ${pageUrls.length} URLs`);
 const regionsData = JSON.parse(readFileSync(resolve(ROOT, 'data/facilities-by-sigungu.json'), 'utf8'));
 const regionUrls = [];
 // 시도 페이지
+// 전국 허브 — 248개 시군구로 들어가는 입구
+regionUrls.push({ loc: `/regions/`, priority: '0.9', changefreq: 'weekly' });
 for (const sido of SIDO_ORDER) {
   regionUrls.push({ loc: `/regions/${getSidoSlug(sido)}/`, priority: '0.8', changefreq: 'weekly' });
 }
