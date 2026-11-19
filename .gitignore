@@ -12,3 +12,4 @@ posts_meta.json
 node_modules/
 
 .env*
+_scripts/refresh-jobs.log
