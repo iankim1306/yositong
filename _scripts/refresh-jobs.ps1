@@ -15,6 +15,12 @@
 #
 # 로그: _scripts/refresh-jobs.log (최근 400줄만 유지)
 
+# 자식 프로세스(node) 출력이 CP949 로 디코딩돼 로그에서 한글이 깨진다.
+# 콘솔 인코딩을 UTF-8 로 맞춰야 수집 건수 같은 메시지를 읽을 수 있다.
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
+$env:PYTHONIOENCODING = 'utf-8'
+
 $ErrorActionPreference = 'Stop'
 $ROOT = Split-Path -Parent $PSScriptRoot
 $LOG  = Join-Path $PSScriptRoot 'refresh-jobs.log'
