@@ -203,6 +203,43 @@ if (pending.length) {
     .forEach(a => console.log(`     ${a.publishAt}  ${a.title.slice(0, 40)}`));
 }
 
+// ── blog/index.html 목록 동기화 ──
+// 예전엔 글을 추가할 때마다 이 목록에 카드를 손으로 넣어야 했다.
+// 제목을 고쳐도 목록은 옛 제목이 남아 실제로 어긋나 있었다.
+// 여기서 발행된 글의 카드를 매번 다시 써 넣는다(레거시 카드는 건드리지 않는다).
+{
+  const blogPath = path.join(ROOT, 'blog', 'index.html');
+  let html = fs.readFileSync(blogPath, 'utf8');
+  const card = a => `<li>
+<a href="/${a.slug}/">
+<h3>${esc(a.title)}</h3>
+<div class="excerpt">${esc(a.desc)}</div>
+<div class="date">${a.date}</div>
+</a>
+</li>`;
+
+  // 정규식으로 슬러그를 이스케이프하려다 한글 슬러그에서 계속 깨졌다.
+  // 문자열 위치 탐색으로 해당 <li> 범위를 잘라내는 쪽이 단순하고 안전하다.
+  let updated = 0, inserted = 0;
+  for (const a of live) {
+    const needle = `<a href="/${a.slug}/">`;
+    const at = html.indexOf(needle);
+    if (at !== -1) {
+      const liStart = html.lastIndexOf('<li>', at);
+      const liEnd = html.indexOf('</li>', at);
+      if (liStart !== -1 && liEnd !== -1) {
+        html = html.slice(0, liStart) + card(a) + html.slice(liEnd + 5);
+        updated++;
+        continue;
+      }
+    }
+    html = html.replace('<ul class="post-list">', '<ul class="post-list">\n' + card(a));
+    inserted++;
+  }
+  fs.writeFileSync(blogPath, html, 'utf8');
+  console.log(`✓ blog/index.html 동기화 (갱신 ${updated} · 신규 ${inserted})`);
+}
+
 // 사이트맵 생성기가 읽을 수 있도록 발행된 슬러그를 파일로 남긴다.
 // (build-sitemaps.js 의 하드코딩 blogSlugs 를 손으로 고치다 빠뜨리는 사고를 막는다)
 fs.writeFileSync(
