@@ -175,13 +175,38 @@ ${CTA}
 `;
 }
 
+// ── 예약 발행 ──
+// 글에 publishAt(YYYY-MM-DD)이 있고 그날이 아직 안 왔으면 생성하지 않는다.
+// 일일 스케줄러(_scripts/refresh-jobs.ps1)가 매일 이 스크립트를 돌리므로
+// 날짜가 되면 자동으로 페이지가 생기고 사이트맵에 들어간다.
+// publishAt 이 없으면 즉시 발행(기존 글은 전부 여기 해당).
+const TODAY = new Date().toISOString().slice(0, 10);
+const isLive = a => !a.publishAt || a.publishAt <= TODAY;
+
+const live = articles.filter(isLive);
+const pending = articles.filter(a => !isLive(a));
+
 let created = 0;
-for (const a of articles) {
+for (const a of live) {
   const dir = path.join(ROOT, a.slug);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), buildArticle(a), 'utf8');
   created++;
 }
-console.log(`✓ ${created}개 정보글 생성`);
-console.log('슬러그 목록 (sitemap에 추가하세요):');
-articles.forEach(a => console.log(`  '${a.slug}',`));
+console.log(`✓ ${created}개 정보글 생성 (오늘 ${TODAY} 기준)`);
+
+if (pending.length) {
+  console.log(`⏳ 예약 대기 ${pending.length}편:`);
+  pending
+    .slice()
+    .sort((x, y) => String(x.publishAt).localeCompare(String(y.publishAt)))
+    .forEach(a => console.log(`     ${a.publishAt}  ${a.title.slice(0, 40)}`));
+}
+
+// 사이트맵 생성기가 읽을 수 있도록 발행된 슬러그를 파일로 남긴다.
+// (build-sitemaps.js 의 하드코딩 blogSlugs 를 손으로 고치다 빠뜨리는 사고를 막는다)
+fs.writeFileSync(
+  path.join(__dirname, 'published-slugs.json'),
+  JSON.stringify({ generatedAt: new Date().toISOString(), slugs: live.map(a => a.slug) }, null, 1),
+  'utf8');
+console.log(`✓ _scripts/published-slugs.json (${live.length}개 슬러그)`);

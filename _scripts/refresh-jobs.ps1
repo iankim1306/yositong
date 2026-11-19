@@ -66,12 +66,18 @@ try {
     node _scripts/build-region-directories.js 2>&1 | Select-Object -Last 4 | ForEach-Object { Log "  $_" }
     if ($LASTEXITCODE -ne 0) { throw "build-region-directories 실패" }
 
+    # 예약 발행: publishAt 이 오늘 이하인 글만 생성된다.
+    # 날짜가 되면 이 일일 실행이 자동으로 페이지를 만들고 사이트맵에 넣는다.
+    Log "정보글 빌드(예약 발행 반영)…"
+    node _scripts/build-articles.cjs 2>&1 | Select-Object -Last 8 | ForEach-Object { Log "  $_" }
+    if ($LASTEXITCODE -ne 0) { throw "build-articles 실패" }
+
     Log "사이트맵 재생성…"
     node _scripts/build-sitemaps.js 2>&1 | Select-Object -Last 3 | ForEach-Object { Log "  $_" }
     if ($LASTEXITCODE -ne 0) { throw "build-sitemaps 실패" }
 
     # 변경이 없으면 커밋하지 않는다. 빈 커밋이 쌓이면 배포만 헛돈다.
-    $null = Invoke-Git diff --quiet -- data/welfare.json regions sitemap-regions.xml
+    $null = Invoke-Git diff --quiet -- data/welfare.json regions sitemap-regions.xml sitemap-pages.xml _scripts/published-slugs.json
     if ($LASTEXITCODE -eq 0) {
         Log "변경 없음 — 커밋 생략"
     } else {
@@ -79,12 +85,12 @@ try {
         $care = node -e "console.log(require('./data/welfare.json').filter(j=>j.isCare).length)"
         Log "변경 있음 — 공고 $jobs 건 (요양보호 $care 건)"
         # 데이터·생성물만 담는다. 작업 중인 다른 파일을 쓸어 담지 않는다.
-        $null = Invoke-Git add data/welfare.json data/welfare-regions.json regions sitemap-pages.xml sitemap-regions.xml sitemap.xml
+        $null = Invoke-Git add -A -- data/welfare.json data/welfare-regions.json regions sitemap-pages.xml sitemap-regions.xml sitemap.xml _scripts/published-slugs.json
         $null = Invoke-Git diff --cached --quiet
         if ($LASTEXITCODE -eq 0) {
             Log "스테이징할 변경이 없음 — 커밋 생략"
         } else {
-            $c = Invoke-Git commit -q -m "구인공고 자동 갱신 - $jobs 건 (요양보호 $care 건)"
+            $c = Invoke-Git commit -q -m "자동 갱신 - 공고 $jobs 건 (요양보호 $care 건)"
             if ($c -ne 0) { throw "commit 실패 (exit $c)" }
             $p = Invoke-Git push origin main
             if ($p -ne 0) {
