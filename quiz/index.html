@@ -344,7 +344,7 @@ body {
 <div id="options" class="options"></div>
 
 <div class="keyboard-hint desktop-only">
-  <span class="key">1</span>~<span class="key">4</span> 키로 선택, <span class="key">Enter</span> 로 다음 문제
+  <span class="key">1</span>~<span class="key">5</span> 키로 선택, <span class="key">Enter</span> 로 다음 문제
 </div>
 
 <div id="result-box" class="result-box">
@@ -556,8 +556,10 @@ body {
     }
 
     // Shuffle options
-    const displayOrder = [0, 1, 2, 3];
-    for (let i = 3; i > 0; i--) {
+    // 보기 개수에 맞춰 만든다. 예전엔 [0,1,2,3] 으로 박아 놔서
+    // 5지선다로 늘렸을 때 다섯 번째 보기가 화면에 아예 안 나왔다.
+    const displayOrder = currentQuestion.options.map((_, i) => i);
+    for (let i = displayOrder.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [displayOrder[i], displayOrder[j]] = [displayOrder[j], displayOrder[i]];
     }
@@ -629,7 +631,7 @@ body {
       // If not actively showing a question, do nothing
       if (els.startScreen.style.display !== 'none' || els.questionScreen.style.display === 'none') return;
 
-      if (e.key >= '1' && e.key <= '4') {
+      if (e.key >= '1' && e.key <= '5') {
         if (isAnswered) return;
         const displayIdx = parseInt(e.key) - 1;
         if (!currentQuestion || !currentQuestion._displayOrder) return;

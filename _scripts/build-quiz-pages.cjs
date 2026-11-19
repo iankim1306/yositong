@@ -92,7 +92,7 @@ function figureFor(q) {
 function renderQuestion(q, i) {
   const fig = figureFor(q);
   const opts = q.options.map((o, k) =>
-    `<li>${'①②③④'[k]} ${esc(o)}</li>`).join('\n');
+    `<li>${'①②③④⑤'[k]} ${esc(o)}</li>`).join('\n');
   return `<div class="q-item">
 <div class="q-no">문제 ${i + 1}</div>
 <div class="q-text">${esc(q.question)}</div>
@@ -101,7 +101,7 @@ ${fig ? fig.svg : ''}
 ${opts}
 </ul>
 <details class="q-ans"><summary>정답과 해설 보기</summary>
-<p><b>정답 ${'①②③④'[q.correct]} ${esc(q.options[q.correct])}</b></p>
+<p><b>정답 ${'①②③④⑤'[q.correct]} ${esc(q.options[q.correct])}</b></p>
 <p>${esc(q.explanation)}</p>
 </details>
 </div>`;

@@ -141,8 +141,17 @@ for (const q of all) {
   const correctText = q.options[q.correct];
   // 입력 순서에 영향받지 않도록 먼저 사전순으로 세운다 → 같은 문항이면 항상 같은 결과
   const opts = q.options.slice().sort((a, b) => a.localeCompare(b, 'ko'));
+  // mulberry32: 비트를 충분히 섞는다.
+  // (glibc 류 LCG 는 하위 비트가 뭉쳐서, 보기가 5개로 늘자 정답이 보기5에 15%만 갔다 —
+  //  5개 균등이면 20% 여야 한다. 시드 하나로 한 번만 뽑으니 편향이 그대로 드러난 것)
   let s2 = hashSeed(q.question);
-  const rnd2 = () => { s2 = (Math.imul(s2, 1103515245) + 12345) & 0x7fffffff; return s2 / 0x7fffffff; };
+  const rnd2 = () => {
+    s2 = (s2 + 0x6D2B79F5) >>> 0;
+    let t = s2;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
   for (let i = opts.length - 1; i > 0; i--) {
     const j = Math.floor(rnd2() * (i + 1));
     [opts[i], opts[j]] = [opts[j], opts[i]];
