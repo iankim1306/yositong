@@ -33,6 +33,8 @@ const staticPages = [
   { loc: '/quiz/selfcare/', p: '0.8' },
   { loc: '/jobs/', p: '0.9' }, { loc: '/academy/', p: '0.9' },
   { loc: '/faq/', p: '0.8' },
+  // 이력서 양식 도구 — 정적 HTML 한 장(입력값은 브라우저에만 남는다)
+  { loc: '/이력서-양식/', p: '0.9' },
   { loc: '/about/', p: '0.5' }, { loc: '/contact/', p: '0.5' }, { loc: '/privacy/', p: '0.3' },
 ];
 // 글 목록은 build-articles.cjs 가 남긴 published-slugs.json 에서 읽는다.
