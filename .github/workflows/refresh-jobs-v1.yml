@@ -1,0 +1,115 @@
+# 구인공고 자동 갱신
+#
+# 하는 일: 공공데이터 API 수집 → 지역 페이지 재생성 → 사이트맵 → 커밋·푸시
+#          푸시하면 Vercel git 연동이 자동으로 배포한다(실측 27초).
+#          그래서 Vercel 토큰을 Secrets 에 넣을 필요가 없다.
+#
+# 비용: yositong 은 PUBLIC 리포라 Actions 분이 무료·무제한이다.
+#       작업도 API 호출 1건 + 정적 빌드뿐이라 2~3분이면 끝난다.
+#
+# ⚠️ 파일명에 v1 을 붙인 이유
+#    GitHub 은 워크플로를 **최초 등록한 시점의 cron** 을 붙잡는다.
+#    나중에 schedule 만 고치면 반영되지 않으므로, 주기를 바꿀 땐
+#    파일명을 refresh-jobs-v2.yml 로 바꿔 새로 등록시켜야 한다.
+#
+# ⚠️ Actions 는 미국 리전에서 돈다. 한국 공공 API 가 해외 IP 를 막을 수 있다
+#    (배당금캘린더에서 미래에셋이 Actions 에서 403 을 낸 전례가 있다).
+#    그래서 첫 실행은 반드시 workflow_dispatch 로 수동 확인한다.
+
+name: refresh-jobs-v1
+
+on:
+  schedule:
+    # 매일 07:10 KST (22:10 UTC). 공공 API 가 새벽에 갱신되는 편이라 아침에 받는다.
+    - cron: '10 22 * * *'
+    # keepalive — 60일 무활동이면 GitHub 이 크론을 자동 비활성화한다.
+    # 매월 1일에 한 번 더 돌려 "활동 중" 상태를 유지한다.
+    - cron: '0 3 1 * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '커밋하지 않고 수집만 해본다 (첫 실행 점검용)'
+        type: boolean
+        default: false
+
+# 겹쳐 돌면 서로의 커밋을 덮어쓴다
+concurrency:
+  group: refresh-jobs
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: 의존성 설치
+        run: npm ci --no-audit --no-fund
+
+      - name: 구인공고 수집
+        env:
+          WELFARE_API_KEY: ${{ secrets.WELFARE_API_KEY }}
+        run: |
+          if [ -z "$WELFARE_API_KEY" ]; then
+            echo "::error::WELFARE_API_KEY 시크릿이 비어 있습니다."
+            echo "gh secret set WELFARE_API_KEY --repo iankim1306/yositong 로 등록하세요."
+            exit 1
+          fi
+          node _scripts/fetch-welfare.cjs
+
+      - name: 지역 페이지 재생성
+        run: node _scripts/build-region-directories.js
+
+      - name: 사이트맵 재생성
+        run: node _scripts/build-sitemaps.js
+
+      - name: 변경 요약
+        id: diff
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "변경 없음 — 공고가 그대로입니다."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git diff --stat | tail -5
+            JOBS=$(node -e "console.log(require('./data/welfare.json').length)")
+            CARE=$(node -e "console.log(require('./data/welfare.json').filter(j=>j.isCare).length)")
+            echo "jobs=$JOBS" >> "$GITHUB_OUTPUT"
+            echo "care=$CARE" >> "$GITHUB_OUTPUT"
+            echo "수집 $JOBS건 (요양보호 관련 $CARE건)"
+          fi
+
+      - name: 커밋·푸시
+        if: steps.diff.outputs.changed == 'true' && inputs.dry_run != true
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "구인공고 자동 갱신 — ${{ steps.diff.outputs.jobs }}건 (요양보호 ${{ steps.diff.outputs.care }}건)"
+          # 사이에 사람이 푸시했을 수 있다
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: 결과
+        run: |
+          echo "### 구인공고 갱신 결과" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.diff.outputs.changed }}" = "true" ]; then
+            echo "- 수집: **${{ steps.diff.outputs.jobs }}건** (요양보호 관련 ${{ steps.diff.outputs.care }}건)" >> "$GITHUB_STEP_SUMMARY"
+            if [ "${{ inputs.dry_run }}" = "true" ]; then
+              echo "- dry_run 이라 커밋하지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "- 커밋·푸시 완료 → Vercel 이 자동 배포합니다." >> "$GITHUB_STEP_SUMMARY"
+            fi
+          else
+            echo "- 변경 없음." >> "$GITHUB_STEP_SUMMARY"
+          fi
