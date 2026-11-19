@@ -5,6 +5,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const reviews = require('./reviews-data.cjs');
+const WELFARE = require('./reviews-welfare.cjs');
 
 const GA4 = 'G-5VX7EX4PCW';
 const ADSENSE = 'ca-pub-7852008102553944';
@@ -18,6 +19,40 @@ function esc(s) {
 const TAGCOLOR = { '가성비': '#16a34a', '베스트': '#d97706', '프리미엄': '#475569' };
 
 function won(n) { return Number(n).toLocaleString('ko-KR') + '원'; }
+
+// ── 복지용구 급여 안내 ──
+// 급여 품목(목욕의자·지팡이·안전손잡이 등)을 쿠팡에서 정가로 사는 사람이 많다.
+// 등급이 있으면 사업소에서 본인부담 15%다. 제품 링크보다 이걸 먼저 알려주는 게 맞다.
+const WELFARE_HUB = '/복지용구-급여-품목-한도/';
+
+// 받침이 있으면 '은', 없으면 '는'. 괄호 설명은 떼고 판정한다.
+function eun(word) {
+  const base = String(word).replace(/\([^)]*\)\s*$/, '').trim();
+  const last = base.charCodeAt(base.length - 1);
+  if (last < 0xAC00 || last > 0xD7A3) return '은(는)';
+  return (last - 0xAC00) % 28 === 0 ? '는' : '은';
+}
+
+function welfareNote(slug) {
+  const w = WELFARE[slug];
+  if (!w) return '';
+  if (w.covered) {
+    const spec = [w.way, w.years ? ('사용 가능 햇수 ' + w.years) : null, w.qty ? (w.qty + '까지') : null].filter(Boolean).join(' · ');
+    return `<div class="rv-wel rv-wel-on">
+<div class="rv-wel-h">✅ 이 용품은 <strong>복지용구 급여 품목</strong>입니다 — 정가로 사기 전에 읽어보세요</div>
+<p><strong>${esc(w.item)}</strong>${eun(w.item)} 장기요양 복지용구 품목입니다(${esc(spec)}). 어르신에게 <strong>장기요양 1~5등급 또는 인지지원등급</strong>이 있고 요양원에 입소하지 않았다면, <strong>복지용구사업소에서 본인부담 15%</strong>에 구입할 수 있습니다(감경 대상 6~9%, 기초생활수급자 0%). 연간 한도는 <strong>160만원</strong>입니다.</p>
+${w.note ? ('<p>' + w.note + '</p>') : ''}
+<p class="rv-wel-warn">⚠️ <strong>온라인 쇼핑몰에서 사면 급여가 적용되지 않습니다.</strong> 공단에 등록된 복지용구사업소에서 계약해야 합니다. 아래 제품 비교는 <strong>등급이 없거나 한도를 이미 다 쓴 경우</strong>에 참고하세요.</p>
+<a class="rv-wel-link" href="${WELFARE_HUB}">복지용구 품목 25종·한도·신청 절차 보기 →</a>
+</div>`;
+  }
+  return `<div class="rv-wel">
+<div class="rv-wel-h">복지용구 급여 대상인가요?</div>
+<p>${w.alt}</p>
+<p>장기요양등급이 있으면 복지용구 <strong>25종</strong>을 연 <strong>160만원</strong> 한도로 본인부담 <strong>15%</strong>(감경 6~9%, 기초수급 0%)에 구입·대여할 수 있습니다. 급여 품목이 아닌 용품은 일반 구매로 가야 합니다.</p>
+<a class="rv-wel-link" href="${WELFARE_HUB}">복지용구 품목 25종·한도·신청 절차 보기 →</a>
+</div>`;
+}
 
 function productCard(p, idx, slug) {
   const color = TAGCOLOR[p.tag] || '#16a34a';
@@ -124,6 +159,13 @@ details.q .a { padding: 0 20px 18px; color: #555; font-size: 15px; line-height: 
 .rv-cons { font-size: 13px; color: #64748b; margin: 8px 0 14px; }
 .rv-cta { display: inline-block; background: #16a34a; color: #fff !important; font-weight: 800; font-size: 15px; padding: 12px 22px; border-radius: 10px; text-decoration: none; }
 .rv-cta:hover { background: #15803d; }
+.rv-wel { border: 1px solid #e5e7eb; background: #f8fafc; border-radius: 12px; padding: 16px 18px; margin: 22px 0; font-size: 14.5px; line-height: 1.7; }
+.rv-wel-on { border-color: #16a34a; background: #f0fdf4; }
+.rv-wel-h { font-weight: 700; font-size: 15.5px; margin-bottom: 8px; color: #111; }
+.rv-wel p { margin: 8px 0; }
+.rv-wel-warn { color: #b45309; }
+.rv-wel-link { display: inline-block; margin-top: 6px; font-weight: 700; color: #16a34a; text-decoration: none; }
+.rv-wel-link:hover { text-decoration: underline; }
 .rv-hub { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 16px; margin: 24px 0; }
 .rv-hub a { display: flex; gap: 14px; align-items: center; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px; text-decoration: none; color: #111; background: #fff; }
 .rv-hub a:hover { border-color: #16a34a; box-shadow: 0 2px 10px rgba(22,163,74,.08); }
@@ -211,6 +253,8 @@ function buildReview(a) {
     ]
   })}</script>`;
 
+  const wel = welfareNote(a.slug);
+  const welCovered = !!(WELFARE[a.slug] && WELFARE[a.slug].covered);
   const cards = a.products.map((p, i) => productCard(p, i + 1, a.slug)).join('\n');
 
   return `${head(a.title, a.desc, url, articleSchema + breadcrumb + faqSchema)}
@@ -219,8 +263,10 @@ function buildReview(a) {
 <div class="meta">${a.date} · 운영자 · 약 ${a.readMin || 6}분 분량</div>
 <div class="rv-disc">${DISCLOSURE}</div>
 ${renderBlocks(a.intro)}
+${welCovered ? wel : ''}
 <h2>추천 요양용품 TOP 3</h2>
 ${cards}
+${welCovered ? '' : wel}
 ${renderBlocks(a.blocks)}
 </article>
 ${CTA}
@@ -242,8 +288,13 @@ function buildHub() {
 <h1>요양용품 추천 모음</h1>
 <div class="meta">어르신·환자 돌봄에 필요한 용품을 상황별로 비교했습니다</div>
 <p>집에서 어르신이나 환자를 돌볼 때 실제로 필요한 용품들을 <strong>가성비·베스트·프리미엄</strong> 세 가지로 나눠 비교했습니다. 아래에서 필요한 품목을 골라보세요.</p>
+<div class="rv-wel rv-wel-on">
+<div class="rv-wel-h">✅ 먼저 확인하세요 — 목욕의자·지팡이·안전손잡이는 <strong>15%</strong>에 살 수 있습니다</div>
+<p>장기요양 <strong>1~5등급 또는 인지지원등급</strong>이 있고 요양원에 입소하지 않았다면, 복지용구 <strong>25종</strong>을 연 <strong>160만원</strong> 한도로 본인부담 <strong>15%</strong>(감경 6~9%, 기초생활수급자 0%)에 구입·대여할 수 있습니다. 아래 품목 중 <strong>목욕의자·이동변기·보행기·지팡이·안전손잡이·미끄럼방지매트·욕창예방방석·경사로</strong>가 급여 품목입니다.</p>
+<a class="rv-wel-link" href="/복지용구-급여-품목-한도/">복지용구 품목 25종·한도·신청 절차 보기 →</a>
+</div>
 <div class="rv-hub">${cards}</div>
-<p style="color:#64748b;font-size:14px;margin-top:24px;">※ 소개하는 제품은 일상 돌봄을 돕는 생활용품으로, 의료기기가 아닙니다. 어르신의 건강 상태나 복지용구 급여 대상 여부는 전문가·건강보험공단과 상담하세요.</p>
+<p style="color:#64748b;font-size:14px;margin-top:24px;">※ 소개하는 제품은 일상 돌봄을 돕는 생활용품으로, 의료기기가 아닙니다. 어르신의 건강 상태는 전문가와 상담하세요.</p>
 </article>
 ${FOOTER}`;
 }
