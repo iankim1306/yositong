@@ -11,7 +11,6 @@
 <meta name="twitter:image" content="https://yositong.com/assets/og-image.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Place","name":"충남 계룡시 요양시설 디렉토리","description":"충남 계룡시 지역 장기요양기관 24곳 정보 및 채용공고","url":"https://yositong.com/regions/chungnam-gyeryong-si/","address":{"@type":"PostalAddress","addressRegion":"충남","addressLocality":"계룡시","addressCountry":"KR"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://yositong.com/"},{"@type":"ListItem","position":2,"name":"충남","item":"https://yositong.com/regions/chungnam/"},{"@type":"ListItem","position":3,"name":"계룡시","item":"https://yositong.com/regions/chungnam-gyeryong-si/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"JobPosting","title":"장애인직업재활시설 메종드에스쁘아 생산 및 판매 관리기사 채용공고","description":"장애인직업재활업무 전반","hiringOrganization":{"@type":"Organization","name":"메종드에스쁘아"},"jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressRegion":"충남","addressLocality":"아산시","streetAddress":"충청남도 아산시 영인면 신정리길","addressCountry":"KR"}},"employmentType":"FULL_TIME","industry":"요양/사회복지","directApply":false,"datePosted":"2026-04-17","validThrough":"2026-05-02","baseSalary":{"@type":"MonetaryAmount","currency":"KRW","value":{"@type":"QuantitativeValue","value":"● 임금형태 : 월급 / ● 임금형태 : 0 ~","unitText":"MONTH"}}}</script>
 <link rel="stylesheet" href="/jobs/jobs.css"><style>
 .region-hero{background:linear-gradient(180deg,var(--bg) 0%,var(--accent-soft) 100%);padding:48px 24px 32px;border-bottom:1px solid var(--line)}
 .region-hero-inner{max-width:1100px;margin:0 auto}
@@ -52,6 +51,23 @@
 .jobs-section .job-company{font-size:13px;color:var(--ink-2)}
 .jobs-section .job-wage{font-size:14px;font-weight:600;color:var(--accent);white-space:nowrap}
 .jobs-section .jobs-loading{text-align:center;padding:20px;color:var(--ink-3);font-size:15px}
+.jobs-cta-lead{margin:0 0 16px;font-size:15px;line-height:1.7;color:var(--ink-2)}
+.jobs-cta-btn{display:inline-block;padding:12px 22px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px}
+.jobs-cta-btn:hover{opacity:.9}
+.jobs-cta-note{margin:12px 0 0;font-size:13px;color:var(--ink-3);line-height:1.6}
+.jobs-live{margin:0 0 28px}
+.jobs-live h2{font-size:20px;margin:0 0 6px}
+.jobs-live-n{color:var(--accent);font-size:16px}
+.jobs-live-note{margin:0 0 16px;font-size:13px;color:var(--ink-3)}
+.job-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.job-card{border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:var(--surface)}
+.job-card-title{font-size:16px;font-weight:700;margin:0 0 6px;line-height:1.45}
+.job-card-meta{font-size:13.5px;color:var(--ink-2);margin-bottom:10px}
+.job-card-facts{list-style:none;margin:0;padding:0;font-size:13.5px}
+.job-card-facts li{display:flex;gap:8px;padding:3px 0;color:var(--ink-2)}
+.job-card-facts li span{flex:0 0 62px;color:var(--ink-3)}
+.job-card-link{display:inline-block;margin-top:10px;font-size:13.5px;color:var(--accent);font-weight:600;text-decoration:none}
+@media(max-width:600px){.job-cards{grid-template-columns:1fr}}
 .seo-block{margin-top:40px;padding:32px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .seo-block h2{font-size:20px;margin:0 0 12px}.seo-block p{color:var(--ink-2);font-size:15px;line-height:1.8;margin:0 0 12px}
 .show-more-btn{display:block;width:100%;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:15px;font-weight:600;color:var(--ink-2);cursor:pointer;text-align:center;margin-top:16px;transition:all .15s}
@@ -94,9 +110,12 @@
 <div class="region-stat"><div class="num">8</div><div class="label">주야간보호</div></div>
 </div></div></section>
 <main class="main-content">
+
 <section class="jobs-section" id="jobs-section">
-<h2><img src="/jobs/assets/icons/briefcase.svg" alt="" style="width:20px;height:20px;vertical-align:middle;margin-right:6px">충남 계룡시 최신 채용공고</h2>
-<div id="job-list" class="job-list"><div class="jobs-loading" id="jobs-loading">채용공고를 불러오는 중...</div></div>
+<h2><img src="/jobs/assets/icons/briefcase.svg" alt="" style="width:20px;height:20px;vertical-align:middle;margin-right:6px">충남 계룡시에서 요양보호사를 찾고 계신가요?</h2>
+<p class="jobs-cta-lead">이 페이지는 <strong>충남 계룡시에서 요양보호사 일자리를 찾는 분들</strong>이 검색으로 들어오는 곳입니다. 구인 중인 시설이라면 공고를 <strong>무료로</strong> 올리실 수 있습니다.</p>
+<a href="/contact/#job-post" class="jobs-cta-btn">구인공고 무료 등록하기</a>
+<p class="jobs-cta-note">등록은 무료이며, 검토 후 해당 지역 페이지에 게시됩니다. 사업자등록이나 회원가입 없이 신청하실 수 있습니다.</p>
 </section>
 <div class="tab-bar" id="tab-bar">
 <button class="tab-btn active" data-tab="care">요양원 (8)</button>
@@ -156,6 +175,5 @@ tabBar.addEventListener('click',function(e){var b=e.target.closest('.tab-btn');i
 var allF={"care":[{"code":"14425000022","name":"효성요양원","address":"충청남도 계룡시 엄사면 도곡로  46-12 (엄사면)","designatedDate":"20110810","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"14425000032","name":"천사요양원","address":"충청남도 계룡시 엄사면 엄사중앙로  30 3층 (엄사면, 301)","designatedDate":"20120501","typeNames":["노인요양공동생활가정"],"primarySlug":"care"},{"code":"14425000055","name":"계룡효센터","address":"충청남도 계룡시 두마면 대둔로  1380-49 1동 (두마면)","designatedDate":"20170118","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"14425000068","name":"평강요양원","address":"충청남도 계룡시 엄사면 번영3길  42-7 (엄사면)","designatedDate":"20210701","typeNames":["노인요양공동생활가정"],"primarySlug":"care"},{"code":"14425000072","name":"계룡요양원","address":"충청남도 계룡시 엄사면 번영8길  8-11 2층 (엄사면)","designatedDate":"20210801","typeNames":["노인요양공동생활가정"],"primarySlug":"care"},{"code":"14425000073","name":"은빛요양원","address":"충청남도 계룡시 엄사면 엄사중앙로  30 501호 (엄사면)","designatedDate":"20211001","typeNames":["노인요양공동생활가정"],"primarySlug":"care"},{"code":"14425000077","name":"삼성노블케어","address":"충청남도 계룡시 서금암2길  7-1 (금암동)","designatedDate":"20230818","typeNames":["노인요양시설"],"primarySlug":"care"},{"code":"14425000081","name":"계룡효자요양원","address":"충청남도 계룡시 엄사면 전원로  85 (엄사면, 계룡효자요양원)","designatedDate":"20240801","typeNames":["노인요양공동생활가정"],"primarySlug":"care"}],"home":[{"code":"24425000076","name":"아리야재가복지센터","address":"충청남도 계룡시 엄사면 번영로  12 4층405호 (엄사면)","designatedDate":"20230101","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"24425000079","name":"은샘재가노인복지센터","address":"충청남도 계룡시 엄사면 엄사중앙로  65-9 상가동202호 (엄사면, 두산.신성아파트)","designatedDate":"20240201","typeNames":["방문요양"],"primarySlug":"home"},{"code":"34425000020","name":"행복한노인복지센터","address":"충청남도 계룡시 엄사면 번영10길  11 (엄사면)","designatedDate":"20101210","typeNames":["방문요양","방문목욕","복지용구"],"primarySlug":"home"},{"code":"34425000053","name":"해우리재가복지센터","address":"충청남도 계룡시 두마면 사계로  51 (두마면, 계룡대림이-편한세상상가 106호)","designatedDate":"20161111","typeNames":["방문요양","방문목욕"],"primarySlug":"home"},{"code":"34425000064","name":"더불어방문요양센터","address":"충청남도 계룡시 장안로  43 508-1호 (금암동)","designatedDate":"20190327","typeNames":["방문요양"],"primarySlug":"home"}],"day":[{"code":"24425000054","name":"계룡효재가노인복지센터","address":"충청남도 계룡시 두마면 대둔로  1380-49 2동 (두마면)","designatedDate":"20170118","typeNames":["주야간보호","단기보호"],"primarySlug":"day"},{"code":"24425000070","name":"계룡재가주간보호센터","address":"충청남도 계룡시 엄사면 번영8길  8-11 (엄사면)","designatedDate":"20210801","typeNames":["방문요양","방문목욕","주야간보호"],"primarySlug":"day"},{"code":"24425000071","name":"부모사랑주야간보호센터","address":"충청남도 계룡시 서금암로  17 5층503호 (금암동, 은혜로빌딩)","designatedDate":"20210801","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"24425000074","name":"은빛요양복지센터","address":"충청남도 계룡시 엄사면 엄사중앙로  30 501호 (엄사면)","designatedDate":"20211001","typeNames":["방문요양","주야간보호"],"primarySlug":"day"},{"code":"24425000075","name":"계룡효자부모님케어센터","address":"충청남도 계룡시 엄사면 엄사중앙로  110 (엄사면)","designatedDate":"20220901","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"24425000080","name":"계룡사랑재가노인복지센터","address":"충청남도 계룡시 금암로  23 (금암동, 1층)","designatedDate":"20240501","typeNames":["방문요양","주야간보호"],"primarySlug":"day"},{"code":"34425000001","name":"효성주간보호센터","address":"충청남도 계룡시 엄사면 도곡로  46-12 (엄사면)","designatedDate":"20080618","typeNames":["주야간보호"],"primarySlug":"day"},{"code":"34425000033","name":"천사재가복지센터","address":"충청남도 계룡시 엄사면 엄사중앙로  30 3층4층(301)(401)호 (엄사면)","designatedDate":"20120501","typeNames":["방문요양","주야간보호"],"primarySlug":"day"}],"other":[{"code":"24425000067","name":"보배로운 재가복지센터","address":"충청남도 계룡시 엄사면 번영로  12 (엄사면, 계룡오피스텔 403호)","designatedDate":"20200408","typeNames":[],"primarySlug":"other"},{"code":"24425000069","name":"평강재가노인복지센터","address":"충청남도 계룡시 엄사면 번영3길  42-7 (엄사면)","designatedDate":"20210701","typeNames":[],"primarySlug":"other"},{"code":"24425000078","name":"왕대복지센터","address":"충청남도 계룡시 두마면 왕대2길  24-1 (두마면)","designatedDate":"20231001","typeNames":[],"primarySlug":"other"}]};
 document.querySelectorAll('.show-more-btn').forEach(function(btn){btn.addEventListener('click',function(){var t=this.dataset.tab,l=allF[t]||[],c=document.querySelector('#tab-'+t+' .fclt-list');c.innerHTML=l.map(function(f){var sc=f.primarySlug||'other',th=(f.typeNames||[]).slice(0,3).map(function(t){return'<span class="fclt-type-tag '+sc+'">'+he(t)+'</span>'}).join(''),ds=f.designatedDate?f.designatedDate.slice(0,4)+'.'+f.designatedDate.slice(4,6)+'.'+f.designatedDate.slice(6,8):'';return'<div class="fclt-card"><h3>'+he(f.name)+'</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="" loading="lazy" decoding="async">'+he(f.address||'')+'</div>'+(ds?'<div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="" loading="lazy" decoding="async">지정일 '+ds+'</div>':'')+'<div class="fclt-types">'+th+'</div></div>'}).join('');this.remove()})});
 function he(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
-(async function(){var el=document.getElementById('job-list'),ld=document.getElementById('jobs-loading');try{var r=await fetch('/api/welfare?page=1&pageSize=1000');if(!r.ok)throw 0;var d=await r.json();var items=(d.items||[]).filter(function(j){return j.sido==='충남'}).slice(0,5);if(!items.length){ld.textContent='현재 등록된 채용공고가 없습니다.';return}ld.remove();el.innerHTML=items.map(function(j){return'<a href="/jobs/?region='+encodeURIComponent(j.sido)+'&sigungu='+encodeURIComponent(j.sigungu||'')+'" class="job-item"><div><div class="job-title">'+he(j.title)+'</div><div class="job-company">'+he(j.companyName)+'</div></div><div class="job-wage">'+he(j.salary||j.wageCond||'회사내규')+'</div></a>'}).join('')}catch(e){ld.textContent='채용공고를 불러올 수 없습니다.'}})();
 })();
 </script></body></html>

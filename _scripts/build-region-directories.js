@@ -15,6 +15,11 @@ const DATA_PATH = resolve(ROOT, 'data/facilities-by-sigungu.json');
 const WELFARE_PATH = resolve(ROOT, 'data/welfare.json');
 const REGION_DIR = resolve(ROOT, 'regions');
 
+// 구인공고 접수 창구.
+// 외부 폼(구글폼/Tally)을 만들면 이 한 줄만 그 URL 로 바꾸면 전 페이지에 반영된다.
+// 폼이 생기기 전에는 문의 페이지로 받는다 — 버튼이 없는 것보다 낫다.
+const JOB_POST_FORM_URL = process.env.JOB_POST_FORM_URL || '/contact/#job-post';
+
 console.log('━━━ 시군구 디렉토리 정적 페이지 생성 (영문 slug) ━━━');
 const data = JSON.parse(readFileSync(DATA_PATH, 'utf8'));
 
@@ -29,6 +34,44 @@ for (const j of welfareJobs) {
   if (!jobsBySido[j.sido]) jobsBySido[j.sido] = [];
   jobsBySido[j.sido].push(j);
 }
+// 구인공고 (fetch-welfare.cjs 가 빌드 전에 갱신한다)
+// 빌드 때 읽어 HTML 에 그대로 박는다 → 런타임 fetch 0, Vercel 함수 호출 0.
+let welfareJobsList = [];
+try {
+  welfareJobsList = JSON.parse(readFileSync(resolve(ROOT, 'data/welfare.json'), 'utf8'));
+} catch { welfareJobsList = []; }
+const jobsBySigungu = {};
+for (const j of welfareJobsList) {
+  if (!j.sido || !j.sigungu) continue;
+  const k = `${j.sido}|${j.sigungu}`;
+  (jobsBySigungu[k] = jobsBySigungu[k] || []).push(j);
+}
+function jobsFor(sido, sigungu) {
+  const exact = jobsBySigungu[`${sido}|${sigungu}`];
+  if (exact) return exact;
+  // "부천시 원미구" 처럼 지역 데이터가 더 자세한 경우를 흡수한다
+  const head = String(sigungu).split(/\s+/)[0];
+  return jobsBySigungu[`${sido}|${head}`] || [];
+}
+function fmtDate(d) {
+  const t = String(d || '').replace(/[^0-9]/g, '');
+  return t.length === 8 ? `${t.slice(0,4)}.${t.slice(4,6)}.${t.slice(6,8)}` : '';
+}
+function renderJobs(list) {
+  return list.slice(0, 12).map(j => `<article class="job-card">
+<h3 class="job-card-title">${esc(j.title)}</h3>
+<div class="job-card-meta"><strong>${esc(j.companyName)}</strong>${j.address ? ' · ' + esc(j.address.split(/\s+/).slice(0,3).join(' ')) : ''}</div>
+<ul class="job-card-facts">
+${j.rcrtFld ? `<li><span>모집분야</span>${esc(j.rcrtFld)}</li>` : ''}
+${j.headcount ? `<li><span>모집인원</span>${esc(j.headcount)}명</li>` : ''}
+${j.wageCond ? `<li><span>급여</span>${esc(j.wageCond.slice(0,60))}</li>` : ''}
+${j.emplStle ? `<li><span>고용형태</span>${esc(j.emplStle)}</li>` : ''}
+${j.accpClseDe ? `<li><span>접수마감</span>${fmtDate(j.accpClseDe)}</li>` : ''}
+</ul>
+${j.sourceUrl ? `<a class="job-card-link" href="${esc(j.sourceUrl)}" target="_blank" rel="noopener nofollow">공고 원문 보기</a>` : ''}
+</article>`).join('\n');
+}
+
 const regionKeys = Object.keys(data);
 
 // 시도별 시군구 그룹
@@ -72,7 +115,8 @@ for (const key of regionKeys) {
   const dayList = facilities.filter(f => f.primarySlug === 'day');
   const otherList = facilities.filter(f => f.primarySlug === 'other');
 
-  const html = buildSigunguPage({ sido, sigungu, slug, total, care, home, day, other, careList, homeList, dayList, otherList, neighbors });
+  const regionJobs = jobsFor(sido, sigungu);
+  const html = buildSigunguPage({ sido, sigungu, slug, total, care, home, day, other, careList, homeList, dayList, otherList, neighbors, regionJobs });
   writeFileSync(resolve(dirPath, 'index.html'), html, 'utf8');
   created++;
   if (created % 50 === 0) console.log(`  ${created} 생성...`);
@@ -169,6 +213,23 @@ function regionCSS() {
 .jobs-section .job-company{font-size:13px;color:var(--ink-2)}
 .jobs-section .job-wage{font-size:14px;font-weight:600;color:var(--accent);white-space:nowrap}
 .jobs-section .jobs-loading{text-align:center;padding:20px;color:var(--ink-3);font-size:15px}
+.jobs-cta-lead{margin:0 0 16px;font-size:15px;line-height:1.7;color:var(--ink-2)}
+.jobs-cta-btn{display:inline-block;padding:12px 22px;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px}
+.jobs-cta-btn:hover{opacity:.9}
+.jobs-cta-note{margin:12px 0 0;font-size:13px;color:var(--ink-3);line-height:1.6}
+.jobs-live{margin:0 0 28px}
+.jobs-live h2{font-size:20px;margin:0 0 6px}
+.jobs-live-n{color:var(--accent);font-size:16px}
+.jobs-live-note{margin:0 0 16px;font-size:13px;color:var(--ink-3)}
+.job-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.job-card{border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:var(--surface)}
+.job-card-title{font-size:16px;font-weight:700;margin:0 0 6px;line-height:1.45}
+.job-card-meta{font-size:13.5px;color:var(--ink-2);margin-bottom:10px}
+.job-card-facts{list-style:none;margin:0;padding:0;font-size:13.5px}
+.job-card-facts li{display:flex;gap:8px;padding:3px 0;color:var(--ink-2)}
+.job-card-facts li span{flex:0 0 62px;color:var(--ink-3)}
+.job-card-link{display:inline-block;margin-top:10px;font-size:13.5px;color:var(--accent);font-weight:600;text-decoration:none}
+@media(max-width:600px){.job-cards{grid-template-columns:1fr}}
 .seo-block{margin-top:40px;padding:32px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .seo-block h2{font-size:20px;margin:0 0 12px}.seo-block p{color:var(--ink-2);font-size:15px;line-height:1.8;margin:0 0 12px}
 .show-more-btn{display:block;width:100%;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:15px;font-weight:600;color:var(--ink-2);cursor:pointer;text-align:center;margin-top:16px;transition:all .15s}
@@ -254,7 +315,14 @@ function jobPostingLD(job) {
   }
   return post;
 }
-function jobPostingsJSONLD(sido, max = 5) {
+function jobPostingsJSONLD() {
+  // 🔴 2026-11-19 비활성화.
+  // welfare.json 이 4월에 멈춰 모든 공고의 validThrough 가 지났는데도
+  // 248개 지역 페이지가 만료된 JobPosting 구조화 데이터를 뿌리고 있었다.
+  // 구글은 만료 공고를 수동 조치 대상으로 본다. 공고 공급이 복구될 때까지 내보내지 않는다.
+  return '';
+}
+function _unused_jobPostingsJSONLD(sido, max = 5) {
   const list = (jobsBySido[sido] || []).slice(0, max);
   if (list.length === 0) return '';
   return list.map(j => `<script type="application/ld+json">${JSON.stringify(jobPostingLD(j))}</script>`).join('\n');
@@ -329,7 +397,7 @@ function jsonLD(sido, sigungu, total, url, slug, sidoSlug) {
 <script type="application/ld+json">${JSON.stringify(breadcrumb)}</script>`;
 }
 
-function buildSigunguPage({ sido, sigungu, slug, total, care, home, day, other, careList, homeList, dayList, otherList, neighbors }) {
+function buildSigunguPage({ sido, sigungu, slug, total, care, home, day, other, careList, homeList, dayList, otherList, neighbors, regionJobs = [] }) {
   const title = `${sido} ${sigungu} 요양보호사 일자리 · 요양시설 디렉토리`;
   const desc = `${sido} ${sigungu} 지역 장기요양기관 ${total}곳. 요양원 ${care}곳, 방문요양 ${home}곳, 주야간보호 ${day}곳.`;
   const url = `https://yositong.com/regions/${slug}/`;
@@ -350,7 +418,6 @@ function buildSigunguPage({ sido, sigungu, slug, total, care, home, day, other, 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://yositong.com/assets/og-image.png">
 ${jsonLD(sido, sigungu, total, url, slug, sidoSlug)}
-${jobPostingsJSONLD(sido, 5)}
 <link rel="stylesheet" href="/jobs/jobs.css">${regionCSS()}
 </head><body>
 ${nav()}
@@ -364,9 +431,16 @@ ${nav()}
 <div class="region-stat"><div class="num">${day.toLocaleString()}</div><div class="label">주야간보호</div></div>
 </div></div></section>
 <main class="main-content">
+${regionJobs.length ? `<section class="jobs-live">
+<h2>${sido} ${sigungu} 구인공고 <span class="jobs-live-n">${regionJobs.length}건</span></h2>
+<p class="jobs-live-note">한국사회보장정보원 사회복지시설 구인정보 기준입니다. 접수 마감일이 지나지 않은 공고만 싣습니다.</p>
+<div class="job-cards">${renderJobs(regionJobs)}</div>
+</section>` : ''}
 <section class="jobs-section" id="jobs-section">
-<h2><img src="/jobs/assets/icons/briefcase.svg" alt="" style="width:20px;height:20px;vertical-align:middle;margin-right:6px">${sido} ${sigungu} 최신 채용공고</h2>
-<div id="job-list" class="job-list"><div class="jobs-loading" id="jobs-loading">채용공고를 불러오는 중...</div></div>
+<h2><img src="/jobs/assets/icons/briefcase.svg" alt="" style="width:20px;height:20px;vertical-align:middle;margin-right:6px">${sido} ${sigungu}에서 요양보호사를 찾고 계신가요?</h2>
+<p class="jobs-cta-lead">이 페이지는 <strong>${sido} ${sigungu}에서 요양보호사 일자리를 찾는 분들</strong>이 검색으로 들어오는 곳입니다. 구인 중인 시설이라면 공고를 <strong>무료로</strong> 올리실 수 있습니다.</p>
+<a href="${JOB_POST_FORM_URL}" class="jobs-cta-btn"${JOB_POST_FORM_URL.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>구인공고 무료 등록하기</a>
+<p class="jobs-cta-note">등록은 무료이며, 검토 후 해당 지역 페이지에 게시됩니다. 사업자등록이나 회원가입 없이 신청하실 수 있습니다.</p>
 </section>
 <div class="tab-bar" id="tab-bar">
 <button class="tab-btn active" data-tab="care">요양원 (${care})</button>
@@ -394,7 +468,6 @@ tabBar.addEventListener('click',function(e){var b=e.target.closest('.tab-btn');i
 var allF=${allFac};
 document.querySelectorAll('.show-more-btn').forEach(function(btn){btn.addEventListener('click',function(){var t=this.dataset.tab,l=allF[t]||[],c=document.querySelector('#tab-'+t+' .fclt-list');c.innerHTML=l.map(function(f){var sc=f.primarySlug||'other',th=(f.typeNames||[]).slice(0,3).map(function(t){return'<span class="fclt-type-tag '+sc+'">'+he(t)+'</span>'}).join(''),ds=f.designatedDate?f.designatedDate.slice(0,4)+'.'+f.designatedDate.slice(4,6)+'.'+f.designatedDate.slice(6,8):'';return'<div class="fclt-card"><h3>'+he(f.name)+'</h3><div class="fclt-meta"><img src="/jobs/assets/icons/pin.svg" alt="" loading="lazy" decoding="async">'+he(f.address||'')+'</div>'+(ds?'<div class="fclt-meta"><img src="/jobs/assets/icons/calendar.svg" alt="" loading="lazy" decoding="async">지정일 '+ds+'</div>':'')+'<div class="fclt-types">'+th+'</div></div>'}).join('');this.remove()})});
 function he(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
-(async function(){var el=document.getElementById('job-list'),ld=document.getElementById('jobs-loading');try{var r=await fetch('/api/welfare?page=1&pageSize=1000');if(!r.ok)throw 0;var d=await r.json();var items=(d.items||[]).filter(function(j){return j.sido==='${sido}'}).slice(0,5);if(!items.length){ld.textContent='현재 등록된 채용공고가 없습니다.';return}ld.remove();el.innerHTML=items.map(function(j){return'<a href="/jobs/?region='+encodeURIComponent(j.sido)+'&sigungu='+encodeURIComponent(j.sigungu||'')+'" class="job-item"><div><div class="job-title">'+he(j.title)+'</div><div class="job-company">'+he(j.companyName)+'</div></div><div class="job-wage">'+he(j.salary||j.wageCond||'회사내규')+'</div></a>'}).join('')}catch(e){ld.textContent='채용공고를 불러올 수 없습니다.'}})();
 })();
 </script></body></html>`;
 }
@@ -420,7 +493,6 @@ function buildSidoPage({ sido, sidoSlug, sigungus, totalAll }) {
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://yositong.com/assets/og-image.png">
 <script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://yositong.com/"},{"@type":"ListItem","position":2,"name":sido,"item":url}]})}</script>
-${jobPostingsJSONLD(sido, 10)}
 <link rel="stylesheet" href="/jobs/jobs.css">${regionCSS()}
 </head><body>
 ${nav()}
