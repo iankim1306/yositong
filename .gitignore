@@ -14,3 +14,5 @@ node_modules/
 .env*
 _scripts/refresh-jobs.log
 _scripts/.*
+_scripts/coupang/_raw.json
+_scripts/coupang/_final.json

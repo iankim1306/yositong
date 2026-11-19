@@ -47,7 +47,14 @@ try {
   // 워드프레스에서 넘어온 과거 글은 articles-data.cjs 에 없다.
   // 여기서 빠뜨리면 이미 색인된 URL 이 사이트맵에서 사라진다(실제로 한 번 43편을 날릴 뻔했다).
   const legacy = JSON.parse(readFileSync(resolve(__dirname, 'legacy-slugs.json'), 'utf8')).slugs;
-  blogSlugs = [...new Set([...managed, ...legacy])];
+  // 요양용품 리뷰는 build-reviews.cjs 가 남긴 목록에서 읽는다(손으로 적지 않는다)
+  let rv = [];
+  try {
+    rv = JSON.parse(readFileSync(resolve(__dirname, 'review-slugs.json'), 'utf8')).slugs;
+  } catch (e) {
+    console.warn('⚠️ review-slugs.json 없음 — build-reviews.cjs 를 먼저 돌리세요');
+  }
+  blogSlugs = [...new Set([...managed, ...legacy, ...rv])];
 } catch (e) {
   console.warn('⚠️ 슬러그 목록을 읽지 못했습니다:', e.message);
   console.warn('   node _scripts/build-articles.cjs 를 먼저 실행하세요.');

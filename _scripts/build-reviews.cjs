@@ -40,7 +40,7 @@ function welfareNote(slug) {
     const spec = [w.way, w.years ? ('사용 가능 햇수 ' + w.years) : null, w.qty ? (w.qty + '까지') : null].filter(Boolean).join(' · ');
     return `<div class="rv-wel rv-wel-on">
 <div class="rv-wel-h">✅ 이 용품은 <strong>복지용구 급여 품목</strong>입니다 — 정가로 사기 전에 읽어보세요</div>
-<p><strong>${esc(w.item)}</strong>${eun(w.item)} 장기요양 복지용구 품목입니다(${esc(spec)}). 어르신에게 <strong>장기요양 1~5등급 또는 인지지원등급</strong>이 있고 요양원에 입소하지 않았다면, <strong>복지용구사업소에서 본인부담 15%</strong>에 구입할 수 있습니다(감경 대상 6~9%, 기초생활수급자 0%). 연간 한도는 <strong>160만원</strong>입니다.</p>
+<p><strong>${esc(w.item)}</strong>${eun(w.item)} 장기요양 복지용구 품목입니다(${esc(spec)}). 어르신에게 <strong>장기요양 1~5등급 또는 인지지원등급</strong>이 있고 요양원에 입소하지 않았다면, <strong>복지용구사업소에서 본인부담 15%</strong>에 ${w.way.indexOf('대여') >= 0 ? (w.way.indexOf('구입') >= 0 ? '구입하거나 대여할' : '대여할') : '구입할'} 수 있습니다(감경 대상 6~9%, 기초생활수급자 0%). 연간 한도는 <strong>160만원</strong>입니다.</p>
 ${w.note ? ('<p>' + w.note + '</p>') : ''}
 <p class="rv-wel-warn">⚠️ <strong>온라인 쇼핑몰에서 사면 급여가 적용되지 않습니다.</strong> 공단에 등록된 복지용구사업소에서 계약해야 합니다. 아래 제품 비교는 <strong>등급이 없거나 한도를 이미 다 쓴 경우</strong>에 참고하세요.</p>
 <a class="rv-wel-link" href="${WELFARE_HUB}">복지용구 품목 25종·한도·신청 절차 보기 →</a>
@@ -283,14 +283,14 @@ function buildHub() {
     "@context": "https://schema.org", "@type": "ItemList",
     itemListElement: reviews.map((a, i) => ({ "@type": "ListItem", position: i + 1, url: `${BASE}/reviews/${a.slug}/`, name: a.h1 }))
   })}</script>`;
-  return `${head('요양용품 추천 — 어르신·환자 돌봄 용품 모음', '성인용 기저귀, 방수매트, 욕창예방 방석, 목욕의자, 보행기, 지팡이 등 요양·간병에 필요한 용품을 가성비·베스트·프리미엄으로 비교해 추천합니다.', url, itemList)}
+  return `${head('요양용품 추천 — 어르신·환자 돌봄 용품 모음', '성인용 기저귀, 욕창예방 방석·매트리스, 자세변환용구, 목욕의자, 보행기, 지팡이, 구강세척기, 배회감지기 등 요양·간병 용품 26종을 가성비·베스트·프리미엄으로 비교했습니다. 복지용구 급여 품목인지도 함께 표시합니다.', url, itemList)}
 <article class="container">
 <h1>요양용품 추천 모음</h1>
 <div class="meta">어르신·환자 돌봄에 필요한 용품을 상황별로 비교했습니다</div>
 <p>집에서 어르신이나 환자를 돌볼 때 실제로 필요한 용품들을 <strong>가성비·베스트·프리미엄</strong> 세 가지로 나눠 비교했습니다. 아래에서 필요한 품목을 골라보세요.</p>
 <div class="rv-wel rv-wel-on">
 <div class="rv-wel-h">✅ 먼저 확인하세요 — 목욕의자·지팡이·안전손잡이는 <strong>15%</strong>에 살 수 있습니다</div>
-<p>장기요양 <strong>1~5등급 또는 인지지원등급</strong>이 있고 요양원에 입소하지 않았다면, 복지용구 <strong>25종</strong>을 연 <strong>160만원</strong> 한도로 본인부담 <strong>15%</strong>(감경 6~9%, 기초생활수급자 0%)에 구입·대여할 수 있습니다. 아래 품목 중 <strong>목욕의자·이동변기·보행기·지팡이·안전손잡이·미끄럼방지매트·욕창예방방석·경사로</strong>가 급여 품목입니다.</p>
+<p>장기요양 <strong>1~5등급 또는 인지지원등급</strong>이 있고 요양원에 입소하지 않았다면, 복지용구 <strong>25종</strong>을 연 <strong>160만원</strong> 한도로 본인부담 <strong>15%</strong>(감경 6~9%, 기초생활수급자 0%)에 구입·대여할 수 있습니다. 아래 품목 중 <strong>목욕의자·이동변기·보행기·지팡이·안전손잡이·미끄럼방지매트·미끄럼방지양말·욕창예방방석·욕창예방매트리스·자세변환용구·경사로·구강세척기·기저귀센서·배회감지기</strong>가 급여 품목입니다(일부는 등록 제품만 해당).</p>
 <a class="rv-wel-link" href="/복지용구-급여-품목-한도/">복지용구 품목 25종·한도·신청 절차 보기 →</a>
 </div>
 <div class="rv-hub">${cards}</div>
@@ -309,6 +309,13 @@ for (const a of reviews) {
 }
 fs.mkdirSync(path.join(ROOT, 'reviews'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'reviews', 'index.html'), buildHub(), 'utf8');
+// 사이트맵이 읽을 슬러그 목록을 남긴다.
+// 예전엔 legacy-slugs.json 에 손으로 적어 뒀는데, 리뷰를 추가하고 그 파일을
+// 깜빡하면 사이트맵에서 빠져 색인이 안 된다(정보글에서 이미 당한 함정).
+fs.writeFileSync(
+  path.join(__dirname, 'review-slugs.json'),
+  JSON.stringify({ generated: new Date().toISOString().slice(0, 10), slugs: reviews.map(a => 'reviews/' + a.slug) }, null, 1),
+  'utf8'
+);
 console.log(`✓ 요양용품 리뷰 ${n}개 + 허브(/reviews/) 생성`);
-console.log('sitemap용 slug:');
-reviews.forEach(a => console.log(`  'reviews/${a.slug}',`));
+console.log(`✓ _scripts/review-slugs.json (${reviews.length}개 슬러그)`);
