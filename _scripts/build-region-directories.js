@@ -58,8 +58,12 @@ function fmtDate(d) {
   return t.length === 8 ? `${t.slice(0,4)}.${t.slice(4,6)}.${t.slice(6,8)}` : '';
 }
 function renderJobs(list) {
-  return list.slice(0, 12).map(j => `<article class="job-card">
-<h3 class="job-card-title">${esc(j.title)}</h3>
+  // 이 페이지는 "요양보호사 일자리"로 들어온 사람이 보는 곳이다.
+  // 사회복지시설 전체 구인이 섞여 오므로(생활재활교사·조리원 등) 요양 관련을 먼저 보여주고
+  // 아닌 것은 배지로 구분해 둔다. 걸러 버리면 공고 있는 지역이 67곳 → 20곳대로 줄어든다.
+  const sorted = list.slice().sort((a, b) => (b.isCare === true) - (a.isCare === true));
+  return sorted.slice(0, 12).map(j => `<article class="job-card">
+<h3 class="job-card-title">${j.isCare ? '<span class="job-badge">요양보호</span> ' : ''}${esc(j.title)}</h3>
 <div class="job-card-meta"><strong>${esc(j.companyName)}</strong>${j.address ? ' · ' + esc(j.address.split(/\s+/).slice(0,3).join(' ')) : ''}</div>
 <ul class="job-card-facts">
 ${j.rcrtFld ? `<li><span>모집분야</span>${esc(j.rcrtFld)}</li>` : ''}
@@ -224,6 +228,7 @@ function regionCSS() {
 .job-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
 .job-card{border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:var(--surface)}
 .job-card-title{font-size:16px;font-weight:700;margin:0 0 6px;line-height:1.45}
+.job-badge{display:inline-block;padding:2px 7px;border-radius:4px;background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;vertical-align:middle}
 .job-card-meta{font-size:13.5px;color:var(--ink-2);margin-bottom:10px}
 .job-card-facts{list-style:none;margin:0;padding:0;font-size:13.5px}
 .job-card-facts li{display:flex;gap:8px;padding:3px 0;color:var(--ink-2)}
@@ -433,7 +438,7 @@ ${nav()}
 <main class="main-content">
 ${regionJobs.length ? `<section class="jobs-live">
 <h2>${sido} ${sigungu} 구인공고 <span class="jobs-live-n">${regionJobs.length}건</span></h2>
-<p class="jobs-live-note">한국사회보장정보원 사회복지시설 구인정보 기준입니다. 접수 마감일이 지나지 않은 공고만 싣습니다.</p>
+<p class="jobs-live-note">한국사회보장정보원 사회복지시설 구인정보 기준입니다. 접수 마감일이 지나지 않은 공고만 싣고, 요양보호 관련 공고를 먼저 보여줍니다.</p>
 <div class="job-cards">${renderJobs(regionJobs)}</div>
 </section>` : ''}
 <section class="jobs-section" id="jobs-section">
