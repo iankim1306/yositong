@@ -2,31 +2,31 @@
  "sido": [
   {
    "name": "서울",
-   "count": 87
+   "count": 84
   },
   {
    "name": "경기",
-   "count": 41
+   "count": 42
   },
   {
    "name": "부산",
-   "count": 21
-  },
-  {
-   "name": "강원",
-   "count": 11
+   "count": 22
   },
   {
    "name": "대구",
-   "count": 11
+   "count": 12
   },
   {
    "name": "광주",
+   "count": 11
+  },
+  {
+   "name": "강원",
    "count": 9
   },
   {
    "name": "전북",
-   "count": 8
+   "count": 6
   },
   {
    "name": "충북",
@@ -34,10 +34,6 @@
   },
   {
    "name": "경북",
-   "count": 3
-  },
-  {
-   "name": "경남",
    "count": 2
   },
   {
@@ -45,11 +41,15 @@
    "count": 2
   },
   {
+   "name": "경남",
+   "count": 1
+  },
+  {
    "name": "인천",
    "count": 1
   },
   {
-   "name": "대전",
+   "name": "충남",
    "count": 1
   },
   {
@@ -57,5 +57,5 @@
    "count": 1
   }
  ],
- "updatedAt": "2026-11-20T01:48:04.950Z"
+ "updatedAt": "2026-11-21T01:48:04.997Z"
 }
