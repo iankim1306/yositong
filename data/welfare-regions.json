@@ -2,15 +2,15 @@
  "sido": [
   {
    "name": "서울",
-   "count": 84
+   "count": 83
   },
   {
    "name": "경기",
-   "count": 42
+   "count": 44
   },
   {
    "name": "부산",
-   "count": 22
+   "count": 21
   },
   {
    "name": "대구",
@@ -30,7 +30,7 @@
   },
   {
    "name": "충북",
-   "count": 4
+   "count": 5
   },
   {
    "name": "경북",
@@ -57,5 +57,5 @@
    "count": 1
   }
  ],
- "updatedAt": "2026-11-21T01:48:04.997Z"
+ "updatedAt": "2026-11-22T01:48:04.626Z"
 }
