@@ -48,6 +48,21 @@
       "source": "/요양보호사-필기-실기-합격률",
       "destination": "/요양보호사-시험-난이도-어렵나요",
       "permanent": true
+    },
+    {
+      "source": "/요양보호사-교육비-국비지원-받는-방법과-혜택-총정",
+      "destination": "/내일배움카드-요양보호사-신청-방법",
+      "permanent": true
+    },
+    {
+      "source": "/요양보호사-국비지원-난-얼마나-낼까",
+      "destination": "/내일배움카드-요양보호사-신청-방법",
+      "permanent": true
+    },
+    {
+      "source": "/요양보호사-시설별-업무강도-비교",
+      "destination": "/요양보호사-업무강도-실제로-어떨까-현장-목소리로",
+      "permanent": true
     }
   ]
 }
