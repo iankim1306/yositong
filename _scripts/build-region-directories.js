@@ -573,6 +573,7 @@ function buildRegionsHub({ sidoGroups }) {
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="naver-site-verification" content="9ebf50acfe0237b4f8f418e1224d4f59264fdd31" />
 <meta name="naver-site-verification" content="b0bb10d2d3505f81ed288420c1c9f1dc435ddb0c" />
+<meta name="google-site-verification" content="AdSJSnhdDNb6-WjWRbwJnLZmjcQASaWJbDRN36i4DXk" />
 <title>${title} - yositong</title>
 <meta name="description" content="${desc}">
 <link rel="canonical" href="${url}">

@@ -26,7 +26,8 @@ const BASE = 'https://yositong.com';
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const NAVER = `<meta name="naver-site-verification" content="9ebf50acfe0237b4f8f418e1224d4f59264fdd31" />
-<meta name="naver-site-verification" content="b0bb10d2d3505f81ed288420c1c9f1dc435ddb0c" />`;
+<meta name="naver-site-verification" content="b0bb10d2d3505f81ed288420c1c9f1dc435ddb0c" />
+<meta name="google-site-verification" content="AdSJSnhdDNb6-WjWRbwJnLZmjcQASaWJbDRN36i4DXk" />`;
 
 function nav() {
   return `<nav class="nav"><div class="nav-inner">
