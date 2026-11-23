@@ -32,11 +32,11 @@ const NAVER = `<meta name="naver-site-verification" content="9ebf50acfe0237b4f8f
 function nav() {
   return `<nav class="nav"><div class="nav-inner">
 <a href="/" class="logo">요양보호사 정보</a>
-<a href="/jobs/">취업정보</a>
-<a href="/academy/">학원가이드</a>
-<a href="/quiz/">문제풀이</a>
-<a href="/regions/">지역별</a>
-<a href="/blog/">정보글</a>
+<a href="/jobs">취업정보</a>
+<a href="/academy">학원가이드</a>
+<a href="/quiz">문제풀이</a>
+<a href="/regions">지역별</a>
+<a href="/blog">정보글</a>
 </div></nav>`;
 }
 function footer() {
@@ -44,7 +44,7 @@ function footer() {
 <div class="brand">요양보호사 정보</div>
 <div>© 2026 yositong.com</div>
 <div style="margin-top:12px;">
-<a href="/jobs/">취업정보</a>·<a href="/academy/">학원가이드</a>·<a href="/quiz/">문제풀이</a>·<a href="/regions/">지역별</a>·<a href="/blog/">정보글</a>·<a href="/about/">소개</a>·<a href="/contact/">문의</a>·<a href="/privacy/">개인정보처리방침</a>
+<a href="/jobs">취업정보</a>·<a href="/academy">학원가이드</a>·<a href="/quiz">문제풀이</a>·<a href="/regions">지역별</a>·<a href="/blog">정보글</a>·<a href="/about">소개</a>·<a href="/contact">문의</a>·<a href="/privacy">개인정보처리방침</a>
 </div></footer>`;
 }
 
@@ -110,7 +110,7 @@ ${opts}
 
 function buildTopicPage(topic, questions, idx, topics) {
   const name = topic.name;
-  const url = `${BASE}/quiz/${topic.slug}/`;
+  const url = `${BASE}/quiz/${topic.slug}`;
   // 검색 단어는 "기출문제"로 통일
   const title = `요양보호사 ${name} 기출문제 ${questions.length}문항 무료 풀이`;
   const desc = `요양보호사 시험 ${name} 분야 기출문제 ${questions.length}문항을 정답·해설과 함께 무료로 제공합니다. 출제 범위에 맞춘 실전 연습문제로 필기와 실기를 대비하세요.`;
@@ -120,7 +120,7 @@ function buildTopicPage(topic, questions, idx, topics) {
   const K = Math.min(6, topics.length - 1);
   for (let k = 1; k <= K; k++) near.push(topics[(idx + k) % topics.length]);
   const nearLinks = near.map(t =>
-    `<a href="/quiz/${t.slug}/">요양보호사 ${t.name} 기출문제</a>`).join('');
+    `<a href="/quiz/${t.slug}">요양보호사 ${t.name} 기출문제</a>`).join('');
 
   const figCount = questions.filter(figureFor).length;
 
@@ -171,15 +171,15 @@ ${nav()}
 </div>
 
 <div class="q-topics">
-<a href="/quiz/">전체 문제 풀기</a>
+<a href="/quiz">전체 문제 풀기</a>
 ${nearLinks}
 </div>
 
 ${questions.map(renderQuestion).join('\n')}
 
 <div class="q-cta">
-전체 ${DATA.questions.length}문항을 랜덤으로 풀어 보려면 <a href="/quiz/">요양보호사 기출문제 전체 풀이</a>로 이동하세요.
-지역별 일자리는 <a href="/regions/">지역별 요양보호사 일자리</a>에서 확인할 수 있습니다.
+전체 ${DATA.questions.length}문항을 랜덤으로 풀어 보려면 <a href="/quiz">요양보호사 기출문제 전체 풀이</a>로 이동하세요.
+지역별 일자리는 <a href="/regions">지역별 요양보호사 일자리</a>에서 확인할 수 있습니다.
 </div>
 
 <div class="q-seo">

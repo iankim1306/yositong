@@ -157,11 +157,11 @@ console.log('━━━ 완료 ━━━');
 function nav() {
   return `<nav class="nav"><div class="nav-inner">
 <a href="/" class="logo">요양보호사 정보</a>
-<a href="/jobs/">취업정보</a>
-<a href="/academy/">학원가이드</a>
-<a href="/quiz/">문제풀이</a>
-<a href="/regions/">지역별</a>
-<a href="/blog/">정보글</a>
+<a href="/jobs">취업정보</a>
+<a href="/academy">학원가이드</a>
+<a href="/quiz">문제풀이</a>
+<a href="/regions">지역별</a>
+<a href="/blog">정보글</a>
 </div></nav>`;
 }
 
@@ -170,7 +170,7 @@ function footer() {
 <div class="brand">요양보호사 정보</div>
 <div>© 2026 yositong.com</div>
 <div style="margin-top:12px;">
-<a href="/jobs/">취업정보</a>·<a href="/academy/">학원가이드</a>·<a href="/quiz/">문제풀이</a>·<a href="/blog/">정보글</a>·<a href="/about/">소개</a>·<a href="/contact/">문의</a>·<a href="/privacy/">개인정보처리방침</a>
+<a href="/jobs">취업정보</a>·<a href="/academy">학원가이드</a>·<a href="/quiz">문제풀이</a>·<a href="/blog">정보글</a>·<a href="/about">소개</a>·<a href="/contact">문의</a>·<a href="/privacy">개인정보처리방침</a>
 </div></footer>`;
 }
 
@@ -375,8 +375,8 @@ function faqBlock(sido, sigungu) {
   const region = `${sido} ${sigungu}`;
   return `<div class="faq-block">
 <details class="faq-item"><summary>${region} 요양보호사 평균 시급은 얼마인가요?</summary><p>${region} 지역 요양보호사의 평균 시급은 약 12,000~14,000원 수준이며, 시설 종류와 근무 형태(주간/야간/3교대)에 따라 차이가 있습니다. 정규직 월급은 약 230만 원 ~ 270만 원입니다. 정확한 시급은 시설별 채용공고에서 확인해주세요.</p></details>
-<details class="faq-item"><summary>${region}에서 요양보호사 자격증 어떻게 취득하나요?</summary><p>요양보호사 자격증은 보건복지부 지정 교육기관에서 320시간 교육을 이수한 뒤 국가시험에 합격하면 취득할 수 있습니다. 국비지원(내일배움카드)을 활용하면 교육비 부담을 크게 줄일 수 있습니다. <a href="/academy/">학원가이드</a>에서 자세한 정보를 확인하세요.</p></details>
-<details class="faq-item"><summary>${region} 요양시설 채용공고 어디서 보나요?</summary><p>아래 채용공고 영역에 ${sido} 지역 실시간 공고를 표시하고 있습니다. <a href="/jobs/?region=${encodeURIComponent(sido)}">전체 ${sido} 채용공고 보기</a>에서 시군구·근무형태·시급별로 필터링할 수 있습니다.</p></details>
+<details class="faq-item"><summary>${region}에서 요양보호사 자격증 어떻게 취득하나요?</summary><p>요양보호사 자격증은 보건복지부 지정 교육기관에서 320시간 교육을 이수한 뒤 국가시험에 합격하면 취득할 수 있습니다. 국비지원(내일배움카드)을 활용하면 교육비 부담을 크게 줄일 수 있습니다. <a href="/academy">학원가이드</a>에서 자세한 정보를 확인하세요.</p></details>
+<details class="faq-item"><summary>${region} 요양시설 채용공고 어디서 보나요?</summary><p>아래 채용공고 영역에 ${sido} 지역 실시간 공고를 표시하고 있습니다. <a href="/jobs?region=${encodeURIComponent(sido)}">전체 ${sido} 채용공고 보기</a>에서 시군구·근무형태·시급별로 필터링할 수 있습니다.</p></details>
 </div>`;
 }
 
@@ -405,7 +405,7 @@ function jsonLD(sido, sigungu, total, url, slug, sidoSlug) {
 function buildSigunguPage({ sido, sigungu, slug, total, care, home, day, other, careList, homeList, dayList, otherList, neighbors, regionJobs = [] }) {
   const title = `${sido} ${sigungu} 요양보호사 일자리 · 요양시설 디렉토리`;
   const desc = `${sido} ${sigungu} 지역 장기요양기관 ${total}곳. 요양원 ${care}곳, 방문요양 ${home}곳, 주야간보호 ${day}곳.`;
-  const url = `https://yositong.com/regions/${slug}/`;
+  const url = `https://yositong.com/regions/${slug}`;
   const sidoSlug = getSidoSlug(sido);
 
   const allFac = JSON.stringify({ care: careList, home: homeList, day: dayList, other: otherList });
@@ -457,7 +457,7 @@ ${other>0?`<button class="tab-btn" data-tab="other">기타 (${other})</button>`:
 <div class="tab-content" id="tab-home"><div class="fclt-list">${renderCards(homeList,18)}</div>${homeList.length>18?`<button class="show-more-btn" data-tab="home">더보기 (${homeList.length-18}곳 더)</button>`:''}</div>
 <div class="tab-content" id="tab-day"><div class="fclt-list">${renderCards(dayList,18)}</div>${dayList.length>18?`<button class="show-more-btn" data-tab="day">더보기 (${dayList.length-18}곳 더)</button>`:''}</div>
 ${other>0?`<div class="tab-content" id="tab-other"><div class="fclt-list">${renderCards(otherList,18)}</div>${otherList.length>18?`<button class="show-more-btn" data-tab="other">더보기 (${otherList.length-18}곳 더)</button>`:''}</div>`:''}
-${neighbors.length>0?`<div class="neighbors"><h2>${sido} 인근 지역 시설</h2><div class="neighbor-links">${neighbors.map(n=>`<a href="/regions/${n.slug}/" class="neighbor-link">${n.sigungu} <span class="nb-count">${n.total}곳</span></a>`).join('')}</div></div>`:''}
+${neighbors.length>0?`<div class="neighbors"><h2>${sido} 인근 지역 시설</h2><div class="neighbor-links">${neighbors.map(n=>`<a href="/regions/${n.slug}" class="neighbor-link">${n.sigungu} <span class="nb-count">${n.total}곳</span></a>`).join('')}</div></div>`:''}
 <div class="seo-block">
 <h2>${sido} ${sigungu} 요양시설 분포 한눈에</h2>
 <p>${openingParagraph(sido, sigungu, total, care, home, day, profile)}</p>
@@ -480,11 +480,11 @@ function he(s){var d=document.createElement('div');d.textContent=s;return d.inne
 function buildSidoPage({ sido, sidoSlug, sigungus, totalAll }) {
   const title = `${sido} 요양시설 디렉토리 - 시군구별 요양기관 안내`;
   const desc = `${sido} 지역 장기요양기관 총 ${totalAll.toLocaleString()}곳. 시군구별 요양원, 방문요양, 주야간보호 시설 현황을 확인하세요.`;
-  const url = `https://yositong.com/regions/${sidoSlug}/`;
+  const url = `https://yositong.com/regions/${sidoSlug}`;
 
-  const cards = sigungus.map(r => `<a href="/regions/${r.slug}/" class="sido-card"><h3>${r.sigungu}</h3><div class="sg-count">요양원 ${r.care} · 방문요양 ${r.home} · 주야간보호 ${r.day} — 총 ${r.total}곳</div></a>`).join('\n');
+  const cards = sigungus.map(r => `<a href="/regions/${r.slug}" class="sido-card"><h3>${r.sigungu}</h3><div class="sg-count">요양원 ${r.care} · 방문요양 ${r.home} · 주야간보호 ${r.day} — 총 ${r.total}곳</div></a>`).join('\n');
 
-  const otherSidos = SIDO_ORDER.filter(s => s !== sido).map(s => `<a href="/regions/${getSidoSlug(s)}/" class="neighbor-link">${s}</a>`).join('');
+  const otherSidos = SIDO_ORDER.filter(s => s !== sido).map(s => `<a href="/regions/${getSidoSlug(s)}" class="neighbor-link">${s}</a>`).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -529,7 +529,7 @@ ${footer()}
 function buildRegionsHub({ sidoGroups }) {
   const title = '지역별 요양보호사 일자리 · 요양시설 디렉토리';
   const desc = '전국 17개 시도 시군구별 요양보호사 일자리와 장기요양기관(요양원·방문요양·주야간보호) 현황을 한눈에. 내 지역을 골라 바로 확인하세요.';
-  const url = 'https://yositong.com/regions/';
+  const url = 'https://yositong.com/regions';
 
   const sidoList = SIDO_ORDER.filter(s => (sidoGroups[s] || []).length > 0);
   const grandTotal = sidoList.reduce(
@@ -542,10 +542,10 @@ function buildRegionsHub({ sidoGroups }) {
       .sort((a, b) => a.sigungu.localeCompare(b.sigungu, 'ko'));
     const sidoTotal = list.reduce((a, r) => a + r.total, 0);
     const links = list.map(r =>
-      `<a href="/regions/${r.slug}/" class="neighbor-link">${esc(r.sigungu)} <span class="nb-count">${r.total}곳</span></a>`
+      `<a href="/regions/${r.slug}" class="neighbor-link">${esc(r.sigungu)} <span class="nb-count">${r.total}곳</span></a>`
     ).join('');
     return `<div class="neighbors" style="margin-top:32px">
-<h2><a href="/regions/${getSidoSlug(sido)}/" style="color:inherit;text-decoration:none">${esc(sido)}</a> <span style="font-size:14px;font-weight:400;color:#666">${list.length}개 시군구 · ${sidoTotal.toLocaleString()}곳</span></h2>
+<h2><a href="/regions/${getSidoSlug(sido)}" style="color:inherit;text-decoration:none">${esc(sido)}</a> <span style="font-size:14px;font-weight:400;color:#666">${list.length}개 시군구 · ${sidoTotal.toLocaleString()}곳</span></h2>
 <div class="neighbor-links">${links}</div></div>`;
   }).join('\n');
 

@@ -106,9 +106,9 @@ const CTA = `
   <h3 style="font-size:18px;font-weight:800;margin:0 0 8px;color:#0f172a;">요양보호사·요양 정보 더 보기</h3>
   <p style="margin:0 0 18px;color:#475569;font-size:15px;">자격증·급여·취업부터 실무 현장 정보까지</p>
   <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
-    <a href="/blog/" style="background:#16a34a;color:#fff;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;">정보글 보기 →</a>
-    <a href="/jobs/" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">채용 검색 →</a>
-    <a href="/reviews/" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">요양용품 전체 →</a>
+    <a href="/blog" style="background:#16a34a;color:#fff;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;">정보글 보기 →</a>
+    <a href="/jobs" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">채용 검색 →</a>
+    <a href="/reviews" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">요양용품 전체 →</a>
   </div>
 </section>`;
 
@@ -211,11 +211,11 @@ ${extraSchema || ''}
 <body>
 <nav class="nav"><div class="nav-inner">
 <a href="/" class="logo">요양보호사 정보</a>
-<a href="/jobs/">취업정보</a>
-<a href="/academy/">학원가이드</a>
-<a href="/quiz/">문제풀이</a>
-<a href="/blog/">정보글</a>
-<a href="/reviews/">요양용품</a>
+<a href="/jobs">취업정보</a>
+<a href="/academy">학원가이드</a>
+<a href="/quiz">문제풀이</a>
+<a href="/blog">정보글</a>
+<a href="/reviews">요양용품</a>
 </div></nav>`;
 }
 
@@ -224,14 +224,14 @@ const FOOTER = `
 <div>© 2026 요양보호사 정보 · yositong.com</div>
 <div style="margin-top:10px;">${DISCLOSURE}</div>
 <div style="margin-top: 10px;">
-<a href="/blog/">정보글</a> · <a href="/reviews/">요양용품</a> · <a href="/jobs/">취업정보</a> · <a href="/about/">소개</a> · <a href="/privacy/">개인정보처리방침</a>
+<a href="/blog">정보글</a> · <a href="/reviews">요양용품</a> · <a href="/jobs">취업정보</a> · <a href="/about">소개</a> · <a href="/privacy">개인정보처리방침</a>
 </div>
 </footer>
 </body>
 </html>`;
 
 function buildReview(a) {
-  const url = `${BASE}/reviews/${a.slug}/`;
+  const url = `${BASE}/reviews/${a.slug}`;
   const faqList = extractFAQ(a.blocks);
   const faqSchema = faqList.length ? `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org", "@type": "FAQPage",
@@ -249,7 +249,7 @@ function buildReview(a) {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "홈", item: `${BASE}/` },
-      { "@type": "ListItem", position: 2, name: "요양용품", item: `${BASE}/reviews/` },
+      { "@type": "ListItem", position: 2, name: "요양용품", item: `${BASE}/reviews` },
       { "@type": "ListItem", position: 3, name: a.title, item: url }
     ]
   })}</script>`;
@@ -275,10 +275,10 @@ ${FOOTER}`;
 }
 
 function buildHub() {
-  const url = `${BASE}/reviews/`;
+  const url = `${BASE}/reviews`;
   const cards = reviews.map(a => {
     const thumb = a.products && a.products[0] ? `/reviews/${a.slug}/${a.products[0].image}` : '';
-    return `<a href="/reviews/${a.slug}/"><div class="rv-hub-thumb"><img src="${esc(thumb)}" alt="${esc(a.hubTitle || a.h1)}" loading="lazy"></div><div class="rv-hub-txt"><div class="t">${esc(a.hubTitle || a.h1)}</div><div class="d">${esc(a.hubDesc || '')}</div></div></a>`;
+    return `<a href="/reviews/${a.slug}"><div class="rv-hub-thumb"><img src="${esc(thumb)}" alt="${esc(a.hubTitle || a.h1)}" loading="lazy"></div><div class="rv-hub-txt"><div class="t">${esc(a.hubTitle || a.h1)}</div><div class="d">${esc(a.hubDesc || '')}</div></div></a>`;
   }).join('\n');
   const itemList = `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org", "@type": "ItemList",
@@ -292,7 +292,7 @@ function buildHub() {
 <div class="rv-wel rv-wel-on">
 <div class="rv-wel-h">✅ 먼저 확인하세요 — 목욕의자·지팡이·안전손잡이는 <strong>15%</strong>에 살 수 있습니다</div>
 <p>장기요양 <strong>1~5등급 또는 인지지원등급</strong>이 있고 요양원에 입소하지 않았다면, 복지용구 <strong>25종</strong>을 연 <strong>160만원</strong> 한도로 본인부담 <strong>15%</strong>(감경 6~9%, 기초생활수급자 0%)에 구입·대여할 수 있습니다. 아래 품목 중 <strong>목욕의자·이동변기·보행기·지팡이·안전손잡이·미끄럼방지매트·미끄럼방지양말·욕창예방방석·욕창예방매트리스·자세변환용구·경사로·구강세척기·기저귀센서·배회감지기</strong>가 급여 품목입니다(일부는 등록 제품만 해당).</p>
-<a class="rv-wel-link" href="/복지용구-급여-품목-한도/">복지용구 품목 25종·한도·신청 절차 보기 →</a>
+<a class="rv-wel-link" href="/복지용구-급여-품목-한도">복지용구 품목 25종·한도·신청 절차 보기 →</a>
 </div>
 <div class="rv-hub">${cards}</div>
 <p style="color:#64748b;font-size:14px;margin-top:24px;">※ 소개하는 제품은 일상 돌봄을 돕는 생활용품으로, 의료기기가 아닙니다. 어르신의 건강 상태는 전문가와 상담하세요.</p>

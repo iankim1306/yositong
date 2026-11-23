@@ -49,15 +49,15 @@ const CTA = `
   <h3 style="font-size:18px;font-weight:800;margin:0 0 8px;color:#0f172a;">실전 정보 더 찾아보세요</h3>
   <p style="margin:0 0 18px;color:#475569;font-size:15px;">전국 31,000개 시설 디렉토리 + 실시간 채용공고 + 무료 기출문제 588</p>
   <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
-    <a href="/jobs/" style="background:#16a34a;color:#fff;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;">전국 채용 검색 →</a>
-    <a href="/regions/seoul/" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">시설 디렉토리 →</a>
-    <a href="/quiz/" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">기출문제 풀이 →</a>
-    <a href="/faq/" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">FAQ 보기 →</a>
+    <a href="/jobs" style="background:#16a34a;color:#fff;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;">전국 채용 검색 →</a>
+    <a href="/regions/seoul" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">시설 디렉토리 →</a>
+    <a href="/quiz" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">기출문제 풀이 →</a>
+    <a href="/faq" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">FAQ 보기 →</a>
   </div>
 </section>`;
 
 function buildArticle(a) {
-  const url = `${BASE}/${a.slug}/`;
+  const url = `${BASE}/${a.slug}`;
   const faqList = extractFAQ(a.blocks);
   const faqSchema = faqList.length ? `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org", "@type": "FAQPage",
@@ -110,7 +110,7 @@ function buildArticle(a) {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "홈", item: `${BASE}/` },
-      { "@type": "ListItem", position: 2, name: "정보글", item: `${BASE}/blog/` },
+      { "@type": "ListItem", position: 2, name: "정보글", item: `${BASE}/blog` },
       { "@type": "ListItem", position: 3, name: a.title, item: url }
     ]
   })}</script>
@@ -150,11 +150,11 @@ details.q .a { padding: 0 20px 18px; color: #555; font-size: 15px; line-height: 
 <body>
 <nav class="nav"><div class="nav-inner">
 <a href="/" class="logo">요양보호사 정보</a>
-<a href="/jobs/">취업정보</a>
-<a href="/academy/">학원가이드</a>
-<a href="/quiz/">문제풀이</a>
-<a href="/blog/">정보글</a>
-<a href="/reviews/">요양용품</a>
+<a href="/jobs">취업정보</a>
+<a href="/academy">학원가이드</a>
+<a href="/quiz">문제풀이</a>
+<a href="/blog">정보글</a>
+<a href="/reviews">요양용품</a>
 </div></nav>
 
 <article class="container">
@@ -168,7 +168,7 @@ ${CTA}
 <footer class="footer">
 <div>© 2026 요양보호사 정보 · yositong.com</div>
 <div style="margin-top: 10px;">
-<a href="/blog/">정보글</a> · <a href="/jobs/">취업정보</a> · <a href="/quiz/">문제풀이</a> · <a href="/about/">소개</a> · <a href="/contact/">문의</a> · <a href="/privacy/">개인정보처리방침</a>
+<a href="/blog">정보글</a> · <a href="/jobs">취업정보</a> · <a href="/quiz">문제풀이</a> · <a href="/about">소개</a> · <a href="/contact">문의</a> · <a href="/privacy">개인정보처리방침</a>
 </div>
 </footer>
 </body>
@@ -212,7 +212,7 @@ if (pending.length) {
   const blogPath = path.join(ROOT, 'blog', 'index.html');
   let html = fs.readFileSync(blogPath, 'utf8');
   const card = a => `<li>
-<a href="/${a.slug}/">
+<a href="/${a.slug}">
 <h3>${esc(a.title)}</h3>
 <div class="excerpt">${esc(a.desc)}</div>
 <div class="date">${a.date}</div>
@@ -223,7 +223,7 @@ if (pending.length) {
   // 문자열 위치 탐색으로 해당 <li> 범위를 잘라내는 쪽이 단순하고 안전하다.
   let updated = 0, inserted = 0;
   for (const a of live) {
-    const needle = `<a href="/${a.slug}/">`;
+    const needle = `<a href="/${a.slug}">`;
     const at = html.indexOf(needle);
     if (at !== -1) {
       const liStart = html.lastIndexOf('<li>', at);

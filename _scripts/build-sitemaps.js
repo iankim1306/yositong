@@ -98,7 +98,10 @@ console.log(`✓ sitemap.xml (인덱스)\n━━━ 총 URL: ${total.toLocaleStr
 
 function buildUrlset(urls) {
   const lines = urls.map(u => {
-    let s = `<url><loc>${BASE}${u.loc}</loc><lastmod>${TODAY}</lastmod>`;
+    // 🔴 끝 슬래시를 뗀다. vercel.json 이 trailingSlash:false 라 서버가 /x/ → 308 → /x 로 튕긴다.
+  // 슬래시를 붙여 제출하면 구글이 "리디렉션이 포함된 페이지"로 보고 색인하지 않는다(257개가 그랬다).
+  const loc = u.loc === '/' ? '/' : u.loc.replace(/\/+$/, '');
+  let s = `<url><loc>${BASE}${loc}</loc><lastmod>${TODAY}</lastmod>`;
     if (u.priority) s += `<priority>${u.priority}</priority>`;
     if (u.changefreq) s += `<changefreq>${u.changefreq}</changefreq>`;
     return s + '</url>';
