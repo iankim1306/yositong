@@ -88,9 +88,13 @@ console.log(`✓ 내부링크 교체 — ${linkFixed}개 파일`);
 const VJ = path.join(ROOT, 'vercel.json');
 const vj = JSON.parse(fs.readFileSync(VJ, 'utf8'));
 vj.redirects = vj.redirects || [];
-const src = '/' + loser;
+// Vercel 은 요청 경로를 퍼센트 인코딩된 상태로 비교한다.
+// source 에 한글을 날것으로 넣으면 영원히 매칭이 안 되고 404 가 난다(2026-11-23 실측).
+const encPath = s => '/' + encodeURIComponent(String(s).replace(/^\//, ''));
+const src = encPath(loser);
+const dst = encPath(winner);
 if (!vj.redirects.some(r => r.source === src)) {
-  vj.redirects.push({ source: src, destination: '/' + winner, permanent: true });
+  vj.redirects.push({ source: src, destination: dst, permanent: true });
   fs.writeFileSync(VJ, JSON.stringify(vj, null, 2) + '\n', 'utf8');
   console.log(`✓ vercel.json 308 리다이렉트: ${src} → /${winner}`);
 } else {
