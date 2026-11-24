@@ -63,6 +63,16 @@
       "source": "/%EC%9A%94%EC%96%91%EB%B3%B4%ED%98%B8%EC%82%AC-%EC%8B%9C%EC%84%A4%EB%B3%84-%EC%97%85%EB%AC%B4%EA%B0%95%EB%8F%84-%EB%B9%84%EA%B5%90",
       "destination": "/%EC%9A%94%EC%96%91%EB%B3%B4%ED%98%B8%EC%82%AC-%EC%97%85%EB%AC%B4%EA%B0%95%EB%8F%84-%EC%8B%A4%EC%A0%9C%EB%A1%9C-%EC%96%B4%EB%96%A8%EA%B9%8C-%ED%98%84%EC%9E%A5-%EB%AA%A9%EC%86%8C%EB%A6%AC%EB%A1%9C",
       "permanent": true
+    },
+    {
+      "source": "/jobs",
+      "destination": "/regions",
+      "permanent": true
+    },
+    {
+      "source": "/jobs/:path*",
+      "destination": "/regions",
+      "permanent": true
     }
   ]
 }

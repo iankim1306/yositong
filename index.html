@@ -85,7 +85,7 @@ gtag('config', 'G-5VX7EX4PCW');
 <nav class="nav"><div class="nav-inner">
 <a href="/" class="logo">요시통</a>
 <div class="nav-links">
-  <a href="/jobs">취업정보</a>
+  <a href="/regions">지역별 시설</a>
   <a href="/academy">학원가이드</a>
   <a href="/quiz">문제풀이</a>
   <a href="/regions">지역별</a>
@@ -94,7 +94,7 @@ gtag('config', 'G-5VX7EX4PCW');
 <button class="hamburger" id="hamburger-btn" aria-label="메뉴"><span></span><span></span><span></span></button>
 </div></nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a href="/jobs">취업정보</a>
+  <a href="/regions">지역별 시설</a>
   <a href="/academy">학원가이드</a>
   <a href="/quiz">문제풀이</a>
   <a href="/regions">지역별</a>
@@ -107,8 +107,8 @@ gtag('config', 'G-5VX7EX4PCW');
 <div class="hero-text">
   <div class="eyebrow fade-up">요양보호사 실전 정보 플랫폼</div>
   <h1 class="fade-up fade-up-d1">취업부터 시험까지,<br><em>필요한 정보만</em> 모았습니다</h1>
-  <p class="fade-up fade-up-d2">전국 요양시설 채용공고, 기출문제 풀이, 학원 국비지원 정보까지 한 곳에서.</p>
-  <form class="search-box fade-up fade-up-d2" id="hero-search" action="/jobs/" method="get">
+  <p class="fade-up fade-up-d2">우리 동네 요양시설 찾기, 기출문제 861문항, 급여·국비지원 정보까지 한 곳에서.</p>
+  <form class="search-box fade-up fade-up-d2" id="hero-search" action="/regions" method="get">
     <select name="region" id="hero-region">
       <option value="">지역 전체</option>
       <option value="서울">서울</option><option value="경기">경기</option><option value="인천">인천</option>
@@ -118,13 +118,12 @@ gtag('config', 'G-5VX7EX4PCW');
       <option value="전북">전북</option><option value="전남">전남</option><option value="경북">경북</option>
       <option value="경남">경남</option><option value="제주">제주</option>
     </select>
-    <input type="text" name="keyword" placeholder="시설명, 직무 등 검색">
-    <button type="submit">검색</button>
+    <button type="submit">지역 시설 보기</button>
   </form>
   <div class="hero-stats fade-up fade-up-d3">
-    <div class="hero-stat"><span class="n" id="h-stat-jobs">-</span><span class="l">채용공고</span></div>
-    <div class="hero-stat"><span class="n">31,000+</span><span class="l">등록 시설</span></div>
-    <div class="hero-stat"><span class="n">588</span><span class="l">기출문제</span></div>
+    <div class="hero-stat"><span class="n">31,281</span><span class="l">등록 시설</span></div>
+    <div class="hero-stat"><span class="n">861</span><span class="l">기출문제</span></div>
+    <div class="hero-stat"><span class="n">37</span><span class="l">정보글</span></div>
   </div>
 </div>
 <div class="hero-visual fade-up fade-up-d2">
@@ -140,22 +139,22 @@ gtag('config', 'G-5VX7EX4PCW');
   <p>목적에 맞는 서비스로 바로 이동하세요.</p>
 </div></div>
 <div class="quick-grid">
-  <a href="/jobs" class="quick-card">
-    <div class="quick-icon green">💼</div>
-    <h3>취업정보</h3>
-    <p>구인구직 사이트, 근무처별 급여, 지역별 수요</p>
+  <a href="/regions" class="quick-card">
+    <div class="quick-icon amber">🏥</div>
+    <h3>우리 동네 요양시설</h3>
+    <p>전국 31,281곳, 시군구별 요양원·방문요양·주간보호 목록</p>
     <span class="arrow">→</span>
   </a>
   <a href="/quiz" class="quick-card">
     <div class="quick-icon blue">📝</div>
     <h3>기출문제 풀이</h3>
-    <p>Chapter 1~7 전범위 588문제 무료 랜덤 풀이</p>
+    <p>전범위 861문항, 실제 시험과 같은 5지선다 무료 풀이</p>
     <span class="arrow">→</span>
   </a>
-  <a href="/regions/seoul" class="quick-card">
-    <div class="quick-icon amber">🏥</div>
-    <h3>시설 디렉토리</h3>
-    <p>전국 31,000+ 요양시설 지역별 현황 조회</p>
+  <a href="/blog" class="quick-card">
+    <div class="quick-icon green">💼</div>
+    <h3>취업·급여 정보</h3>
+    <p>근무처별 실수령액, 면접 질문, 이력서, 업무강도 비교</p>
     <span class="arrow">→</span>
   </a>
   <a href="/academy" class="quick-card">
@@ -167,21 +166,6 @@ gtag('config', 'G-5VX7EX4PCW');
 </div>
 </section>
 
-<!-- Latest Jobs -->
-<section class="jobs-section">
-<div class="section">
-<div class="section-head"><div>
-  <h2>최신 채용공고</h2>
-  <p>전국 요양시설의 최신 채용 정보를 확인하세요.</p>
-</div><a href="/jobs" class="more-link">전체보기 →</a></div>
-<div class="job-grid" id="latest-jobs">
-  <div class="sk-card"><div class="sk-box" style="width:60px;height:22px"></div><div class="sk-box" style="height:20px"></div><div class="sk-box" style="width:80%;height:20px"></div><div class="sk-box" style="height:14px;margin-top:auto"></div></div>
-  <div class="sk-card"><div class="sk-box" style="width:60px;height:22px"></div><div class="sk-box" style="height:20px"></div><div class="sk-box" style="width:80%;height:20px"></div><div class="sk-box" style="height:14px;margin-top:auto"></div></div>
-  <div class="sk-card"><div class="sk-box" style="width:60px;height:22px"></div><div class="sk-box" style="height:20px"></div><div class="sk-box" style="width:80%;height:20px"></div><div class="sk-box" style="height:14px;margin-top:auto"></div></div>
-  <div class="sk-card"><div class="sk-box" style="width:60px;height:22px"></div><div class="sk-box" style="height:20px"></div><div class="sk-box" style="width:80%;height:20px"></div><div class="sk-box" style="height:14px;margin-top:auto"></div></div>
-</div>
-</div>
-</section>
 
 <!-- Regions -->
 <section class="section">
@@ -249,7 +233,7 @@ gtag('config', 'G-5VX7EX4PCW');
 <div class="brand">요시통</div>
 <div>© 2026 yositong.com</div>
 <div style="margin-top:12px;">
-<a href="/jobs">취업정보</a>·<a href="/academy">학원가이드</a>·<a href="/quiz">문제풀이</a>·<a href="/blog">정보글</a>·<a href="/about">소개</a>·<a href="/contact">문의</a>·<a href="/privacy">개인정보처리방침</a>
+<a href="/regions">지역별 시설</a>·<a href="/academy">학원가이드</a>·<a href="/quiz">문제풀이</a>·<a href="/blog">정보글</a>·<a href="/about">소개</a>·<a href="/contact">문의</a>·<a href="/privacy">개인정보처리방침</a>
 </div>
 </footer>
 
@@ -259,49 +243,17 @@ document.getElementById('hamburger-btn').addEventListener('click', function() {
   document.getElementById('mobile-menu').classList.toggle('open');
 });
 
-// Load latest jobs
-(async function() {
-  try {
-    const res = await fetch('/data/welfare.json');
-    if (!res.ok) return;
-    const jobs = await res.json();
-    const latest = jobs.sort((a,b) => (b.postedAt||'').localeCompare(a.postedAt||'')).slice(0, 4);
-
-    // Update hero stat
-    const statEl = document.getElementById('h-stat-jobs');
-    if (statEl) statEl.textContent = jobs.length.toLocaleString();
-
-    const grid = document.getElementById('latest-jobs');
-    if (!grid || latest.length === 0) return;
-
-    const typeLabels = {care:'요양원',home:'방문요양',day:'주간보호',other:'복지시설'};
-
-    grid.innerHTML = latest.map(item => {
-      const ft = item.facilityType || 'other';
-      const label = typeLabels[ft] || '복지시설';
-      const today = new Date();
-      const yStr = `${today.getFullYear()}${String(today.getMonth()+1).padStart(2,'0')}${String(today.getDate()).padStart(2,'0')}`;
-
-      let ddayHtml = '';
-      if (item.deadline && item.deadline !== '99999999' && item.deadline.length === 8) {
-        const dDate = new Date(item.deadline.slice(0,4), parseInt(item.deadline.slice(4,6))-1, item.deadline.slice(6,8));
-        const todayD = new Date(); todayD.setHours(0,0,0,0);
-        const diff = Math.ceil((dDate - todayD) / 86400000);
-        if (diff >= 0 && diff <= 3) ddayHtml = `<span class="jc-dday urgent">D-${diff}</span>`;
-        else if (diff > 3) ddayHtml = `<span class="jc-dday normal">D-${diff}</span>`;
-      }
-      if (!ddayHtml) ddayHtml = '<span class="jc-dday normal">상시채용</span>';
-
-      return `<a href="/jobs?keyword=${encodeURIComponent(item.companyName||'')}" class="job-card">
-        <span class="jc-badge ${ft}">${label}</span>
-        <div class="jc-company">${item.companyName||''}</div>
-        <h4>${item.title||''}</h4>
-        <div class="jc-meta">📍 ${item.sido||''} ${item.sigungu||''}</div>
-        <div class="jc-meta">💰 ${item.salary||'회사내규'}</div>
-        <div class="jc-footer">${ddayHtml}<span class="jc-detail">상세보기 →</span></div>
-      </a>`;
-    }).join('');
-  } catch(e) { console.error('Failed to load jobs:', e); }
+// 히어로 검색 — 선택한 시도의 지역 디렉토리로 이동
+(function(){
+  var SIDO={"서울":"seoul","경기":"gyeonggi","인천":"incheon","부산":"busan","대구":"daegu","광주":"gwangju","대전":"daejeon","울산":"ulsan","세종":"sejong","강원":"gangwon","충북":"chungbuk","충남":"chungnam","전북":"jeonbuk","전남":"jeonnam","경북":"gyeongbuk","경남":"gyeongnam","제주":"jeju"};
+  var form=document.getElementById('hero-search');
+  if(!form)return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var sido=(document.getElementById('hero-region')||{}).value||'';
+    var slug=SIDO[sido];
+    location.href = slug ? '/regions/'+slug : '/regions';
+  });
 })();
 </script>
 </body>

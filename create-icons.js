@@ -3,7 +3,7 @@ const path = require('path');
 
 const dirs = [
   'C:/Users/hadam/Desktop/yositong/jobs/assets',
-  'C:/Users/hadam/Desktop/yositong/jobs/assets/icons'
+  'C:/Users/hadam/Desktop/yositong/assets/icons'
 ];
 
 dirs.forEach(d => {

@@ -10,7 +10,7 @@ const CTA_BLOCK = `
   <h3 style="font-size:18px;font-weight:800;margin:0 0 8px;color:#0f172a;">실전 정보 더 찾아보세요</h3>
   <p style="margin:0 0 18px;color:#475569;font-size:15px;">전국 31,000개 시설 디렉토리 + 실시간 채용공고 + 무료 기출문제 588</p>
   <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
-    <a href="/jobs/" style="background:#16a34a;color:#fff;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;">전국 채용 검색 →</a>
+    <a href="/regions" style="background:#16a34a;color:#fff;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;">우리 동네 요양시설 찾기 →</a>
     <a href="/regions/seoul/" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">시설 디렉토리 →</a>
     <a href="/quiz/" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">기출문제 풀이 →</a>
     <a href="/faq/" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">FAQ 보기 →</a>

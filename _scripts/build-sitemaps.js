@@ -31,7 +31,9 @@ const staticPages = [
   { loc: '/quiz/dying/', p: '0.8' },
   { loc: '/quiz/system/', p: '0.8' },
   { loc: '/quiz/selfcare/', p: '0.8' },
-  { loc: '/jobs/', p: '0.9' }, { loc: '/academy/', p: '0.9' },
+  // /jobs 는 2026-11-24 폐지 — 합법 소스(사회보장정보원) 공고가 36건뿐이라
+  // 워크넷과 경쟁이 안 됐다(116노출 0클릭·25.3위). /regions 로 308.
+  { loc: '/academy/', p: '0.9' },
   { loc: '/faq/', p: '0.8' },
   // 이력서 양식 도구 — 정적 HTML 한 장(입력값은 브라우저에만 남는다)
   { loc: '/이력서-양식/', p: '0.9' },

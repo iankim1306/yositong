@@ -107,7 +107,7 @@ const CTA = `
   <p style="margin:0 0 18px;color:#475569;font-size:15px;">자격증·급여·취업부터 실무 현장 정보까지</p>
   <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
     <a href="/blog" style="background:#16a34a;color:#fff;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;">정보글 보기 →</a>
-    <a href="/jobs" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">채용 검색 →</a>
+    <a href="/regions" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">요양시설 찾기 →</a>
     <a href="/reviews" style="background:#fff;color:#16a34a;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;border:1px solid #16a34a;">요양용품 전체 →</a>
   </div>
 </section>`;
@@ -211,7 +211,7 @@ ${extraSchema || ''}
 <body>
 <nav class="nav"><div class="nav-inner">
 <a href="/" class="logo">요양보호사 정보</a>
-<a href="/jobs">취업정보</a>
+<a href="/regions">지역별 시설</a>
 <a href="/academy">학원가이드</a>
 <a href="/quiz">문제풀이</a>
 <a href="/blog">정보글</a>
@@ -224,7 +224,7 @@ const FOOTER = `
 <div>© 2026 요양보호사 정보 · yositong.com</div>
 <div style="margin-top:10px;">${DISCLOSURE}</div>
 <div style="margin-top: 10px;">
-<a href="/blog">정보글</a> · <a href="/reviews">요양용품</a> · <a href="/jobs">취업정보</a> · <a href="/about">소개</a> · <a href="/privacy">개인정보처리방침</a>
+<a href="/blog">정보글</a> · <a href="/reviews">요양용품</a> · <a href="/regions">지역별 시설</a> · <a href="/about">소개</a> · <a href="/privacy">개인정보처리방침</a>
 </div>
 </footer>
 </body>
