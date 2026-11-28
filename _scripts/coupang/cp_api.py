@@ -73,5 +73,21 @@ def search(keyword, limit=20):
     q = urllib.parse.urlencode({"keyword": keyword, "limit": limit})
     return call("GET", SEARCH + "?" + q)
 
-def deeplink(urls):
-    return call("POST", DEEPLINK, {"coupangUrls": urls})
+def deeplink(urls, sub_id=None):
+    """딥링크 생성.
+
+    sub_id 를 꼭 넣을 것(2026-11-28). 안 넣으면 파트너스 리포트에서 사이트별로
+    갈리지 않는다 — 실측에서 커미션의 57%가 "미상"으로 남았다.
+    채널 값은 사이트 이름으로 통일한다: infohow / yositong / threads.
+
+    넣으면 landingUrl 이 이렇게 나온다:
+      .../re/AFFSDP?lptag=AF0480009&subid=infohow&pageKey=...
+
+    주의: 단축링크(link.coupang.com/a/XXXX)는 subId 가 코드에 구워진다.
+    이미 만든 단축링크 뒤에 &subid= 를 붙여도 안 먹으니 반드시 재발급할 것.
+    (AFFSDP 형식의 긴 링크는 lptag 뒤에 끼워 넣으면 된다.)
+    """
+    body = {"coupangUrls": urls}
+    if sub_id:
+        body["subId"] = sub_id
+    return call("POST", DEEPLINK, body)
